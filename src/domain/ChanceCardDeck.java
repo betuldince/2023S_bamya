@@ -3,7 +3,7 @@ package domain;
 import java.util.ArrayList;
 
 public class ChanceCardDeck {
-	public ArrayList<ChanceCard> deck;
+	private ArrayList<ChanceCard> deck;
 	
 	public ChanceCardDeck() {
 		deck=new ArrayList<ChanceCard>();	
@@ -13,7 +13,14 @@ public class ChanceCardDeck {
 		deck.add(newChanceCard);
 		
 	}
+	public int get_number_of_chance_cards(){
+		return this.deck.size();
+	}
 	
+	public ChanceCard get_nth_card(int n) {
+		return this.deck.get(n);
+		
+	}
 	
 	
 	
