@@ -47,6 +47,7 @@ abstract class ValidationScreen extends JFrame{
         validationMainPanel.add(validationPanel);
         
         add(validationMainPanel);
+        setResizable(false);
         setVisible(true);
 	}
 	

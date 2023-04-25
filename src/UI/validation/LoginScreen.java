@@ -12,6 +12,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginScreen extends ValidationScreen {
+	
+	LoginScreen loginInstance = this;
 
 	public LoginScreen(String title, int width, int height) {
 		super(title, width, height); 
@@ -20,7 +22,6 @@ public class LoginScreen extends ValidationScreen {
 	public LoginScreen() {
 		super("Login", 300, 150); 
 	}
-	
 
 	@Override
 	protected JPanel getValidationPanel() {
@@ -43,11 +44,12 @@ public class LoginScreen extends ValidationScreen {
 				}
 			});
 			
-			JButton signupButton = new JButton("Sign Up");
-			signupButton.addActionListener(new ActionListener() {
+			JButton signUpNowButton = new JButton("Sign Up Now!");
+			signUpNowButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("signup");				
+					new SignupScreen();
+					loginInstance.dispose();
 				}
 			});
 			
@@ -57,12 +59,10 @@ public class LoginScreen extends ValidationScreen {
 			loginPanel.add(nicknameField);
 			loginPanel.add(passwordLabel);
 			loginPanel.add(passwordField);
-			loginPanel.add(signupButton);
+			loginPanel.add(signUpNowButton);
 			loginPanel.add(loginButton);
 
 			return loginPanel;
-		
-		
 	}
 
 }
