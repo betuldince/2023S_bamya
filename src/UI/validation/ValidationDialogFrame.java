@@ -6,7 +6,7 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import application.validation.ValidationDialogEnum;
+import domain.validation.ValidationDialogEnum;
 
 public class ValidationDialogFrame extends JFrame {
 	private ValidationDialogEnum DIALOG_CODE;
