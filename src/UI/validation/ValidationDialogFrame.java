@@ -6,15 +6,15 @@ import java.awt.HeadlessException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import domain.validation.ValidationDialogEnum;
+import domain.validation.ValidationEnum;
 
 public class ValidationDialogFrame extends JFrame {
-	private ValidationDialogEnum DIALOG_CODE;
+	private ValidationEnum DIALOG_CODE;
 	private String dialogMessage;
 	private String dialogTitle;
 	private int DIALOG_TYPE; 
 	
-	public ValidationDialogFrame(ValidationDialogEnum DIALOG_CODE) {
+	public ValidationDialogFrame(ValidationEnum DIALOG_CODE) {
 		this.DIALOG_CODE = DIALOG_CODE;
 		
 		setDialogMessage();
