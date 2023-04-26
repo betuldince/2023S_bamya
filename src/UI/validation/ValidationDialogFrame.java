@@ -1,14 +1,13 @@
 package UI.validation;
 
-import java.awt.GraphicsConfiguration;
-import java.awt.HeadlessException;
-
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import domain.validation.ValidationEnum;
 
 public class ValidationDialogFrame extends JFrame {
+
+	private static final long serialVersionUID = -6844593222946416936L;
 	private ValidationEnum DIALOG_CODE;
 	private String dialogMessage;
 	private String dialogTitle;

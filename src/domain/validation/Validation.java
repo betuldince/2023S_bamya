@@ -5,7 +5,7 @@ import domain.exceptions.AdapterException;
 public abstract class Validation {
 	
 	private static final DatabaseFactory databaseFactory = DatabaseFactory.getInstance();
-	private IDatabaseAdapter databaseAdapter;
+	protected IDatabaseAdapter databaseAdapter;
 	private String nickname;
 	private final ValidationEnum result;
 	private final String database = "txt"; // change this line for other databases

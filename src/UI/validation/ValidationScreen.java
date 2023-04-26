@@ -1,8 +1,7 @@
 package UI.validation;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +18,10 @@ import javax.swing.text.StyleContext;
 
 
 abstract class ValidationScreen extends JFrame{
+	
+	private static final long serialVersionUID = -2868944207398567032L;
+
+	protected ValidationScreen validationInstance = this;
 	
 	protected JButton validationHelpButton;
 	private JPanel validationMainPanel;
@@ -56,7 +59,9 @@ abstract class ValidationScreen extends JFrame{
 
 
 	private class HelpScreen extends JFrame {
-		
+
+		private static final long serialVersionUID = 1650921965379037078L;
+
 		private HelpScreen() {
 			setTitle("Help");
 	        setSize(500, 200);
@@ -104,6 +109,10 @@ abstract class ValidationScreen extends JFrame{
         }
 		
 		return helpDoc;
+	}
+	
+	protected void closeScreen() {
+		validationInstance.dispose();
 	}
     
 

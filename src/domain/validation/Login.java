@@ -8,7 +8,16 @@ public class Login extends Validation {
 
 	@Override
 	protected ValidationEnum checkDatabase(String nickname, String password) {
-		return null;
+		boolean nicknameIsCorrect = databaseAdapter.nicknameExists(nickname);
+		if (!nicknameIsCorrect) {
+			return ValidationEnum.NICKNAME_NOT_FOUND;
+		}
+		
+		boolean passwordIsCorrect = databaseAdapter.passwordMatches(nickname, password);
+		if (!passwordIsCorrect) {
+			return ValidationEnum.INCORRECT_PASSWORD;
+		}
+		
+		return ValidationEnum.VALID_LOGIN;
 	}
-
 }

@@ -11,8 +11,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class SignupScreen extends ValidationScreen {
-	
-	private SignupScreen signupInstance = this;
+
+	private static final long serialVersionUID = 1886343666691765652L;
 
 	public SignupScreen(String title, int width, int height) {
 		super(title, width, height);
@@ -48,7 +48,7 @@ public class SignupScreen extends ValidationScreen {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					new LoginScreen();
-					signupInstance.dispose();
+					closeScreen();
 				}
 			});
 			
