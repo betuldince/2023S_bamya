@@ -54,9 +54,8 @@ public class LoginScreen extends ValidationScreen {
 						String nickname = nicknameField.getText();
 						Icon icon = validationHandler.requestIcon(nickname);
 						fireLoginEvent(new LoginEvent(this, nickname, icon));
+						closeScreen();
 					}
-
-					closeScreen();
 				}
 			});
 			

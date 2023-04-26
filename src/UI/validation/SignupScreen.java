@@ -4,11 +4,16 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import application.validation.ValidationHandler;
+import domain.validation.LoginEvent;
+import domain.validation.ValidationEnum;
 
 public class SignupScreen extends ValidationScreen {
 
@@ -39,7 +44,12 @@ public class SignupScreen extends ValidationScreen {
 			signupButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("signup");				
+					ValidationHandler validationHandler = new ValidationHandler();
+					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), passwordField.getPassword().toString());
+					new ValidationDialogFrame(result);
+					if (result == ValidationEnum.VALID_SIGNUP) {
+						closeScreen();
+					}
 				}
 			});
 			

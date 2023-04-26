@@ -38,44 +38,7 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 
 	@Override
 	public boolean passwordMatches(String nickname, String password) {
-
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(databasePath.toFile()));
-			
-			String userInfo;
-			while ((userInfo = reader.readLine()) != null) {
-				String userNickname = userInfo.split("{")[0];
-				if (!(userNickname.equals(nickname))) {
-					continue;
-				}
-				else {
-					String[] userAttributes = removeLastChar(userInfo.split("{")[1]).split(",");
-					if (userAttributes == null) {
-						reader.close();
-						return false;
-					}
-					for (String attribute: userAttributes) {
-						if (!((attribute.split(":")[0]).equals("password"))) {
-							continue;
-						}
-						else if (!((attribute.split(":")[1]).equals(password))) {
-							continue;
-						}
-						else {
-							reader.close();
-							return true;
-						}
-					}
-				}
-			}
-			return false;
-		}
-		catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return false;
+		return retrieveKeyValue(nickname, "password").equals(password);
     }
 
 	@Override
@@ -109,6 +72,46 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 	    return (s == null || s.length() == 0)
 	      ? null 
 	      : (s.substring(0, s.length() - 1));
+	}
+	
+	
+	// Created in case new keys are added.
+	private String retrieveKeyValue(String nickname, String key) {
+
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(databasePath.toFile()));
+			
+			String userInfo;
+			while ((userInfo = reader.readLine()) != null) {
+				String userNickname = userInfo.split("{")[0];
+				if (!(userNickname.equals(nickname))) {
+					continue;
+				}
+				else {
+					String[] userAttributes = removeLastChar(userInfo.split("{")[1]).split(",");
+					if (userAttributes == null) {
+						reader.close();
+						return null;
+					}
+					for (String attribute: userAttributes) {
+						if (!((attribute.split(":")[0]).equals(key))) {
+							continue;
+						}
+						else {
+							reader.close();
+							return (attribute.split(":")[1]);
+						}
+					}
+				}
+			}
+			reader.close();
+			return null;
+		}
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }
