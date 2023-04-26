@@ -3,8 +3,14 @@ package map;
 import java.util.ArrayList;
 
 public class Territory{
+	
 	String territoryName;
+	boolean tEnabled = false;
+	int occupied;
+	
 	private ArrayList<Territory> adjacencyList = new ArrayList<Territory>();
+	private ArrayList<Bridge> bridgeList = new ArrayList<Bridge>();
+	
 	public Territory(String territoryName) {
 		this.territoryName=territoryName;
 	}
@@ -19,6 +25,14 @@ public class Territory{
 		return true;
 		
 	}
+	
+	private void createTerritory(Territory t){
+		
+		tEnabled = true;
+	}
+	
+	
+	
 	
 
 
