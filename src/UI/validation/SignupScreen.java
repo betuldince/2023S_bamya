@@ -45,9 +45,10 @@ public class SignupScreen extends ValidationScreen {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					ValidationHandler validationHandler = new ValidationHandler();
-					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), passwordField.getPassword().toString());
+					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), new String(passwordField.getPassword()));
 					new ValidationDialogFrame(result);
 					if (result == ValidationEnum.VALID_SIGNUP) {
+						new LoginScreen();
 						closeScreen();
 					}
 				}
