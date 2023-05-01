@@ -1,5 +1,7 @@
 package domain.validation;
 
+import java.util.regex.Pattern;
+
 import domain.exceptions.AdapterException;
 
 public abstract class Validation {
@@ -42,15 +44,19 @@ public abstract class Validation {
 	protected abstract ValidationEnum checkDatabase(String nickname, String password);
 
 	private static final boolean validateInput(String nickname, String password) {
-		boolean nicknameLengthIsValid = (password.length() <= 20) && (password.length() >= 3);
+		boolean nicknameLengthIsValid = (nickname.length() <= 20) && (nickname.length() >= 3);
 		boolean passwordLengthIsValid = (password.length() <= 20) && (password.length() >= 3);
 		boolean lengthsAreValid = nicknameLengthIsValid && passwordLengthIsValid;
-		if (lengthsAreValid) {
+		if (!lengthsAreValid) {
 			return false;
 		}
-		boolean nicknameIsValid = nickname.matches("^[a-zA-Z0-9_]*$"); 
-		boolean passwordIsValid = password.matches("^[a-zA-Z0-9_]*$");
-		boolean inputIsValid = nicknameIsValid && passwordIsValid;
+		
+		Pattern pattern = Pattern.compile("^[a-zA-Z0-9_]*$");
+		
+		boolean nicknameIsValid = pattern.matcher(nickname).matches();
+		boolean passwordIsValid = pattern.matcher(password).matches();
+
+		boolean inputIsValid = nicknameIsValid && passwordIsValid && lengthsAreValid;
 		return inputIsValid;
 	}
 	

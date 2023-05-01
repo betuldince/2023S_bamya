@@ -1,0 +1,5 @@
+admin{password:12345}
+ahmet{password:ahmet}
+ege{password:ege}
+yigit{password:yigit}
+melih{password:melih}

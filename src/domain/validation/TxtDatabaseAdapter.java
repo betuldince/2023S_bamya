@@ -22,7 +22,7 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 			
 			String userInfo;
 			while ((userInfo = reader.readLine()) != null) {
-				if ((userInfo.split("{")[0]).equals(nickname)) {
+				if ((userInfo.split("\\{")[0]).equals(nickname)) {
 			        reader.close();
 					return true;
 				}
@@ -44,7 +44,9 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 	@Override
 	public void addUser(HashMap<String, String> userAttributes) {
 		
-        String userEntry = userAttributes.get("nickname") + "{";
+        String userEntry = userAttributes.get("nickname");
+        String userNickname = new String(userEntry);
+        userEntry += "{";
         userAttributes.remove("nickname");
 		Iterator<String> userInfoKeys = userAttributes.keySet().iterator();
 		String key;
@@ -61,7 +63,7 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
             writer.write(userEntry);
             writer.close();
             
-            System.out.println(userAttributes.get("nickname") + "is added to users.txt");
+            System.out.println(userNickname + " is added to users.txt");
         }
         catch (IOException e) {
             System.err.println("Error appending the us to users.txt: " + e.getMessage());
@@ -83,12 +85,12 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 			
 			String userInfo;
 			while ((userInfo = reader.readLine()) != null) {
-				String userNickname = userInfo.split("{")[0];
+				String userNickname = userInfo.split("\\{")[0];
 				if (!(userNickname.equals(nickname))) {
 					continue;
 				}
 				else {
-					String[] userAttributes = removeLastChar(userInfo.split("{")[1]).split(",");
+					String[] userAttributes = removeLastChar(userInfo.split("\\{")[1]).split(",");
 					if (userAttributes == null) {
 						reader.close();
 						return null;
