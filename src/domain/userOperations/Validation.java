@@ -1,35 +1,15 @@
-package domain.validation;
+package domain.userOperations;
 
-import domain.exceptions.AdapterException;
 
-public abstract class Validation {
+public abstract class Validation extends UserOperation{
 	
-	private static final DatabaseFactory databaseFactory = DatabaseFactory.getInstance();
-	protected IDatabaseAdapter databaseAdapter;
-	private String nickname;
 	private final ValidationEnum result;
-	private final String database = "txt"; // change this line for other databases
 
 	public Validation(String nickname, String password) {
+		super(nickname);
 		boolean inputIsValid = validateInput(nickname, password);
 		
-		if (inputIsValid) {
-			this.nickname = nickname;
-			
-			try {
-				databaseAdapter = databaseFactory.getDatabaseAdapter(database);
-			}
-			catch (AdapterException ae) {
-				databaseAdapter = null;
-			}
-		}
-		
-		else {
-			databaseAdapter = null;
-		}
-		
-		//Either input is not valid or adapter doesn't exist
-		if (databaseAdapter == null) {
+		if (databaseAdapter == null || (!inputIsValid)) {
 			result = ValidationEnum.INVALID_INPUT;
 		}
 		// Valid input and adapter
@@ -56,10 +36,6 @@ public abstract class Validation {
 	
 	public ValidationEnum getResult() {
 		return result;
-	}
-	
-	public String getNickname () {
-		return nickname;
 	}
 
 }

@@ -3,7 +3,7 @@ package UI.validation;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import domain.validation.ValidationEnum;
+import domain.userOperations.ValidationEnum;
 
 public class ValidationDialogFrame extends JFrame {
 

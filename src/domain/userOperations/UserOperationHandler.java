@@ -1,15 +1,10 @@
-package application.validation;
+package domain.userOperations;
 
 import javax.swing.Icon;
 
-import domain.validation.Login;
-import domain.validation.Signup;
-import domain.validation.Validation;
-import domain.validation.ValidationEnum;
+public class UserOperationHandler {
 
-public class ValidationHandler {
-
-	public ValidationHandler() {
+	public UserOperationHandler() {
 	}
 	
 	public ValidationEnum requestLogin(String nickname, String password) {

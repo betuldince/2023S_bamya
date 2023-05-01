@@ -12,10 +12,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.event.EventListenerList;
 
-import application.validation.ValidationHandler;
-import domain.validation.LoginEvent;
-import domain.validation.LoginListener;
-import domain.validation.ValidationEnum;
+import domain.userOperations.LoginEvent;
+import domain.userOperations.LoginListener;
+import domain.userOperations.ValidationEnum;
+import domain.userOperations.UserOperationHandler;
 
 public class LoginScreen extends ValidationScreen {
 	
@@ -47,7 +47,7 @@ public class LoginScreen extends ValidationScreen {
 			loginButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ValidationHandler validationHandler = new ValidationHandler();
+					UserOperationHandler validationHandler = new UserOperationHandler();
 					ValidationEnum result = validationHandler.requestLogin(nicknameField.getText(), passwordField.getPassword().toString());
 					new ValidationDialogFrame(result);
 					if (result == ValidationEnum.VALID_LOGIN) {

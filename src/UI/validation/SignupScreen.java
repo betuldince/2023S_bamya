@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import application.validation.ValidationHandler;
-import domain.validation.LoginEvent;
-import domain.validation.ValidationEnum;
+import domain.userOperations.LoginEvent;
+import domain.userOperations.ValidationEnum;
+import domain.userOperations.UserOperationHandler;
 
 public class SignupScreen extends ValidationScreen {
 
@@ -44,7 +44,7 @@ public class SignupScreen extends ValidationScreen {
 			signupButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					ValidationHandler validationHandler = new ValidationHandler();
+					UserOperationHandler validationHandler = new UserOperationHandler();
 					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), passwordField.getPassword().toString());
 					new ValidationDialogFrame(result);
 					if (result == ValidationEnum.VALID_SIGNUP) {

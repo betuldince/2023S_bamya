@@ -1,4 +1,4 @@
-package domain.validation;
+package domain.userOperations;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.Iterator;
 
 public class TxtDatabaseAdapter implements IDatabaseAdapter {
@@ -42,7 +41,7 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
     }
 
 	@Override
-	public void addUser(HashMap<String, String> userAttributes) {
+	public void addUser(UserAttributesHashMap userAttributes) {
 		
         String userEntry = userAttributes.get("nickname") + "{";
         userAttributes.remove("nickname");
@@ -76,7 +75,7 @@ public class TxtDatabaseAdapter implements IDatabaseAdapter {
 	
 	
 	// Created in case new keys are added.
-	private String retrieveKeyValue(String nickname, String key) {
+	public String retrieveKeyValue(String nickname, String key) {
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(databasePath.toFile()));
