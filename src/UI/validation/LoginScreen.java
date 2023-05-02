@@ -29,6 +29,13 @@ public class LoginScreen extends ValidationScreen {
 	public LoginScreen() {
 		super("Login", 300, 150); 
 	}
+	
+	public LoginScreen(LoginListener loginListener) {
+		super("Login", 300, 150);
+		if (loginListener != null) {
+			this.addLoginListener(loginListener);
+		}
+	}
 
 	@Override
 	protected JPanel getValidationPanel() {
@@ -64,7 +71,7 @@ public class LoginScreen extends ValidationScreen {
 			signUpNowButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new SignupScreen();
+					new SignupScreen(getListener());
 					closeScreen();
 				}
 			});
@@ -81,7 +88,7 @@ public class LoginScreen extends ValidationScreen {
 			return loginPanel;
 	}
 	
-	public void fireLoginEvent(LoginEvent loginEvent) {
+	private void fireLoginEvent(LoginEvent loginEvent) {
 		Object[] listeners = listenerList.getListenerList();
 		for (int i=0; i < listeners.length; i+=2) {
 			if (listeners[i] == LoginListener.class) {
@@ -90,6 +97,15 @@ public class LoginScreen extends ValidationScreen {
 		}
 	}
 	
+	private LoginListener getListener() {
+		Object[] listeners = listenerList.getListenerList();
+		for (int i=0; i < listeners.length; i+=2) {
+			if (listeners[i] == LoginListener.class) {
+				return ((LoginListener) listeners[i+1]);
+			}
+		}
+		return null;
+	}
 	
 	public void addLoginListener(LoginListener loginListener) {
 		listenerList.add(LoginListener.class, loginListener);

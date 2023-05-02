@@ -12,12 +12,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import domain.userOperations.LoginEvent;
+import domain.userOperations.LoginListener;
 import domain.userOperations.ValidationEnum;
 import domain.userOperations.UserOperationHandler;
 
 public class SignupScreen extends ValidationScreen {
 
 	private static final long serialVersionUID = 1886343666691765652L;
+	private LoginListener loginListener;
 
 	public SignupScreen(String title, int width, int height) {
 		super(title, width, height);
@@ -25,6 +27,11 @@ public class SignupScreen extends ValidationScreen {
 	
 	public SignupScreen() {
 		super("Signup", 300, 150); 
+	}
+	
+	public SignupScreen(LoginListener loginListener) {
+		super("Signup", 300, 150);
+		this.loginListener = loginListener;
 	}
 
 	@Override
@@ -48,7 +55,7 @@ public class SignupScreen extends ValidationScreen {
 					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), new String(passwordField.getPassword()));
 					new ValidationDialogFrame(result);
 					if (result == ValidationEnum.VALID_SIGNUP) {
-						new LoginScreen();
+						new LoginScreen(loginListener);
 						closeScreen();
 					}
 				}
@@ -58,7 +65,7 @@ public class SignupScreen extends ValidationScreen {
 			logInInsteadButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new LoginScreen();
+					new LoginScreen(loginListener);
 					closeScreen();
 				}
 			});
