@@ -44,11 +44,7 @@ public class SignupScreen extends ValidationScreen {
 			signupButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 					UserOperationHandler validationHandler = new UserOperationHandler();
-=======
-					ValidationHandler validationHandler = new ValidationHandler();
->>>>>>> refs/heads/main
 					ValidationEnum result = validationHandler.requestSignup(nicknameField.getText(), new String(passwordField.getPassword()));
 					new ValidationDialogFrame(result);
 					if (result == ValidationEnum.VALID_SIGNUP) {
