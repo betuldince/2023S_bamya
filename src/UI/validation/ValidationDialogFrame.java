@@ -3,7 +3,7 @@ package UI.validation;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import domain.validation.ValidationEnum;
+import domain.userOperations.ValidationEnum;
 
 public class ValidationDialogFrame extends JFrame {
 
@@ -41,6 +41,9 @@ public class ValidationDialogFrame extends JFrame {
 			case INCORRECT_PASSWORD:
 				DIALOG_TYPE = JOptionPane.ERROR_MESSAGE;
 				break;
+			case ALREADY_LOGGED_IN:
+				DIALOG_TYPE = JOptionPane.WARNING_MESSAGE;
+				break;
 			case NICKNAME_ALREADY_EXISTS:
 				DIALOG_TYPE = JOptionPane.WARNING_MESSAGE;
 				break;
@@ -66,6 +69,9 @@ public class ValidationDialogFrame extends JFrame {
 				break;
 			case INCORRECT_PASSWORD:
 				dialogTitle = "Password not Correct";
+				break;
+			case ALREADY_LOGGED_IN:
+				dialogTitle = "Already logged in";
 				break;
 			case NICKNAME_ALREADY_EXISTS:
 				dialogTitle = "Nickname Already Exists";
@@ -94,6 +100,9 @@ public class ValidationDialogFrame extends JFrame {
 				break;
 			case INCORRECT_PASSWORD:
 				dialogMessage = "Password isn't correct.";
+				break;
+			case ALREADY_LOGGED_IN:
+				dialogMessage = "You are already logged in.";
 				break;
 			case NICKNAME_ALREADY_EXISTS:
 				dialogMessage = "The nickname you've entered has already been taken by another player.";

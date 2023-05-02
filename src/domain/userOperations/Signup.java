@@ -1,6 +1,4 @@
-package domain.validation;
-
-import java.util.HashMap;
+package domain.userOperations;
 
 public class Signup extends Validation {
 
@@ -15,10 +13,10 @@ public class Signup extends Validation {
 			return ValidationEnum.NICKNAME_ALREADY_EXISTS;
 		}
 		
-		HashMap<String, String> userAttributes = new HashMap<String, String>();
+		UserAttributesHashMap userAttributes = new UserAttributesHashMap();
 		userAttributes.put("nickname", nickname);
 		userAttributes.put("password", password);
-		// Consider adding statistics e.g. win/lose count
+		// The rest of the attributes are set to be default such as icon: crown
 		databaseAdapter.addUser(userAttributes);
 		
 		return ValidationEnum.VALID_SIGNUP;

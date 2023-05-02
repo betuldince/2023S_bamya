@@ -1,4 +1,4 @@
-package domain.validation;
+package domain.userOperations;
 
 public enum ValidationEnum {
 	// Success
@@ -15,6 +15,7 @@ public enum ValidationEnum {
 	// Login
 	NICKNAME_NOT_FOUND,
 	INCORRECT_PASSWORD,
+	ALREADY_LOGGED_IN,
 	// Signup
 	NICKNAME_ALREADY_EXISTS
 

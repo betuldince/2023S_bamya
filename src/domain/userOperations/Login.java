@@ -1,4 +1,4 @@
-package domain.validation;
+package domain.userOperations;
 
 public class Login extends Validation {
 
