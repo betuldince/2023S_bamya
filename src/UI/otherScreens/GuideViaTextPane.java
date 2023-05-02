@@ -2,25 +2,24 @@ package UI.otherScreens;
 
 import java.awt.Component;
 
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.StyledDocument;
 
-public class GuideViaTextArea implements IGuide {
+public class GuideViaTextPane implements IGuide {
 
 	@Override
 	public Component getGuide() {
-		return new JTextArea();
+		return new JTextPane();
 	}
 
 	@Override
 	public <T extends IGuideContent> void addGuideContent(Component guide, IGuideContent guideContent, Class<T> type) {
 		if (type.equals(StyledDocumentGuideContent.class)) {
-			((JTextArea) guide).setDocument((DefaultStyledDocument) guideContent.getContent());
+			((JTextPane) guide).setDocument((DefaultStyledDocument) guideContent.getContent());
 		}
 		if (type.equals(StringGuideContent.class)) {
-			((JTextArea) guide).setText((String) guideContent.getContent());
+			((JTextPane) guide).setText((String) guideContent.getContent());
 		}
 	}
+
 }

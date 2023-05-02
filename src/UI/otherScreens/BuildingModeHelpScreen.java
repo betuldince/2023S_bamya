@@ -30,7 +30,6 @@ public class BuildingModeHelpScreen extends HelpScreen {
 	@Override
 	protected void setDisplayOption() {
 		displayOption = new DisplayViaFrame();
-
 	}
 
 	@Override
@@ -38,7 +37,7 @@ public class BuildingModeHelpScreen extends HelpScreen {
 		JFrame display = (JFrame) displayOption.getDisplay();
 		JTextArea guide = (JTextArea) guideOption.getGuide();
 		guide.setEditable(false);
-		guideOption.addGuideContent(guide, guideContent);
+		guideOption.addGuideContent(guide, guideContent, StringGuideContent.class);
 		display.setSize(350, 150);
 		display.add(guide);
 		return display;

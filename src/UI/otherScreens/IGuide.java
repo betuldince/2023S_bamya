@@ -4,5 +4,5 @@ import java.awt.Component;
 
 public interface IGuide {
 	public Component getGuide();
-	public void addGuideContent(Component guide, IGuideContent guideContent);
+	public <T extends IGuideContent> void addGuideContent(Component guide, IGuideContent guideContent, Class<T> type);
 }
