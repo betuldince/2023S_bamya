@@ -1,10 +1,3 @@
-<<<<<<< HEAD
 admin{password:admin,icon:crown}
 ahmet{password:ahmet,icon:crown}
-=======
-admin{password:12345}
-ahmet{password:ahmet}
-ege{password:ege}
-yigit{password:yigit}
-melih{password:melih}
->>>>>>> refs/heads/main
+melih{password:melih,icon:crown}
