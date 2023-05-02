@@ -10,6 +10,15 @@ public class UserOperationHandler {
 	public ValidationEnum requestLogin(String nickname, String password) {
 		Validation login = new Login(nickname, password);
 		ValidationEnum result = login.getResult();
+		if (result == ValidationEnum.VALID_LOGIN) {
+			CurrentLogins currentLogins = CurrentLogins.getCurrentLogins();
+			if (currentLogins.loginSessionIsInProgress(nickname)) {
+				result = ValidationEnum.ALREADY_LOGGED_IN;
+			}
+			else {
+				currentLogins.addLoginSession(nickname);
+			}
+		}
 		return result;
 	}
 	
@@ -19,9 +28,10 @@ public class UserOperationHandler {
 		return result;
 	}
 
-	public Icon requestIcon(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
+	public Icon getIcon(String nickname) {
+		UserAttributes userAttributes = new UserAttributes(nickname);
+		Icon icon = userAttributes.getUserIcon();		
+		return icon;
 	}
 
 }
