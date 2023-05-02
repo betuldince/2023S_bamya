@@ -1,6 +1,6 @@
 package domain;
 
-import map.Territory;
+import domain.gamemap.Territory;
 
 public class TerritoryCard {
 	public Territory which_territory;

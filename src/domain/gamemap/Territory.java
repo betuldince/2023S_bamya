@@ -1,4 +1,4 @@
-package map;
+package domain.gamemap;
 
 import java.util.ArrayList;
 

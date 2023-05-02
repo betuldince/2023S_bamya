@@ -2,7 +2,7 @@ package UI;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
- 
+import UI.validation.*;
 
 public class Main {
 
@@ -12,6 +12,7 @@ public class Main {
 		
 			openLoginPage(); //Move another class
 			//Helloooo ++
+			new LoginScreen();
 		}
 		
 		static void openLoginPage() {
@@ -25,4 +26,6 @@ public class Main {
 		frame.setVisible(true);
 			
 		}
+		
+		
 }

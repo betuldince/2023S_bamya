@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import map.Territory;
+import domain.gamemap.Territory;
 
 public class ArmyPiece {
 	
