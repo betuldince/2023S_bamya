@@ -47,8 +47,14 @@ public class LoginScreen extends ValidationScreen {
 			loginButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 					UserOperationHandler validationHandler = new UserOperationHandler();
 					ValidationEnum result = validationHandler.requestLogin(nicknameField.getText(), new String(passwordField.getPassword()));
+=======
+					ValidationHandler validationHandler = new ValidationHandler();
+					ValidationEnum result = validationHandler.requestLogin(nicknameField.getText(), new String(passwordField.getPassword()));
+					new ValidationDialogFrame(result);
+>>>>>>> refs/heads/main
 					if (result == ValidationEnum.VALID_LOGIN) {
 						String nickname = nicknameField.getText();
 						Icon icon = validationHandler.getIcon(nickname);
