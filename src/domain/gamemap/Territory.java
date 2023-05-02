@@ -1,14 +1,21 @@
 package domain.gamemap;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+
+import domain.ArmyPiece;
+import domain.Player;
 
 public class Territory{
 	
 	String territoryName;
+	Player territoryOwner;
 	boolean tEnabled = false;
 	int occupied;
+	ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
 	
-	private ArrayList<Territory> adjacencyList = new ArrayList<Territory>();
+	private HashSet<Territory> adjacencySet = new HashSet<Territory>();
 	private ArrayList<Bridge> bridgeList = new ArrayList<Bridge>();
 	
 	public Territory(String territoryName) {
@@ -16,11 +23,12 @@ public class Territory{
 	}
 	
 	public void addNeighbour(Territory neighbourTerritory) {
-		adjacencyList.add(neighbourTerritory);
+		adjacencySet.add(neighbourTerritory);
 	}
-	public ArrayList<Territory> getAdjacencyList(){
-		return adjacencyList;
+	public HashSet<Territory>  getAdjacencySet(){
+		return adjacencySet;
 	}
+	//not implemented yet
 	public boolean checkArmyNumberValidity() {
 		return true;
 		
@@ -30,6 +38,21 @@ public class Territory{
 		
 		tEnabled = true;
 	}
+	public void setTerritoryOwner(Player player) {
+		this.territoryOwner=player;
+	}
+	public Player getTerritoryOwner() {
+		return territoryOwner;
+	}
+	
+	public void updateTerritory(int armynum, String unitType)  {
+		
+	}
+	public HashMap<String, Integer> getTerritoryArmyNumber() {
+		return armyPiece.getArmyNumber(this);
+		
+	}
+	
 	
 	
 	
