@@ -1,16 +1,19 @@
-package BuildingMode;
+package domain.buildingmode;
 
-import map.*;
+import UI.gamemap.*;
+import domain.gamemap.*;
 
-public class BuildingMode<Handler> {
+public class BuildingModeHandler {
 
-	int playerCount;
-	int compPlayerCount;
+	public static Map map;
+	public int playerCount;
+	public int compPlayerCount;
 	
-	public static GameMap initMap() {
-		GameMap map;
-		return map;
+	public BuildingModeHandler(Map map) {
+		this.map = map;
 	}
+	
+	
 	
 	private void specifyPlayerNum(int p) {
 		this.playerCount = p;
@@ -20,8 +23,8 @@ public class BuildingMode<Handler> {
 		this.compPlayerCount = cp;
 	}
 	
-	private void specifyContinent(Continent c) {
-		
+	public void specifyContinent(Continent c) {
+		map.specifyContinent(c); 
 	}
 	
 	private void specifyTerritory(Territory t) {
