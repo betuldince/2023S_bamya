@@ -89,12 +89,24 @@ public class Map {
 		if(attackerTerritory.getTerritoryOwner().equals(winner)) {
 			defenderTerritory.updateTerritory(-1, "infantry");
 			HashMap<String, Integer> territoryArmyNumbers= defenderTerritory.getTerritoryArmyNumber();
-			if(territoryArmyNumbers.get("infantry")==0) {
+			
+			//case defeated defender territory
+			if((territoryArmyNumbers.get("infantry")==0) & (territoryArmyNumbers.get("cavalry")==0)
+					& (territoryArmyNumbers.get("artillery")==0)) {
+				defenderTerritory.setTerritoryOwner(winner);
 				
 			}
 		}
 		else {
 			attackerTerritory.updateTerritory(-2, "infantry");
+			
+			//case defeated attacker territory
+			HashMap<String, Integer> territoryArmyNumbers= attackerTerritory.getTerritoryArmyNumber();
+			if((territoryArmyNumbers.get("infantry")==0) & (territoryArmyNumbers.get("cavalry")==0)
+					& (territoryArmyNumbers.get("artillery")==0)) {
+				defenderTerritory.setTerritoryOwner(winner);
+				}
+			
 		}		
 		
 	}
