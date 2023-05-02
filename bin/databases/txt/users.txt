@@ -2,3 +2,4 @@ admin{password:admin,icon:crown}
 ahmet{password:ahmet,icon:crown}
 melih{password:melih,icon:crown}
 ege{password:ege,icon:crown}
+yigit{password:yigit,icon:crown}

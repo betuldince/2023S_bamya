@@ -71,7 +71,7 @@ public class LoginScreen extends ValidationScreen {
 			signUpNowButton.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					new SignupScreen((LoginListener) listenerList.getListenerList()[1]);
+					new SignupScreen(getListener());
 					closeScreen();
 				}
 			});
@@ -88,7 +88,7 @@ public class LoginScreen extends ValidationScreen {
 			return loginPanel;
 	}
 	
-	public void fireLoginEvent(LoginEvent loginEvent) {
+	private void fireLoginEvent(LoginEvent loginEvent) {
 		Object[] listeners = listenerList.getListenerList();
 		for (int i=0; i < listeners.length; i+=2) {
 			if (listeners[i] == LoginListener.class) {
@@ -97,6 +97,15 @@ public class LoginScreen extends ValidationScreen {
 		}
 	}
 	
+	private LoginListener getListener() {
+		Object[] listeners = listenerList.getListenerList();
+		for (int i=0; i < listeners.length; i+=2) {
+			if (listeners[i] == LoginListener.class) {
+				return ((LoginListener) listeners[i+1]);
+			}
+		}
+		return null;
+	}
 	
 	public void addLoginListener(LoginListener loginListener) {
 		listenerList.add(LoginListener.class, loginListener);
