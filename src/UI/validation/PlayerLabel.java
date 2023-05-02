@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.border.Border;
@@ -18,8 +19,7 @@ import domain.userOperations.LoginListener;
 public class PlayerLabel extends JLabel {
 	private static final long serialVersionUID = -4722212407611328527L;
 	private boolean loggedIn = false;
-	private String nickname = "Log In"; // Initial value
-	private ImageIcon playerIcon;
+	private ImageIcon loginIcon;
 	private final JLabel instance;
 
 
@@ -36,14 +36,14 @@ public class PlayerLabel extends JLabel {
 		this.setBorder(grayline);
 		
 		Path iconPath = Paths.get("src", "domain", "icons", "placeholder.png");
-		playerIcon = new ImageIcon(iconPath.toString(), "Log in!");
-		this.setIcon(playerIcon);;
+		loginIcon = new ImageIcon(iconPath.toString(), "Log in!");
+		this.setIcon(loginIcon);;
 		
-		this.setText(nickname);
+		this.setText("Log In");
 		this.setHorizontalTextPosition(JLabel.CENTER);
 		this.setVerticalTextPosition(JLabel.BOTTOM);
 		
-		this.setToolTipText(nickname);
+		this.setToolTipText("Log In");
 		
 		this.setVisible(true);
 		
@@ -59,6 +59,7 @@ public class PlayerLabel extends JLabel {
 						public void loginEventOccured(LoginEvent loginEvent) {
 							instance.setIcon(loginEvent.getIcon());
 							instance.setText(loginEvent.getNickname());
+							instance.setToolTipText(loginEvent.getNickname() + " has Logged In");
 							loggedIn = true;
 						}
 						
@@ -88,9 +89,29 @@ public class PlayerLabel extends JLabel {
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
-			}
-			
+			}			
 		});
+	}
+	
+	
+	public String getNickname() {
+		String nickname = this.getText();
+		if (nickname.equals("Log In")) {
+			return null;
+		}
+		else {
+			return nickname;
+		}
+	}
+	
+	public Icon getPlayerIcon() {
+		Icon icon = this.getIcon();
+		if (icon.equals(loginIcon)) {
+			return null;
+		}
+		else {
+			return icon;
+		}
 	}
 
 }
