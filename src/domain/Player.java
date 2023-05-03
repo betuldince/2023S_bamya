@@ -1,8 +1,11 @@
 package domain;
 
+
 public class Player {
 	private TerritoryCardDeck territory_deck;
 	private ArmyCardDeck army_deck;
+	private Territory
+	
 	public TerritoryCardDeck getTerritory_deck() {
 		return territory_deck;
 	}
@@ -16,4 +19,8 @@ public class Player {
 		this.army_deck = army_deck;
 	}
 
+	public int playerRollsDice() {
+		Dice.Dice_initiation(0, 0)
+		Dice.rollDice();
+	}
 }
