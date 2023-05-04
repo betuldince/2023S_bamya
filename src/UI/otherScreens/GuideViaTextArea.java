@@ -2,10 +2,8 @@ package UI.otherScreens;
 
 import java.awt.Component;
 
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.StyledDocument;
 
 public class GuideViaTextArea implements IGuide {
 

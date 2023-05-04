@@ -3,6 +3,7 @@ package UI.otherScreens;
 public class StringGuideContent implements IGuideContent {
 	String content = "";
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getContent() {
 		return (T) content;

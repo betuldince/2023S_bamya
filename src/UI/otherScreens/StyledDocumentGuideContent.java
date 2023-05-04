@@ -8,6 +8,7 @@ public class StyledDocumentGuideContent implements IGuideContent {
 	
 	private DefaultStyledDocument content = new DefaultStyledDocument();
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T getContent() {
 		return (T) content;

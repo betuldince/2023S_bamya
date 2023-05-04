@@ -13,7 +13,7 @@ public class GuideViaPanel implements IGuide {
 
 	@Override
 	public <T extends IGuideContent> void addGuideContent(Component guide, IGuideContent guideContent, Class<T> type) {
-		// TODO Auto-generated method stub
+
 		
 	}
 
