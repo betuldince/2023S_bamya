@@ -1,4 +1,4 @@
-package domain;
+package domain.ChanceCards;
 
 import java.util.ArrayList;
 
@@ -19,6 +19,13 @@ public class ChanceCardDeck {
 	
 	public ChanceCard get_nth_card(int n) {
 		return this.deck.get(n);
+		
+	}
+	public void AddAllChanceCards() {
+		
+		
+		
+		
 		
 	}
 	

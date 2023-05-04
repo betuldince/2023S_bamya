@@ -8,6 +8,7 @@ public class Dice {
 			private int numberOfDice;
 			private int[] attackerFaceValues;	
 			private int[] defenderFaceValues;
+			private int single_dice_roll;
 			private static Dice single_dice_instance=null;	
 			Random rd = new Random();
 			private Dice(int numberOfFaces,int numberOfDice) {
@@ -61,6 +62,12 @@ public class Dice {
 					return "defender";
 
 				}
+			}
+			// dice roll for a single event
+			public int roll_one_dice() {
+				this.single_dice_roll=rd.nextInt(numberOfFaces)+1;
+				return this.single_dice_roll;
+				
 			}
 
 }

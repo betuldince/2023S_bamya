@@ -9,7 +9,7 @@ import domain.Player;
 
 public class Territory{
 	
-	String territoryName;
+	public String territoryName;
 	Player territoryOwner;
 	boolean tEnabled = false;
 	int occupied;

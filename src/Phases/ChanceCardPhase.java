@@ -5,14 +5,16 @@ import java.util.Random;
 
 
 import domain.AllPlayers;
-import domain.ChanceCard;
-import domain.ChanceCardDeck;
+import domain.Dice;
 import domain.Player;
+import domain.ChanceCards.ChanceCard;
+import domain.ChanceCards.ChanceCardDeck;
 
 public class ChanceCardPhase {
 	public ChanceCardDeck chance_card_deck;
 	public AllPlayers other_players; //current player is included in this object
 	public Player current_player;
+	public Dice our_dice;
 	
 	public ChanceCardPhase(ChanceCardDeck chance_card_deck, AllPlayers all_players, Player current_player) {
 		this.other_players=all_players;

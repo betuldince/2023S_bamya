@@ -5,11 +5,11 @@ import java.util.Random;
 import domain.AllPlayers;
 import domain.ArmyCard;
 import domain.ArmyCardDeck;
-import domain.ChanceCard;
-import domain.ChanceCardDeck;
 import domain.Player;
 import domain.TerritoryCard;
 import domain.TerritoryCardDeck;
+import domain.ChanceCards.ChanceCard;
+import domain.ChanceCards.ChanceCardDeck;
 
 public class TerritoryArmyCardPhase {
 	public ArmyCardDeck army_deck;
