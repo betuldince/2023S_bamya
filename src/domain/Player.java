@@ -10,6 +10,7 @@ public class Player {
 	public TerritoryCardDeck territory_deck;
 	private ArmyCardDeck army_deck;
 	public ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
+	private Player with_whom_we_have_an_alliance=null;
 	
 	
 	public Player(String name_of_player) {
@@ -46,6 +47,30 @@ public class Player {
 	public void add_territory(Territory Territory_to_be_added ) {
 		Territories_possesed.add(Territory_to_be_added);
 		
+	}
+	public Territory get_the_territory_with_the_name(String Territory_name) {
+		Territory thing_to_return=null;
+		int n=this.Territories_possesed.size();
+		for (int i=0; i<n; i++) {
+			if (this.Territories_possesed.get(i).territoryName.compareTo(Territory_name)==0) {
+				thing_to_return=this.Territories_possesed.get(i);
+				
+				
+				
+			}
+		}
+		return thing_to_return;
+		
+	}
+
+
+	public Player getWith_whom_we_have_an_alliance() {
+		return with_whom_we_have_an_alliance;
+	}
+
+
+	public void setWith_whom_we_have_an_alliance(Player with_whom_we_have_an_alliance) {
+		this.with_whom_we_have_an_alliance = with_whom_we_have_an_alliance;
 	}
 
 	
