@@ -2,6 +2,7 @@ package Phases;
 
 import domain.AllPlayers;
 import domain.AllTerritories;
+import domain.ArmyCard;
 import domain.ArmyCardDeck;
 import domain.Dice;
 import domain.Player;
@@ -54,7 +55,16 @@ public class InitiateTheTurns {
 		
 		// now initiate the army card deck
 		ArmyCardDeck our_army_card_deck=new ArmyCardDeck();
-		//...
+		int number_of_players=this.all_players.get_the_number_of_players();
+		for (int i1=0; i1<number_of_players; i1++) {
+			our_army_card_deck.add_new_army_card(new ArmyCard("Artillery"));
+		}
+		for (int i2=0; i2<2*number_of_players; i2++) {
+			our_army_card_deck.add_new_army_card(new ArmyCard("Cavalry"));
+		}
+		for (int i3=0; i3<3*number_of_players; i3++) {
+			our_army_card_deck.add_new_army_card(new ArmyCard("Infantry"));
+		}
 		
 		
 		

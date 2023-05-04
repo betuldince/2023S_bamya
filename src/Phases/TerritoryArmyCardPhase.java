@@ -70,7 +70,7 @@ public class TerritoryArmyCardPhase {
 			this.current_player.getTerritory_deck().add_new_territory_card(the_card_chosen2);
 			
 		}
-		// successfully added the card now do other reamaning things
+		// successfully added the card now do other reamaning things if there are any
 		
 
 			
