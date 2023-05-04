@@ -80,13 +80,11 @@ public class Player {
 	
 	public ArrayList<Territory> get_the_territories_in_control_of_the_player() {
 	    return this.Territories_possesed;
-	}
+	}	
 
-	
-	
-
-	public int playerRollsDice() {
-		Dice.Dice_initiation(0, 0)
-		Dice.rollDice();
+	public int playerRollsDice(int faceValues, int numberOfDice) {
+		Dice dice= Dice.Dice_initiation(faceValues, numberOfDice);
+		dice.rollDice();
+		return dice.getValue();
 	}
 }

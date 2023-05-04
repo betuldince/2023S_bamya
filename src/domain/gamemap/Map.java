@@ -67,15 +67,17 @@ public class Map {
 	private void checkMap() {
 		
 	}
+	//consider moving this method to territory?
 	public boolean checkTerritoryAttackValidity(Territory attackTerritory,Territory targetTerritory) {
-		if(isNeighbouring(attackTerritory, targetTerritory)) {
+		if(isNeighbouring(attackTerritory, targetTerritory) & attackTerritory.checkAttackValidity()) {
 			return true;
 		}
 		else {
 			return false;
 		}
-
-
+	}
+	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory, int unitType) {
+			
 	}
 	private boolean isNeighbouring(Territory territory, Territory territoryQuiry) {
 		HashSet<Territory> territoryAdjancencySet= territory.getAdjacencySet();
