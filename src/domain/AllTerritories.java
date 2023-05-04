@@ -14,6 +14,14 @@ public class AllTerritories {
 	public void add_a_new_territory(Territory new_territory) {
 		this.all_territories.add(new_territory);
 	}
+	public int return_number_of_territories() {
+		return this.all_territories.size();
+	}
+	public Territory get_the_nth_territory(int n) {
+		return this.all_territories.get(n);
+	}
+	
+	
 
 }
 

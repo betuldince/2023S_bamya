@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class AllPlayers {
 	
-public ArrayList<Player> all_players;
+	
+	ArrayList<Player> all_players;
 	
 	public AllPlayers() {
 		all_players=new ArrayList<Player>();	
@@ -28,6 +29,12 @@ public ArrayList<Player> all_players;
 			}
 		}
 		return to_be_returned;
+	}
+	public int get_the_number_of_players() {
+		return this.all_players.size();
+	}
+	public Player get_the_nth_player(int n) {
+		return this.all_players.get(n);
 	}
 
 }

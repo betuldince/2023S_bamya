@@ -1,8 +1,10 @@
 package Phases;
 
 import domain.AllPlayers;
+import domain.AllTerritories;
 import domain.ArmyCardDeck;
 import domain.Dice;
+import domain.TerritoryCard;
 import domain.TerritoryCardDeck;
 import domain.ChanceCards.AllianceChanceCard;
 import domain.ChanceCards.ChanceCardDeck;
@@ -35,9 +37,18 @@ public class InitiateTheTurns {
 		//...
 		
 		
+		// now initiate all territories
+	    AllTerritories our_all_territories=new AllTerritories();
+	    //...
+		
+		
 		// now initiate the territory card deck
 		TerritoryCardDeck our_territory_card_deck=new TerritoryCardDeck();
-		//...
+		int a=our_all_territories.return_number_of_territories();
+		for (int i=0; i<a; i++) {
+			our_territory_card_deck.add_new_territory_card(new TerritoryCard(our_all_territories.get_the_nth_territory(i)));
+			
+		}
 		
 		
 		// now initiate the army card deck
@@ -46,11 +57,15 @@ public class InitiateTheTurns {
 		
 		
 		
+		
+		
+		
 		boolean condition=true;
 		
 		while (condition) {
-			SingleTurnCompleter a_new_turn= new SingleTurnCompleter();
-			a_new_turn.run();
+			// the turn ordering of players is determined by the ordering of players in the class AllPlayers
+			SingleTurnCompleter a_new_turn= new SingleTurnCompleter(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck);
+			condition=a_new_turn.run();
 			
 			
 			
