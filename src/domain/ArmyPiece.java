@@ -61,4 +61,9 @@ public class ArmyPiece {
 		HashMap<String, Integer> armyMap=territoryArmyPieceMap.get(territory);
 		armyMap.put(unitType,armyMap.get(unitType)+updateQuantity);
 	}
+	public void updateArmyNumber(Player player, int updateQuantity, String unitType ) {
+		HashMap<String, Integer> armyMap=playerArmyPieceMap.get(player);
+		armyMap.put(unitType,armyMap.get(unitType)+updateQuantity);
+	}
+	
 }
