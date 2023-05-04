@@ -9,8 +9,9 @@ import domain.Player;
 
 public class Territory{
 	
-	String territoryName;
+	public String territoryName;
 	Player territoryOwner;
+	int number_of_units_on_the_territory=0;
 	boolean tEnabled = false;
 	int occupied;
 	ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
@@ -51,6 +52,16 @@ public class Territory{
 	public HashMap<String, Integer> getTerritoryArmyNumber() {
 		return armyPiece.getArmyNumber(this);
 		
+	}
+	public void updateNumberofUnits(int new_unit_number) {
+		this.number_of_units_on_the_territory=new_unit_number;
+	}
+	
+	public void addNumberofUnits(int unit_number) {
+		this.number_of_units_on_the_territory+=unit_number;
+	}
+	public int getNumberOfUnits() {
+		return this.number_of_units_on_the_territory;
 	}
 	
 	
