@@ -18,7 +18,7 @@ public class InitiateTheTurns {
 	Dice our_dice=null;
 	
 	public InitiateTheTurns(AllPlayers all_players) {
-		our_dice=Dice.Dice_initiation(6,6);
+		our_dice=Dice.Dice_initiation(6);
 		this.all_players=all_players;
 		
 		

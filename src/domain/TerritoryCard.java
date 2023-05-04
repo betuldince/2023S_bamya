@@ -23,6 +23,12 @@ public class TerritoryCard {
 			this.which_player_owns_it=which_player_owns_it;
 		}
 	}
+	public boolean is_it_owned_by_a_player() {
+		if (this.which_player_owns_it==null) {
+			return false;
+		}
+		return true;
+	}
 	
 
 }
