@@ -9,6 +9,7 @@ public class Dice {
 			private int[] attackerFaceValues;	
 			private int[] defenderFaceValues;
 			private static Dice single_dice_instance=null;	
+			Random rd = new Random();
 			private Dice(int numberOfFaces,int numberOfDice) {
 				this.numberOfFaces=numberOfFaces;
 				this.numberOfDice=numberOfDice;
@@ -22,9 +23,32 @@ public class Dice {
 				return single_dice_instance;
 			}
 
+
 			public int rollDice() {
 				Random rd = new Random();
 				/*for (int i=0;i<numberOfDice;i++) {
+
+			
+			//Dice methods for building phase
+			public void rollDice() {
+				for (int i=0;i<numberOfDice;i++) {
+					attackerFaceValues[i]= rd.nextInt(numberOfFaces)+1;	
+				}
+				
+			}
+			public int getValue() {
+				int sum=0;
+				for (int i=0;i<numberOfDice;i++) {
+					sum+=attackerFaceValues[i];
+				}
+				return sum;
+				
+			}
+			
+			//Dice methods for attack phase
+			public void rollDiceAttack() {
+				for (int i=0;i<numberOfDice;i++) {
+
 					attackerFaceValues[i]= rd.nextInt(numberOfFaces)+1;	
 				}
 				for (int j=0;j<numberOfDice;j++) {

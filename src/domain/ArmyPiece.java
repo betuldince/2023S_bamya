@@ -30,7 +30,35 @@ public class ArmyPiece {
 
 		return playerArmyPieceMap.get(player); 
 	}
+	public void addNewPlayerArmy(Player player, String unitType, int unitQuantity) {
+		
+		if (playerArmyPieceMap.containsKey(player)) {
+			HashMap<String, Integer> playerArmyQuantityMap= playerArmyPieceMap.get(player);
+			playerArmyQuantityMap.put(unitType, unitQuantity);
+		}
+		else {
+			HashMap<String, Integer> playerArmyQuantityMap=new HashMap<String,Integer>();
+			playerArmyQuantityMap.put(unitType, unitQuantity);
+			playerArmyPieceMap.put(player, playerArmyQuantityMap);
+			
+		}
+	}
+	public void addNewTerritoryArmy(Territory territory, String unitType, int unitQuantity) {
+		
+		if (territoryArmyPieceMap.containsKey(territory)) {
+			HashMap<String, Integer> territoryArmyQuantityMap= territoryArmyPieceMap.get(territory);
+			territoryArmyQuantityMap.put(unitType, unitQuantity);
+		}
+		else {
+			HashMap<String, Integer> territoryArmyQuantityMap=new HashMap<String,Integer>();
+			territoryArmyQuantityMap.put(unitType, unitQuantity);
+			territoryArmyPieceMap.put(territory, territoryArmyQuantityMap);
+			
+		}
+	}
+	
 	public void updateArmyNumber(Territory territory, int updateQuantity, String unitType ) {
-
+		HashMap<String, Integer> armyMap=territoryArmyPieceMap.get(territory);
+		armyMap.put(unitType,armyMap.get(unitType)+updateQuantity);
 	}
 }
