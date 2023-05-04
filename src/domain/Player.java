@@ -85,4 +85,8 @@ public class Player {
 	
 	
 
+	public int playerRollsDice() {
+		Dice.Dice_initiation(0, 0)
+		Dice.rollDice();
+	}
 }

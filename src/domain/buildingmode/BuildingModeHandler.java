@@ -2,6 +2,7 @@ package domain.buildingmode;
 
 import UI.gamemap.*;
 import domain.gamemap.*;
+import domain.initArmyTerritory.*;
 
 public class BuildingModeHandler {
 
@@ -9,8 +10,18 @@ public class BuildingModeHandler {
 	public int playerCount;
 	public int compPlayerCount;
 	
-	public BuildingModeHandler(Map map) {
+	//singleton pattern
+	private static BuildingModeHandler buildHandle=null;
+	private BuildingModeHandler(Map map, int playerCount, int compPlayerCount) {
 		this.map = map;
+		this.playerCount = playerCount;
+		this.compPlayerCount = compPlayerCount;
+	}
+	public static BuildingModeHandler createBuildHandler(Map map, int playerCount, int compPlayerCount) {
+		if (buildHandle == null) {
+			buildHandle = new BuildingModeHandler(map, playerCount, compPlayerCount);
+		}
+		return buildHandle;
 	}
 	
 	
