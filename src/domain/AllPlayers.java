@@ -9,7 +9,7 @@ public class AllPlayers {
 public static ArrayList<Player> all_players;
 	
 	
-	public void add_new_chance_card(Player newPlayer) {
+	public void add_new_player(Player newPlayer) {
 		all_players.add(newPlayer);
 		
 	}
