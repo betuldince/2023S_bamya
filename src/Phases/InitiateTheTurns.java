@@ -4,6 +4,7 @@ import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCardDeck;
 import domain.Dice;
+import domain.Player;
 import domain.TerritoryCard;
 import domain.TerritoryCardDeck;
 import domain.ChanceCards.AllianceChanceCard;
@@ -60,19 +61,15 @@ public class InitiateTheTurns {
 		
 		
 		
-		boolean condition=true;
+		Player the_winner=null;
 		
-		while (condition) {
+		while (the_winner==null) {
 			// the turn ordering of players is determined by the ordering of players in the class AllPlayers
-			SingleTurnCompleter a_new_turn= new SingleTurnCompleter(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck);
-			condition=a_new_turn.run();
-			
-			
-			
+			SingleTurnCompleter a_new_turn= new SingleTurnCompleter();
+			the_winner=a_new_turn.run(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck);
 		}
-		
-		
-		
+		// when the while loop becomes completed the_winner will point to the player who won
+
 		
 		
 		

@@ -9,7 +9,7 @@ public class Player {
 	public String Player_Name;
 	public TerritoryCardDeck territory_deck;
 	private ArmyCardDeck army_deck;
-	public ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
+	private ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
 	private Player with_whom_we_have_an_alliance=null;
 	
 	
@@ -76,6 +76,10 @@ public class Player {
 	// call this method when exit from the current method
 	public void finish_the_turn() {
 		this.with_whom_we_have_an_alliance=null;
+	}
+	
+	public ArrayList<Territory> get_the_territories_in_control_of_the_player() {
+	    return this.Territories_possesed;
 	}
 
 	
