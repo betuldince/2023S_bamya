@@ -5,8 +5,8 @@ import domain.Dice;
 import domain.Player;
 import domain.gamemap.Territory;
 
-public class Reinforcements_Chance_Card extends ChanceCard {
-	public Reinforcements_Chance_Card() {
+public class ReinforcementsChanceCard extends ChanceCard {
+	public ReinforcementsChanceCard() {
 		super("Reinforcements");
 		this.further_action_is_required=true;
 		

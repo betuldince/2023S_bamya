@@ -4,9 +4,9 @@ import UI.user_input_taker.UserInputTaker;
 import domain.AllPlayers;
 import domain.Player;
 
-public class Alliance_Chance_Card extends ChanceCard {
+public class AllianceChanceCard extends ChanceCard {
 
-	public Alliance_Chance_Card() {
+	public AllianceChanceCard() {
 		super("Alliance");
 		this.further_action_is_required=true;
 		
@@ -22,11 +22,10 @@ public class Alliance_Chance_Card extends ChanceCard {
     			
     		}
     		
-    		
-    		
     	
 		}
 		current_player.setWith_whom_we_have_an_alliance(alliancer);
+		// this alliance needs to be dealth with in the attacj turn
 		
 		
 		

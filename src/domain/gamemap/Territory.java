@@ -60,6 +60,9 @@ public class Territory{
 	public void addNumberofUnits(int unit_number) {
 		this.number_of_units_on_the_territory+=unit_number;
 	}
+	public int getNumberOfUnits() {
+		return this.number_of_units_on_the_territory;
+	}
 	
 	
 	

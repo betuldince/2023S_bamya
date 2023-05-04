@@ -72,6 +72,11 @@ public class Player {
 	public void setWith_whom_we_have_an_alliance(Player with_whom_we_have_an_alliance) {
 		this.with_whom_we_have_an_alliance = with_whom_we_have_an_alliance;
 	}
+	
+	// call this method when exit from the current method
+	public void finish_the_turn() {
+		this.with_whom_we_have_an_alliance=null;
+	}
 
 	
 	
