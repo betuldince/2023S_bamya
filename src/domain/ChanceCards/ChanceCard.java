@@ -3,6 +3,7 @@ package domain.ChanceCards;
 import java.util.ArrayList;
 
 import domain.AllPlayers;
+import domain.Dice;
 import domain.Player;
 
 public class ChanceCard {
@@ -22,7 +23,7 @@ public class ChanceCard {
 			
 		
 	}
-    public void run(AllPlayers other_players, Player current_player) {
+    public void run(AllPlayers other_players, Player current_player, Dice our_dice) {
 		
 		
 	}

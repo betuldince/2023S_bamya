@@ -32,20 +32,7 @@ public class ChanceCardPhase {
 		int random=rn.nextInt(n);
 		ChanceCard our_chance_card=this.chance_card_deck.get_nth_card(random);
 		
-		boolean alfa=our_chance_card.isFurther_action_is_required();
-		
-		if (alfa) {
-			// now take the user input
-			
-		}
-		else {
-			// no need for user input
-			
-		}
-		
-		
-		
-		
+		our_chance_card.run(other_players, current_player, our_dice);
 		
 		return 1; // 1 means phase is complete with SUCCESS code.
 		
