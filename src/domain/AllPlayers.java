@@ -1,8 +1,10 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import domain.buildingmode.BuildingModeHandler;
+import domain.userOperations.CurrentLogins;
 
 public class AllPlayers {
 	
@@ -55,6 +57,27 @@ public static ArrayList<Player> all_players;
 	public static int playerNum() {
 		return all_players.size();
 	}
+
+
+
+	public void createGamePlayers(int computerCount) {
+		createPlayers();
+		createComputerPlayers(computerCount);
+	}
+	
+    private void createPlayers() {
+    	ArrayList<String> currentLogins = CurrentLogins.getCurrentLogins();
+    	Iterator<String> nicknames = currentLogins.iterator();
+    	while (nicknames.hasNext()) {
+    		add_new_player(new Player(nicknames.next()));
+    	}
+    }
+    
+    public void createComputerPlayers(int computerCount) {
+    	for (int i=0; i < computerCount; i++) {
+    		add_new_player(new Player("Computer"+i));
+    	}
+    }
 	
 
 }
