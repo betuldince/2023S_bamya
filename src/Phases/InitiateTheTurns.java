@@ -17,10 +17,12 @@ import domain.ChanceCards.SabotageChanceCard;
 public class InitiateTheTurns {
 	AllPlayers all_players=null;
 	Dice our_dice=null;
+	AllTerritories all_territories=null;
 	
-	public InitiateTheTurns(AllPlayers all_players) {
+	public InitiateTheTurns(AllPlayers all_players,AllTerritories all_territories ) {
 		our_dice=Dice.Dice_initiation(6,1);
 		this.all_players=all_players;
+		this.all_territories=all_territories;
 		
 		
 		
@@ -40,8 +42,8 @@ public class InitiateTheTurns {
 		
 		
 		// now initiate all territories
-	    AllTerritories our_all_territories=new AllTerritories();
-	    //...
+	    AllTerritories our_all_territories=all_territories;
+	    //
 		
 		
 		// now initiate the territory card deck
