@@ -12,7 +12,12 @@ public class ArmyPiece {
 	private Map<Territory, HashMap<String, Integer>> territoryArmyPieceMap= new HashMap<Territory, HashMap<String, Integer>>();
 	private Map<Player, HashMap<String, Integer>> playerArmyPieceMap= new HashMap<Player, HashMap<String, Integer>>();
 	private static ArmyPiece single_army_piece_instance=null;
+	private static HashMap<String, Integer> armyUnitWeights= new HashMap<String,Integer>();
+	
 	private ArmyPiece() {
+		armyUnitWeights.put("infantry", 1);
+		armyUnitWeights.put("cavaltry", 5);
+		armyUnitWeights.put("artillery", 10);
 
 	}
 	public static ArmyPiece ArmyPiece_initiation() {
@@ -64,6 +69,10 @@ public class ArmyPiece {
 	public void updateArmyNumber(Player player, int updateQuantity, String unitType ) {
 		HashMap<String, Integer> armyMap=playerArmyPieceMap.get(player);
 		armyMap.put(unitType,armyMap.get(unitType)+updateQuantity);
+	}
+	public int getArmyUnitWeights(String armyType){
+		return armyUnitWeights.get(armyType);
+		
 	}
 	
 }
