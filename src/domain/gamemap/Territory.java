@@ -10,7 +10,7 @@ import domain.Player;
 public class Territory{
 	
 	public String territoryName;
-	Player territoryOwner;
+	private Player territoryOwner;
 	
 	int number_of_units_on_the_territory=0;	//this variable will deleted
 
@@ -18,7 +18,7 @@ public class Territory{
 	
 	boolean tEnabled = false;
 	int occupied;
-	ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
+	private ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
 	
 	private HashSet<Territory> adjacencySet = new HashSet<Territory>();
 	private ArrayList<Bridge> bridgeList = new ArrayList<Bridge>();

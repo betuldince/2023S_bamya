@@ -15,7 +15,7 @@ public class Map {
 	
 	private static int MAXCONTINENT = 6;
 	public static ArrayList<Continent> continents =  new ArrayList<Continent>(); //arraylist
-	private static HashSet<Territory> adjacencySet = new HashSet<Territory>();
+//	private static HashSet<Territory> adjacencySet = new HashSet<Territory>();
 	
 	
 	//temporary will be deleted when armyPiece is implemented using inheritance, this is used in getting army weights
@@ -81,7 +81,7 @@ public class Map {
 			return false;
 		}
 	}
-	//implemenet breadth first search to connect indirectly neighbouring territories
+	//implement breadth first search to connect indirectly neighbouring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if(isNeighbouring(defortifiedTerritory, fortifiedTerritory) & (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType))&
 				((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType))>=2)) {
@@ -91,6 +91,21 @@ public class Map {
 			return false;
 		}
 			
+	}
+	public void fortifyMap(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
+		if(unitType.equals("infantry")) {
+			defortifiedTerritory.updateInfantryUnitNumbers(-1*unitQuantity);
+			fortifiedTerritory.updateInfantryUnitNumbers(unitQuantity);
+
+		}
+		else if (unitType.equals("cavalry")) {
+			defortifiedTerritory.updateCavalryUnitNumbers(-1*unitQuantity);
+			defortifiedTerritory.updateCavalryUnitNumbers(unitQuantity);
+		}
+		else {
+			defortifiedTerritory.updateArtilleryUnitNumbers(-1*unitQuantity);
+			defortifiedTerritory.updateArtilleryUnitNumbers(unitQuantity);
+		}
 	}
 	private boolean isNeighbouring(Territory territory, Territory territoryQuiry) {
 		HashSet<Territory> territoryAdjancencySet= territory.getAdjacencySet();

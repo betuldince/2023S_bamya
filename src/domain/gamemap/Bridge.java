@@ -10,14 +10,14 @@ public class Bridge {
 		this.t2 = ter2;
 	}
 	
-	public Territory[] getTerritories() {
+	//public Territory[] getTerritories() {
 
-		Territory[] terList = Territory[2];
+		//Territory[] terList = Territory[2];
 		
-		Territory[0] = t1;
-		Territory[1] = t2;
+	//	Territory[0] = t1;
+//		Territory[1] = t2;
 		
-		return terList;
+//		return terList;
 		
-	}
+	//}
 }
