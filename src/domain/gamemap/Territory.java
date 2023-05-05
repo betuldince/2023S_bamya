@@ -11,7 +11,11 @@ public class Territory{
 	
 	public String territoryName;
 	Player territoryOwner;
-	int number_of_units_on_the_territory=0;
+	
+	int number_of_units_on_the_territory=0;	//this variable will deleted
+
+	
+	
 	boolean tEnabled = false;
 	int occupied;
 	ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
@@ -29,10 +33,18 @@ public class Territory{
 	public HashSet<Territory>  getAdjacencySet(){
 		return adjacencySet;
 	}
-	//not implemented yet
-	public boolean checkArmyNumberValidity() {
-		return true;
+	public boolean checkAttackValidity() {
+		if(this.getTotalNumberOfArmyUnits()>=2) {
+			return true;
+		}
+		else {
+			return false;
+		}
 		
+		
+	}
+	public int getTotalNumberOfArmyUnits() {
+		return (this.getInfantryUnitNumbers()+5*this.getCavalryUnitNumber()+10*this.getArtilleryUnitNumbers());
 	}
 	
 	private void createTerritory(Territory t){
@@ -46,13 +58,33 @@ public class Territory{
 		return territoryOwner;
 	}
 	
-	public void updateTerritory(int armynum, String unitType)  {
-		
-	}
 	public HashMap<String, Integer> getTerritoryArmyNumber() {
 		return armyPiece.getArmyNumber(this);
-		
 	}
+	public int getInfantryUnitNumbers() {
+		return this.getTerritoryArmyNumber().get("infantry");
+	}
+	public void updateInfantryUnitNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "infantry");
+	}
+
+	public int getArtilleryUnitNumbers() {
+		return this.getTerritoryArmyNumber().get("artillery");
+	}
+	public void updateArtilleryUnitNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "artillery");
+	}
+	public int getCavalryUnitNumber() {
+		return this.getTerritoryArmyNumber().get("cavalry");
+	}
+	public void updateCavalryUnitNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "cavalry");
+	}
+	
+	
+	
+	
+	//these methods will be deleted, left for completeness during the  demo
 	public void updateNumberofUnits(int new_unit_number) {
 		this.number_of_units_on_the_territory=new_unit_number;
 	}
@@ -63,6 +95,7 @@ public class Territory{
 	public int getNumberOfUnits() {
 		return this.number_of_units_on_the_territory;
 	}
+	
 	
 	
 	
