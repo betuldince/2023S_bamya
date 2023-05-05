@@ -5,7 +5,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import UI.validation.*;
-import domain.AllPlayers;
-import domain.Player;
-import domain.buildingmode.BuildingModeStarter;
+import domain.StartingHandler;
 import domain.userOperations.CurrentLogins;
 
 public class Main {
@@ -24,8 +21,8 @@ public class Main {
 		
 		public static void main(String[] args) {
 			
-			int playerCount = getNumberOfPlayers();
-			int computerCount = getNumberOfComputers(playerCount);
+			int playerCount = getNumberOfPlayers(); // Via JOptionPane
+			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);
 
 		}
@@ -56,10 +53,9 @@ public class Main {
 						JOptionPane.showMessageDialog(null, "All the players must login.", "Some players haven't logged in.", JOptionPane.ERROR_MESSAGE);
 					}
 					else {
-						createPlayers();
-						createComputerPlayers(computerCount);
-						BuildingModeStarter.startBuildingMode();
 						startScreen.dispose();
+						StartingHandler handler = StartingHandler.getHandler();
+						handler.startGame(computerCount);
 					}
 				}
 				
@@ -74,27 +70,24 @@ public class Main {
 		
 		
 	    public static int getNumberOfPlayers() {
-	        int playerCount = -1;
-	        
+	    	
+	        StartingHandler handler = StartingHandler.getHandler();
+	        boolean isValidInput = false;
+	        String input = "";
 	        // Keep asking for player count until valid input is given
-	        while (playerCount < 0 || playerCount > 5) {
-	            String input = JOptionPane.showInputDialog(null, "Enter number of players (0-5):");
+	        while (!isValidInput) {
+	        	isValidInput = false;
+	            input = JOptionPane.showInputDialog(null, "Enter number of players (0-5):");
 	            
-	            // Attempt to parse input as an integer
-	            try {
-	                playerCount = Integer.parseInt(input);
-	            } catch (NumberFormatException e) {
-	                // Input was not a valid integer
-	                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number between 0 and 5.");
-	                continue;
-	            }
-	            
+	            isValidInput = handler.validatePlayerInput(input);
+           
 	            // Check if player count is within the valid range
-	            if (playerCount < 0 || playerCount > 5) {
+	            if (!isValidInput) {
 	                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number between 0 and 5.");
 	            }
 	        }
 	        
+	        int playerCount = handler.getPlayerCount(input);
 	        JOptionPane.showMessageDialog(null, "You entered " + playerCount + " players.");
 	        
 	        return playerCount;
@@ -102,47 +95,31 @@ public class Main {
 	    
 	    
 	    public static int getNumberOfComputers(int playerCount) {
-	        int computerCount = -1;
-	        int noPlayers = (playerCount == 0 ? 1 : 0);
+	    	
+	        StartingHandler handler = StartingHandler.getHandler();
+	        boolean isValidInput = false;
+	        String input = "";
+
+	        String range = "(" + handler.getMinComputerPlayers(playerCount) + "-" +  handler.getMaxComputerPlayers(playerCount) + ")";
+	        
 	        // Keep asking for player count until valid input is given
-	        while (computerCount < 1 + noPlayers || computerCount > 6-playerCount) {
-	            String input = JOptionPane.showInputDialog(null, "Enter number of computer players (" + (1 + noPlayers) + "-" +  (6-playerCount) + "):");
+	        while (!isValidInput) {
+	        	isValidInput = false;
+	        	
+	            input = JOptionPane.showInputDialog(null, "Enter number of computer players " + range + ":");
 	            
-	            // Attempt to parse input as an integer
-	            try {
-	            	computerCount = Integer.parseInt(input);
-	            } catch (NumberFormatException e) {
-	                // Input was not a valid integer
-	                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number between (" + (1 + noPlayers) + "-" +  (6-playerCount) + ").");
-	                continue;
-	            }
-	            
+	            isValidInput = handler.validateComputerInput(input, playerCount);
+
 	            // Check if computer player count is within the valid range
-	            if (computerCount < 1 + noPlayers || computerCount > 6-playerCount) {
-	                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number between (" + (1 + noPlayers) + "-" +  (6-playerCount) + ").");
+	            if (!isValidInput) {
+
+	                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a number between " + range + ".");
 	            }
 	        }
 	        
+	        int computerCount = handler.getComputerCount(input, playerCount);
 	        JOptionPane.showMessageDialog(null, "You entered " + computerCount + " computer players.");
 	        
 	        return computerCount;
-	    }
-	    
-	    
-	    public static void createPlayers() {
-	    	ArrayList<String> currentLogins = CurrentLogins.getCurrentLogins();
-	    	Iterator<String> nicknames = currentLogins.iterator();
-    		AllPlayers allPlayers = AllPlayers.createAllPlayers();
-	    	while (nicknames.hasNext()) {
-	    		allPlayers.add_new_player(new Player(nicknames.next()));
-	    	}
-	    }
-	    
-	    public static void createComputerPlayers(int computerCount) {
-    		AllPlayers allPlayers = AllPlayers.createAllPlayers();
-	    	for (int i=0; i < computerCount; i++) {
-	    		allPlayers.add_new_player(new Player("Computer"+i));
-	    	}
-	    }
-		
+	    }	    		
 }
