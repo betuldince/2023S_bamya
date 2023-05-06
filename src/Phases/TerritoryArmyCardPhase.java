@@ -2,6 +2,7 @@ package Phases;
 
 import java.util.Random;
 
+import UI.otherScreens.InformationGiver;
 import domain.AllPlayers;
 import domain.ArmyCard;
 import domain.ArmyCardDeck;
@@ -26,7 +27,8 @@ public class TerritoryArmyCardPhase {
 		
 		
 	}
-	public int run() {
+	public int run() throws InterruptedException {
+		InformationGiver.run("Territory/Army Card Phase for the player "+current_player.Player_Name+" has started",1);
 		int number_of_army_cards_left=this.army_deck.number_of_cards_currently_on_game_system();
 		int number_of_territory_cards_left=this.territory_deck.number_of_cards_currently_on_game_system();
 		
@@ -60,6 +62,7 @@ public class TerritoryArmyCardPhase {
 		if (random<=number_of_army_cards_left-1) {
 			 ArmyCard the_card_chosen1= (ArmyCard) this.army_deck.get_nth_card(random);
 			 the_card_chosen1.change(this.current_player);
+			 InformationGiver.run("Army Card assigned is "+the_card_chosen1.get_card_type(),1);
 			 this.current_player.getArmy_deck().add_new_army_card(the_card_chosen1);
 			 
 			
@@ -67,6 +70,8 @@ public class TerritoryArmyCardPhase {
 		else {
 			TerritoryCard the_card_chosen2= this.territory_deck.get_nth_card(random-number_of_territory_cards_left);
 			the_card_chosen2.assign_owner(this.current_player);
+			
+			InformationGiver.run("Territory Card assigned is"+ the_card_chosen2.which_territory.get_territory_name() ,1);
 			this.current_player.getTerritory_deck().add_new_territory_card(the_card_chosen2);
 			
 		}

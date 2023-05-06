@@ -32,7 +32,7 @@ public class InitiateTheTurns {
 	
 	
 	
-	public void run() {
+	public void run() throws InterruptedException {
 		// iniate the chance card deck, add the new chance cards below,
 		ChanceCardDeck our_chance_card_deck=new ChanceCardDeck();
 		our_chance_card_deck.add_new_chance_card(new AllianceChanceCard());

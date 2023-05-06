@@ -29,6 +29,10 @@ public class TerritoryCard {
 		}
 		return true;
 	}
+	public Territory which_territory() {
+		return this.which_territory;
+				
+	}
 	
 
 }

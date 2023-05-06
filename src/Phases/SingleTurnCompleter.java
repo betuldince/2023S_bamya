@@ -9,7 +9,7 @@ import domain.ChanceCards.ChanceCardDeck;
 
 public class SingleTurnCompleter {
 	
-	public Player run(AllPlayers all_players, ChanceCardDeck our_chance_card_deck, AllTerritories our_all_territories, TerritoryCardDeck our_territory_card_deck, ArmyCardDeck our_army_card_deck) {
+	public Player run(AllPlayers all_players, ChanceCardDeck our_chance_card_deck, AllTerritories our_all_territories, TerritoryCardDeck our_territory_card_deck, ArmyCardDeck our_army_card_deck) throws InterruptedException {
 		Player condition=null;  //if the condition is still null this means no player has won the game yet
 		
 		int number_of_players=all_players.get_the_number_of_players();

@@ -9,7 +9,7 @@ import domain.Player;
 
 public class Territory{
 	
-	public String territoryName;
+	private String territoryName;
 	private Player territoryOwner;
 	
 	int number_of_units_on_the_territory=0;	//this variable will deleted
@@ -94,6 +94,9 @@ public class Territory{
 	}
 	public int getNumberOfUnits() {
 		return this.number_of_units_on_the_territory;
+	}
+	public String get_territory_name() {
+		return this.territoryName;
 	}
 	
 	

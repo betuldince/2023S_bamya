@@ -4,10 +4,10 @@ import domain.gamemap.Territory;
 
 public class ArmyCard {
 	
-	public String card_type;
+	String card_type;
 
-	public boolean is_it_on_the_deck;
-	public Player which_player_owns_it=null;
+	boolean is_it_on_the_deck;
+	Player which_player_owns_it=null;
 	
 	public ArmyCard(String card_type) {
 		this.is_it_on_the_deck=true;
@@ -24,6 +24,9 @@ public class ArmyCard {
 			return false;
 		}
 		return true;
+	}
+	public String get_card_type() {
+		return this.card_type;
 	}
 	
 
