@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import UI.otherScreens.InformationGiver;
+import UI.user_input_taker.ArmyCardChoiceCondtionScreen;
+import UI.user_input_taker.TerritoryCardSelectionScreen;
 import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCardDeck;
@@ -72,7 +74,7 @@ public class DeploymentPhase {
 		
 		if (condition1||condition2||condition3||condition4||condition5 ) {
 			// open the selection screen and make player choose which card combination s/he wants to proceed with
-			int which_one=CardChoiceCondtionScreen.run(condition1, condition2, condition3, condition4, condition5); 
+			int which_one=ArmyCardChoiceCondtionScreen.run(condition1, condition2, condition3, condition4, condition5); 
 			
 			if (which_one==1) {
 				turnly_total_number_of_cavalyr=1;
@@ -148,7 +150,7 @@ public class DeploymentPhase {
 		for (Continent con2 : continent_territory_numbers.keySet() ) {
 			if (cards_continent_numbers.get(con2)==continent_territory_numbers.get(con2)) {
 				boolean condition_territory_cards=false;
-				TerritoryCardSelectionScreen.run(con2,condition_territory_cards); // territory cards'ını bozdurup bozdurmayacağını belirtiyor
+				condition_territory_cards=TerritoryCardSelectionScreen.run(con2); // territory cards'ını bozdurup bozdurmayacağını belirtiyor
 				if (condition_territory_cards) {
 					for (int h=0; h<this.other_players.get_the_number_of_players(); h++) {
 						if (this.other_players.get_the_nth_player(h)!=this.current_player) {

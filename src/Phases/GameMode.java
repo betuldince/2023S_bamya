@@ -15,12 +15,12 @@ import domain.ChanceCards.ReinforcementsChanceCard;
 import domain.ChanceCards.SabotageChanceCard;
 
 // this class should come after the build mode is done. 
-public class InitiateTheTurns {
+public class GameMode {
 	AllPlayers all_players=null;
 	Dice our_dice=null;
 	AllTerritories all_territories=null;
 	
-	public InitiateTheTurns(AllPlayers all_players,AllTerritories all_territories ) {
+	public GameMode(AllPlayers all_players,AllTerritories all_territories ) {
 		our_dice=Dice.Dice_initiation(6,1);
 		this.all_players=all_players;
 		this.all_territories=all_territories;
