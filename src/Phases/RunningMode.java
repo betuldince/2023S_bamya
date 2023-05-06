@@ -16,15 +16,15 @@ import domain.ChanceCards.ReinforcementsChanceCard;
 import domain.ChanceCards.SabotageChanceCard;
 
 // this class should come after the build mode is done. 
-public class GameMode {
+public class RunningMode {
 	AllPlayers all_players=null;
 	Dice our_dice=null;
 	AllTerritories all_territories=null;
 	ArmyPiece army_information=null;
 	
-	public GameMode(AllPlayers all_players,AllTerritories all_territories, ArmyPiece army_information ) {
+	public RunningMode(AllPlayers ordered_all_players,AllTerritories all_territories, ArmyPiece army_information ) {
 		our_dice=Dice.Dice_initiation(6,1);
-		this.all_players=all_players;
+		this.all_players=ordered_all_players;
 		this.all_territories=all_territories;
 		this.army_information=army_information;
 		

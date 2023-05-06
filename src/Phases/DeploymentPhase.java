@@ -221,7 +221,7 @@ public class DeploymentPhase {
 			turnly_total_number_of_infantry+=3;
 		}
 		
-		// now do the unit distribution among the territories
+		// now do the unit distribution among the territories: 
 		
 		
 		
