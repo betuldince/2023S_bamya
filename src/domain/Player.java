@@ -11,6 +11,7 @@ public class Player {
 	private ArmyCardDeck army_deck= new ArmyCardDeck();
 	private ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
 	private Player with_whom_we_have_an_alliance=null;
+
 	
 	
 	public Player(String name_of_player) {

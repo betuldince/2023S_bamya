@@ -11,6 +11,7 @@ public class Territory{
 	
 	private String territoryName;
 	private Player territoryOwner;
+	private Continent which_continent;
 	
 	int number_of_units_on_the_territory=0;	//this variable will deleted
 
@@ -97,6 +98,9 @@ public class Territory{
 	}
 	public String get_territory_name() {
 		return this.territoryName;
+	}
+	public Continent get_continent() {
+		return this.which_continent;
 	}
 	
 	
