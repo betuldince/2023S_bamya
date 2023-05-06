@@ -27,5 +27,8 @@ public class ChanceCard {
 		
 		
 	}
+    public String get_the_name() {
+    	return this.card_name;
+    }
 
 }

@@ -3,7 +3,7 @@ package Phases;
 import java.util.ArrayList;
 import java.util.Random;
 
-
+import UI.otherScreens.InformationGiver;
 import domain.AllPlayers;
 import domain.Dice;
 import domain.Player;
@@ -24,13 +24,19 @@ public class ChanceCardPhase {
 		
 		
 	}
-	public int run() {
+	public int run() throws InterruptedException {
+		InformationGiver.run("Chance Card Phase for the player "+current_player.Player_Name+" has started",1);
+		
+		
+		
 		int n=this.chance_card_deck.get_number_of_chance_cards();
 		
 		Random rn = new Random();
 		
 		int random=rn.nextInt(n);
 		ChanceCard our_chance_card=this.chance_card_deck.get_nth_card(random);
+		
+		InformationGiver.run("The assigned chance card is "+our_chance_card.get_the_name(),1);
 		
 		our_chance_card.run(other_players, current_player, our_dice);
 		
