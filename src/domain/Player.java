@@ -34,7 +34,7 @@ public class Player {
 	public void remove_Territory(Territory Territory_to_be_removed) {
 		for (int h=0; h<Territories_possesed.size(); h++) {
 			
-			if (Territories_possesed.get(h).territoryName.contentEquals(Territory_to_be_removed.territoryName)) {
+			if (Territories_possesed.get(h).get_territory_name().contentEquals(Territory_to_be_removed.get_territory_name())) {
 				this.Territories_possesed.remove(h);
 				break;
 				
@@ -52,7 +52,7 @@ public class Player {
 		Territory thing_to_return=null;
 		int n=this.Territories_possesed.size();
 		for (int i=0; i<n; i++) {
-			if (this.Territories_possesed.get(i).territoryName.compareTo(Territory_name)==0) {
+			if (this.Territories_possesed.get(i).get_territory_name().compareTo(Territory_name)==0) {
 				thing_to_return=this.Territories_possesed.get(i);
 				
 				
