@@ -1,5 +1,6 @@
 package Phases;
 
+import UI.otherScreens.InformationGiver;
 import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCardDeck;
@@ -14,7 +15,9 @@ public class SingleTurnCompleter {
 		
 		int number_of_players=all_players.get_the_number_of_players();
 		for (int a=0; a<number_of_players; a++) {
+			
 			Player current_player=all_players.get_the_nth_player(a);
+
 			
 			ChanceCardPhase our_chance_card_phase=new ChanceCardPhase(our_chance_card_deck,all_players, current_player);
 			our_chance_card_phase.run();
@@ -40,15 +43,7 @@ public class SingleTurnCompleter {
 			TerritoryArmyCardPhase our_territory_army_card_phase=new TerritoryArmyCardPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player);
 			our_territory_army_card_phase.run();
 			
-			
-			
-					
-			
-			
-			
-			
-			
-			
+	
 			
 		}
 		return condition;

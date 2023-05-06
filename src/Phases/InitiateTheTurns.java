@@ -1,5 +1,6 @@
 package Phases;
 
+import UI.otherScreens.InformationGiver;
 import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCard;
@@ -81,6 +82,7 @@ public class InitiateTheTurns {
 			the_winner=a_new_turn.run(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck);
 		}
 		// when the while loop becomes completed the_winner will point to the player who won
+		InformationGiver.run("The games is won by "+the_winner.Player_Name,3);
 
 		
 		
