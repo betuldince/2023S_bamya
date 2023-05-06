@@ -1,8 +1,12 @@
 package domain.gamemap;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 import domain.ArmyPiece;
 import domain.Dice;
@@ -12,16 +16,16 @@ import domain.gamemap.*;
 
 
 public class Map {
-	
+
 	private static int MAXCONTINENT = 6;
 	public static ArrayList<Continent> continents =  new ArrayList<Continent>(); //arraylist
-//	private static HashSet<Territory> adjacencySet = new HashSet<Territory>();
-	
-	
+	//	private static HashSet<Territory> adjacencySet = new HashSet<Territory>();
+
+
 	//temporary will be deleted when armyPiece is implemented using inheritance, this is used in getting army weights
 	ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
 
-	
+
 	public static Continent continent1;
 	public static Continent continent2;
 	public static Continent continent3;
@@ -29,12 +33,12 @@ public class Map {
 	public static Continent continent5;
 	public static Continent continent6;
 	private static Map single_map_instance=null;
-	
+
 	/*private void initContinent(Continent c) {
-		
+
 		continentCount++;
 	}*/
-	
+
 	private Map() {
 		continent1 = Continent.CONTINENT1;
 		continent2 = Continent.CONTINENT2;
@@ -49,7 +53,7 @@ public class Map {
 		}
 		return single_map_instance;
 	}
-	
+
 	public void specifyContinent(Continent c) {
 		this.continents.add(c);
 		System.out.println("Continent: " + c.contName + " is added");
@@ -57,20 +61,20 @@ public class Map {
 
 	private boolean checkNumContinent(BuildingModeHandler buildHandle) {
 		int total_player= buildHandle.compPlayerCount + buildHandle.playerCount;
-		
+
 		if(continents.size() <= MAXCONTINENT && continents.size() >= total_player) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-	
+
 	private void specifyTerritory(Territory t) {
-		
+
 	}
-	
+
 	private void checkMap() {
-		
+
 	}
 	//consider moving this method to territory?
 	public boolean checkTerritoryAttackValidity(Territory attackTerritory,Territory targetTerritory) {
@@ -90,7 +94,7 @@ public class Map {
 		else {
 			return false;
 		}
-			
+
 	}
 	public void fortifyMap(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if(unitType.equals("infantry")) {
@@ -132,17 +136,17 @@ public class Map {
 			//case defeated defender territory
 			if(defenderTerritory.getTotalNumberOfArmyUnits()==0) {
 				defenderTerritory.setTerritoryOwner(winner);
-				
+
 			}
 		}
 		else {
 			if(attackerTerritory.getInfantryUnitNumbers()>=2) {
 				attackerTerritory.updateInfantryUnitNumbers(-2);
-				}
+			}
 			else if(attackerTerritory.getCavalryUnitNumber()>0){
 				attackerTerritory.updateCavalryUnitNumbers(-1);
 				attackerTerritory.updateArtilleryUnitNumbers(3);
-				}
+			}
 			else {
 				attackerTerritory.updateArtilleryUnitNumbers(-1);
 				attackerTerritory.updateCavalryUnitNumbers(1);
@@ -151,10 +155,45 @@ public class Map {
 			//case defeated attacker territory
 			if(attackerTerritory.getTotalNumberOfArmyUnits()==0) {
 				defenderTerritory.setTerritoryOwner(winner);
-				}
-			
+			}
+
 		}		
-		
+
 	}
+	public boolean isConnected(Territory territory, Territory territoryQuery) {
+		HashSet<Territory> isVisited= new HashSet<Territory>();
+		Iterator<Territory> adjacentTerritories= territory.getAdjacencySet().iterator();
+		Queue<Territory> queueTerritory=new ArrayDeque<Territory>();
+		queueTerritory.add(territory);
+		isVisited.add(territory);
+
+		return isConnectedHelper(territoryQuery,queueTerritory,isVisited,adjacentTerritories);
+	}
+	private boolean isConnectedHelper(Territory territoryQuery,
+			Queue<Territory> queueTerritory,HashSet<Territory> isVisited, Iterator<Territory> adjacentTerritories) {
+		if(queueTerritory.isEmpty()) {
+			return false;
+		}
+		else if (queueTerritory.peek().equals(territoryQuery)) {
+			return true;
+		}
+		while(adjacentTerritories.hasNext()) {
+			Territory currTerritory=adjacentTerritories.next();
+			System.out.println(currTerritory.get_territory_name());
+			if(!isVisited.contains(currTerritory)) {
+				isVisited.add(currTerritory);
+				queueTerritory.add(currTerritory);
+			}	
+		}
+
+		queueTerritory.poll();
+		if(!queueTerritory.isEmpty()) {
+			adjacentTerritories=queueTerritory.peek().getAdjacencySet().iterator();	
+		}
+
+		return isConnectedHelper(territoryQuery,queueTerritory,isVisited,adjacentTerritories);
+
+	}
+
 
 }

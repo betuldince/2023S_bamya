@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import Phases.AttackPhase;
 import UI.validation.*;
 import domain.StartingHandler;
 import domain.userOperations.CurrentLogins;
@@ -20,7 +22,9 @@ public class Main {
 	
 		
 		public static void main(String[] args) {
-			
+			//to test attackphase related methods
+		//	AttackPhase attack= new AttackPhase();
+		//	attack.run();
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);

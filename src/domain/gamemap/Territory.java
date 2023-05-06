@@ -7,7 +7,7 @@ import java.util.HashSet;
 import domain.ArmyPiece;
 import domain.Player;
 
-public class Territory{
+public class Territory implements Comparable{
 	
 	private String territoryName;
 	private Player territoryOwner;
@@ -27,9 +27,13 @@ public class Territory{
 	public Territory(String territoryName) {
 		this.territoryName=territoryName;
 	}
+	public void addAdjacency(Territory adjacentTerritory) {
+		adjacencySet.add(adjacentTerritory);
+	}
 	
 	public void addNeighbour(Territory neighbourTerritory) {
-		adjacencySet.add(neighbourTerritory);
+		this.addAdjacency(neighbourTerritory);
+		neighbourTerritory.addAdjacency(this);
 	}
 	public HashSet<Territory>  getAdjacencySet(){
 		return adjacencySet;
@@ -41,8 +45,6 @@ public class Territory{
 		else {
 			return false;
 		}
-		
-		
 	}
 	public int getTotalNumberOfArmyUnits() {
 		return (this.getInfantryUnitNumbers()+5*this.getCavalryUnitNumber()+10*this.getArtilleryUnitNumbers());
@@ -103,7 +105,17 @@ public class Territory{
 		return this.which_continent;
 	}
 	
+
+	public int compareTo(Object otherTerritory) {
+		if(this==otherTerritory) {
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
 	
+
 	
 	
 	
