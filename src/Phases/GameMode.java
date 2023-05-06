@@ -5,6 +5,7 @@ import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCard;
 import domain.ArmyCardDeck;
+import domain.ArmyPiece;
 import domain.Dice;
 import domain.Player;
 import domain.TerritoryCard;
@@ -19,11 +20,13 @@ public class GameMode {
 	AllPlayers all_players=null;
 	Dice our_dice=null;
 	AllTerritories all_territories=null;
+	ArmyPiece army_information=null;
 	
-	public GameMode(AllPlayers all_players,AllTerritories all_territories ) {
+	public GameMode(AllPlayers all_players,AllTerritories all_territories, ArmyPiece army_information ) {
 		our_dice=Dice.Dice_initiation(6,1);
 		this.all_players=all_players;
 		this.all_territories=all_territories;
+		this.army_information=army_information;
 		
 		
 		
@@ -79,7 +82,7 @@ public class GameMode {
 		while (the_winner==null) {
 			// the turn ordering of players is determined by the ordering of players in the class AllPlayers
 			SingleTurnCompleter a_new_turn= new SingleTurnCompleter();
-			the_winner=a_new_turn.run(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck);
+			the_winner=SingleTurnCompleter.run(this.all_players, our_chance_card_deck, our_all_territories, our_territory_card_deck, our_army_card_deck,army_information);
 		}
 		// when the while loop becomes completed the_winner will point to the player who won
 		InformationGiver.run("The games is won by "+the_winner.Player_Name,3);
