@@ -24,7 +24,7 @@ public class SingleTurnCompleter {
 			ChanceCardPhase our_chance_card_phase=new ChanceCardPhase(our_chance_card_deck,all_players, current_player);
 			our_chance_card_phase.run();
 			
-			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information);
+			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information,our_all_territories );
 			our_deployment_phase.run();
 			
 			AttackPhase our_attack_phase=new AttackPhase();
