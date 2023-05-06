@@ -1,6 +1,7 @@
 package Phases;
 
 import UI.otherScreens.InformationGiver;
+import UI.otherScreens.RunningModeHelpScreen;
 import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyCard;
@@ -38,6 +39,14 @@ public class RunningMode {
 	
 	public void run() throws InterruptedException {
 		// iniate the chance card deck, add the new chance cards below,
+		
+		// iniate help screen (I dont know if it works)
+		RunningModeHelpScreen scr=new RunningModeHelpScreen();
+		scr.getHelpScreen().setVisible(true);
+		
+
+		
+		
 		ChanceCardDeck our_chance_card_deck=new ChanceCardDeck();
 		our_chance_card_deck.add_new_chance_card(new AllianceChanceCard());
 		our_chance_card_deck.add_new_chance_card(new ReinforcementsChanceCard());
