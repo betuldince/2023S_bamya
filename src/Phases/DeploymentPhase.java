@@ -8,10 +8,12 @@ import UI.user_input_taker.ArmyCardChoiceCondtionScreen;
 import UI.user_input_taker.TerritoryCardSelectionScreen;
 import domain.AllPlayers;
 import domain.AllTerritories;
+import domain.ArmyCard;
 import domain.ArmyCardDeck;
 import domain.ArmyPiece;
 import domain.Dice;
 import domain.Player;
+import domain.TerritoryCard;
 import domain.TerritoryCardDeck;
 import domain.ChanceCards.ChanceCardDeck;
 import domain.gamemap.Continent;
@@ -78,23 +80,90 @@ public class DeploymentPhase {
 			
 			if (which_one==1) {
 				turnly_total_number_of_cavalyr=1;
+				ArmyCard a1=current_player.getArmy_deck().delete_an_infantry_card();
+				a1.change(null);
+				this.army_deck.add_new_army_card(a1);
+				
+				ArmyCard a2=current_player.getArmy_deck().delete_an_infantry_card();
+				a2.change(null);
+				this.army_deck.add_new_army_card(a2);
+				
+				ArmyCard a3=current_player.getArmy_deck().delete_an_infantry_card();
+				a3.change(null);
+				this.army_deck.add_new_army_card(a3);
+
+
+			
+				
 				
 			}
 			else if (which_one==2) {
 				turnly_total_number_of_cavalyr=2;
 				
+				ArmyCard a1=current_player.getArmy_deck().delete_an_infantry_card();
+				a1.change(null);
+				this.army_deck.add_new_army_card(a1);
+				
+				ArmyCard a2=current_player.getArmy_deck().delete_an_infantry_card();
+				a2.change(null);
+				this.army_deck.add_new_army_card(a2);
+				
+				ArmyCard a3=current_player.getArmy_deck().delete_an_cavalyr_card();
+				a3.change(null);
+				this.army_deck.add_new_army_card(a3);
+				
 			} 
             else if (which_one==3) {
             	turnly_total_number_of_artiellry=2;
+            	
+            	ArmyCard a1=current_player.getArmy_deck().delete_an_infantry_card();
+				a1.change(null);
+				this.army_deck.add_new_army_card(a1);
+				
+				ArmyCard a2=current_player.getArmy_deck().delete_an_infantry_card();
+				a2.change(null);
+				this.army_deck.add_new_army_card(a2);
+				
+				ArmyCard a3=current_player.getArmy_deck().delete_an_artiellry_card();
+				a3.change(null);
+				this.army_deck.add_new_army_card(a3);
 				
 			}
             else if (which_one==4) {
             	turnly_total_number_of_cavalyr=1;
             	turnly_total_number_of_artiellry=1;
+            	
+            	ArmyCard a1=current_player.getArmy_deck().delete_an_infantry_card();
+				a1.change(null);
+				this.army_deck.add_new_army_card(a1);
+				
+				ArmyCard a2=current_player.getArmy_deck().delete_an_cavalyr_card();
+				a2.change(null);
+				this.army_deck.add_new_army_card(a2);
+				
+				ArmyCard a3=current_player.getArmy_deck().delete_an_cavalyr_card();
+				a3.change(null);
+				this.army_deck.add_new_army_card(a3);
 	
             }
             else if (which_one==5) {
             	turnly_total_number_of_artiellry=3;
+            	
+            	ArmyCard a1=current_player.getArmy_deck().delete_an_artiellry_card();
+				a1.change(null);
+				this.army_deck.add_new_army_card(a1);
+				
+				ArmyCard a2=current_player.getArmy_deck().delete_an_cavalyr_card();
+				a2.change(null);
+				this.army_deck.add_new_army_card(a2);
+				
+				ArmyCard a3=current_player.getArmy_deck().delete_an_cavalyr_card();
+				a3.change(null);
+				this.army_deck.add_new_army_card(a3);
+            	
+            }
+            else {
+            	InformationGiver.run("the player does not want to trade in cards this turn",1);
             	
             }
 			
@@ -107,7 +176,7 @@ public class DeploymentPhase {
 		
 		
 		// now deal with territory cards
-		int y=this.current_player.getTerritory_deck().get_number_of_territory_cards();
+
 		
 		// determine how much territories any continent has
 		HashMap<Continent, Integer> continent_territory_numbers = new HashMap<Continent, Integer>();
@@ -152,6 +221,15 @@ public class DeploymentPhase {
 				boolean condition_territory_cards=false;
 				condition_territory_cards=TerritoryCardSelectionScreen.run(con2); // territory cards'ını bozdurup bozdurmayacağını belirtiyor
 				if (condition_territory_cards) {
+					for (int r=0; r<this.current_player.getTerritory_deck().get_number_of_territory_cards(); r++) {
+						TerritoryCard terc=this.current_player.getTerritory_deck().delete_a_card_of_a_specific_continent(con2);
+						if (terc!=null) {
+							terc.assign_owner(null);
+							this.territory_deck.add_new_territory_card(terc);
+							
+						}
+					}
+					
 					for (int h=0; h<this.other_players.get_the_number_of_players(); h++) {
 						if (this.other_players.get_the_nth_player(h)!=this.current_player) {
 							int indices_to_be_deleted[]=new int[this.other_players.get_the_nth_player(h).get_the_territories_in_control_of_the_player().size()];

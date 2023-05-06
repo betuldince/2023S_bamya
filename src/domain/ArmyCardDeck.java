@@ -84,6 +84,42 @@ public class ArmyCardDeck {
 		this.deck.remove(n);
 		return to_be_returned;
 	}
+	public ArmyCard delete_an_infantry_card() {
+		ArmyCard ret=null;
+		for (int a=0; a<this.total_number_of_cards; a++) {
+			if (this.deck.get(a).card_type.contentEquals("Infantry")) {
+				ret=this.deck.get(a);
+				this.deck.remove(a);
+				return ret;
+				
+			}
+		}
+		return ret;
+	}
+	public ArmyCard delete_an_cavalyr_card() {
+		ArmyCard ret=null;
+		for (int a=0; a<this.total_number_of_cards; a++) {
+			if (this.deck.get(a).card_type.contentEquals("Cavalyr")) {
+				ret=this.deck.get(a);
+				this.deck.remove(a);
+				return ret;
+				
+			}
+		}
+		return ret;
+	}
+	public ArmyCard delete_an_artiellry_card() {
+		ArmyCard ret=null;
+		for (int a=0; a<this.total_number_of_cards; a++) {
+			if (this.deck.get(a).card_type.contentEquals("Artillery")) {
+				ret=this.deck.get(a);
+				this.deck.remove(a);
+				return ret;
+				
+			}
+		}
+		return ret;
+	}
 	
  
 }

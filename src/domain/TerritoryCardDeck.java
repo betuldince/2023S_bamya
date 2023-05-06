@@ -2,6 +2,8 @@ package domain;
 
 import java.util.ArrayList;
 
+import domain.gamemap.Continent;
+
 public class TerritoryCardDeck {
     private ArrayList<TerritoryCard> deck;
 	
@@ -43,6 +45,20 @@ public class TerritoryCardDeck {
 		TerritoryCard to_be_returned=this.deck.get(n);
 		this.deck.remove(n);
 		return to_be_returned;
+	}
+	public TerritoryCard delete_a_card_of_a_specific_continent(Continent con) {
+		TerritoryCard ret=null;
+		for (int a=0; a<this.get_number_of_territory_cards(); a++) {
+			if(this.get_nth_card(a).which_territory().get_continent()==con) {
+				ret=this.get_nth_card(a);
+				this.delete_nth_card(a);
+				return ret;
+				
+				
+			}
+		}
+		return ret;
+		
 	}
 
 }
