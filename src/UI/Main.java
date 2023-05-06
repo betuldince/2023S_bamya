@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Phases.AttackPhase;
+import UI.otherScreens.pause.PauseButton;
 import UI.validation.*;
 import domain.StartingHandler;
 import domain.userOperations.CurrentLogins;
@@ -25,6 +26,7 @@ public class Main {
 			//to test attackphase related methods
 		//	AttackPhase attack= new AttackPhase();
 		//	attack.run();
+			
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);
@@ -35,6 +37,7 @@ public class Main {
 		private static void openStartScreen(int playerCount, int computerCount) {
 			JFrame startScreen = new JFrame();
 			startScreen.setLayout(new BorderLayout());
+			startScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			JPanel loginPanel = new JPanel();
 			loginPanel.setLayout(new FlowLayout());
 			
