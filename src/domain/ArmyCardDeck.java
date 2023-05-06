@@ -25,6 +25,9 @@ public class ArmyCardDeck {
 		return this.deck.get(n);
 		
 	}
+
+	
+	
 	public int number_of_cards_currently_on_game_system() {
 		int h=this.get_number_of_army_cards();
 		int number_to_be_returned=0;
@@ -38,5 +41,49 @@ public class ArmyCardDeck {
 		}
 		return number_to_be_returned;
 	}
-
+	public int get_number_of_infantry_cards() {
+		int number=0;
+	
+		for (int a=0; a<deck.size(); a++) {
+			if (this.deck.get(a).get_card_type().contentEquals("Infantry")) {
+				number++;
+			}
+			
+		}
+		return number;
+	}
+	public int get_number_of_cavalyr_cards() {
+		int number=0;
+	
+		for (int a=0; a<deck.size(); a++) {
+			if (this.deck.get(a).get_card_type().contentEquals("Cavalyr")) {
+				number++;
+			}
+			
+		}
+		return number;
+	}
+	public int get_number_of_artillery_cards() {
+		int number=0;
+	
+		for (int a=0; a<deck.size(); a++) {
+			if (this.deck.get(a).get_card_type().contentEquals("Artillery")) {
+				number++;
+			}
+			
+		}
+		return number;
+	}
+	public ArmyCard delete_last_card() {
+		ArmyCard to_be_returned=this.deck.get(this.deck.size()-1);
+		this.deck.remove(this.deck.size()-1);
+		return to_be_returned;
+	}
+	public ArmyCard delete_nth_card(int n) {
+		ArmyCard to_be_returned=this.deck.get(n);
+		this.deck.remove(n);
+		return to_be_returned;
+	}
+	
+ 
 }

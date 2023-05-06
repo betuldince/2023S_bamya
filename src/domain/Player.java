@@ -7,8 +7,8 @@ import domain.gamemap.Territory;
 
 public class Player {
 	public String Player_Name;
-	public TerritoryCardDeck territory_deck;
-	private ArmyCardDeck army_deck;
+	public TerritoryCardDeck territory_deck= new TerritoryCardDeck();
+	private ArmyCardDeck army_deck= new ArmyCardDeck();
 	private ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
 	private Player with_whom_we_have_an_alliance=null;
 	

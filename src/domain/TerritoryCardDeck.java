@@ -34,5 +34,15 @@ public class TerritoryCardDeck {
 		}
 		return number_to_be_returned;
 	}
+	public TerritoryCard delete_last_card() {
+		TerritoryCard to_be_returned=this.deck.get(this.deck.size()-1);
+		this.deck.remove(this.deck.size()-1);
+		return to_be_returned;
+	}
+	public TerritoryCard delete_nth_card(int n) {
+		TerritoryCard to_be_returned=this.deck.get(n);
+		this.deck.remove(n);
+		return to_be_returned;
+	}
 
 }
