@@ -82,9 +82,9 @@ public class Player {
 	    return this.Territories_possesed;
 	}	
 
-	public int playerRollsDice(int faceValues, int numberOfDice) {
-		Dice dice= Dice.Dice_initiation(faceValues, numberOfDice);
-		dice.rollDice();
-		return dice.getValue();
+	public int playerRollsDice() {
+		Dice dice= Dice.Dice_initiation();
+		
+		return dice.roll_one_dice();
 	}
 }

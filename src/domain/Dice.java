@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Dice {
 	//singleton pattern dice
-			private int numberOfFaces;
-			private int numberOfDice;
+			private static int numberOfFaces = 6;
+			private static int numberOfDice = 1;
 			private int[] attackerFaceValues;	
 			private int[] defenderFaceValues;
 			private int single_dice_roll;
@@ -17,7 +17,7 @@ public class Dice {
 				this.attackerFaceValues= new int[numberOfDice];
 				this.defenderFaceValues= new int[numberOfDice];	
 			}
-			public static Dice Dice_initiation(int numberOfFaces, int numberOfDice) {
+			public static Dice Dice_initiation() {
 				if (single_dice_instance == null) {
 					single_dice_instance = new Dice(numberOfFaces,numberOfDice);
 				}

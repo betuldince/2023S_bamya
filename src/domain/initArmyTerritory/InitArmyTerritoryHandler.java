@@ -1,22 +1,22 @@
 package domain.initArmyTerritory;
 
 import domain.AllPlayers;
-import domain.gamemap.Map;
+import domain.gamemap.GameMap;
 
 public class InitArmyTerritoryHandler {
-	public static Map map;
+	public static GameMap map;
 	public int playerCount;
 	public int compPlayerCount;
 	private int totalPlayerCount = AllPlayers.playerNum();
 	
 	//singleton pattern
 	private static InitArmyTerritoryHandler ArmyTerHandler=null;
-	private InitArmyTerritoryHandler(Map map, int playerCount, int compPlayerCount) {
+	private InitArmyTerritoryHandler(GameMap map, int playerCount, int compPlayerCount) {
 		this.map = map;
 		this.playerCount = playerCount;
 		this.compPlayerCount = compPlayerCount;
 	}
-	public static InitArmyTerritoryHandler createArmyTerHandler(Map map, int playerCount, int compPlayerCount) {
+	public static InitArmyTerritoryHandler createArmyTerHandler(GameMap map, int playerCount, int compPlayerCount) {
 		if (ArmyTerHandler == null) {
 			ArmyTerHandler = new InitArmyTerritoryHandler(map, playerCount, compPlayerCount);
 		}
@@ -34,6 +34,10 @@ public class InitArmyTerritoryHandler {
 		}
 		
 		return -1;
+	}
+	public void distributeInitialArmy() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
