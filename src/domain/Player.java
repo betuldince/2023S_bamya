@@ -11,7 +11,8 @@ public class Player {
 	private ArmyCardDeck army_deck= new ArmyCardDeck();
 	private ArrayList<Territory> Territories_possesed = new ArrayList<Territory>();
 	private Player with_whom_we_have_an_alliance=null;
-
+	private Dice dice= Dice.Dice_initiation();
+	private ArmyPiece armyPiece = ArmyPiece.ArmyPiece_initiation();
 	
 	
 	public Player(String name_of_player) {
@@ -63,6 +64,9 @@ public class Player {
 		return thing_to_return;
 		
 	}
+	//public void updatePlayerArmyNumberAttack(int unitQuantity) {
+//		if (armyPiece.))
+//	}
 
 
 	public Player getWith_whom_we_have_an_alliance() {
@@ -83,9 +87,14 @@ public class Player {
 	    return this.Territories_possesed;
 	}	
 
-	public int playerRollsDice(int faceValues, int numberOfDice) {
-		Dice dice= Dice.Dice_initiation(faceValues, numberOfDice);
+	public int playerRollsDice() {
 		dice.rollDice();
 		return dice.getValue();
+	}
+	public void playerRollsAttackDice() {
+		dice.rollDiceAttack();
+	}
+	public String getAttackDiceRollWinner() {
+		return dice.getWinner();
 	}
 }

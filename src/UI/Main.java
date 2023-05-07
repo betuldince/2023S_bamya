@@ -24,9 +24,11 @@ public class Main {
 		
 		public static void main(String[] args) {
 			//to test attackphase related methods
+
 		//	AttackPhase attack= new AttackPhase();
 		//	attack.run();
 			
+ main
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);

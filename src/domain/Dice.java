@@ -11,6 +11,8 @@ public class Dice {
 			private int single_dice_roll;
 			private static Dice single_dice_instance=null;	
 			Random rd = new Random();
+			static int defaultnumberOfFaces=6;
+			static int defaultnumberOfDice=1;
 			private Dice(int numberOfFaces,int numberOfDice) {
 				this.numberOfFaces=numberOfFaces;
 				this.numberOfDice=numberOfDice;
@@ -23,8 +25,12 @@ public class Dice {
 				}
 				return single_dice_instance;
 			}
-
-
+			public static Dice Dice_initiation() {
+				if (single_dice_instance == null) {
+					single_dice_instance = new Dice(defaultnumberOfFaces,defaultnumberOfDice);
+				}
+				return single_dice_instance;
+			}
 			
 			//Dice methods for building phase
 			public void rollDice() {

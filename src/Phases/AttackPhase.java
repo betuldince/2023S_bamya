@@ -3,15 +3,33 @@ package Phases;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
+import UI.gamemap.WorldMap;
+import domain.ArmyPiece;
+import domain.Dice;
+import domain.Player;
+import domain.buildingmode.BuildingModeHandler;
 import domain.gamemap.Map;
 import domain.gamemap.Territory;
+import domain.initArmyTerritory.initArmyTerritoryStarter;
 
 public class AttackPhase {
-	
+	Map map = Map.Map_initiation();
+	Dice dice = Dice.Dice_initiation();
+	ArmyPiece armyPiece = ArmyPiece.ArmyPiece_initiation();
+
+
 	public AttackPhase() {
-		
+
 	}
 	public void run() {
+
+
+
+
+
+		//initArmyTerritoryStarter.main();
+
+
 		/*
 		Map map = Map.Map_initiation();
 		Territory istanbul = new Territory("istanbul");
@@ -27,25 +45,44 @@ public class AttackPhase {
 
 
 
-		
+
 		istanbul.addNeighbour(kocaeli);
 		istanbul.addNeighbour(kirklareli);
 		istanbul.addNeighbour(tekirdag);
-		
+
 		kirklareli.addNeighbour(konya);
 		ankara.addNeighbour(konya);
 		ankara.addNeighbour(düzce);
 		ankara.addNeighbour(cankiri);
 		kirikkale.addNeighbour(konya);
 		System.out.println(map.isConnected(istanbul, ankara));
-		
-		 */
-		
-		
 
-		
-		}
-		
+		 */
+
+
+
+
 	}
+	public boolean initiateAttack(Territory attackTerritory, Territory targetTerritory) {
+		return map.checkTerritoryAttackValidity(attackTerritory, targetTerritory);	
+	}
+	
+	public void attack(Territory attackTerritory, Territory targetTerritory){
+		Player attacker=attackTerritory.getTerritoryOwner();
+		Player defender=targetTerritory.getTerritoryOwner();
+		attacker.playerRollsAttackDice();
+		String winner= attacker.getAttackDiceRollWinner();
+		Player winnerPlayer;
+		if(winner.equals("attacker")) {
+			winnerPlayer=attacker;
+		}
+		else {
+			winnerPlayer=defender;
+		}
+	}
+	
+
+
+}
 
 

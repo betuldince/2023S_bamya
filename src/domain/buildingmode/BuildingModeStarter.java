@@ -16,7 +16,6 @@ public class BuildingModeStarter {
 		int compPlayerCount = 0;
 		Map map = Map.Map_initiation();
 		BuildingModeHandler buildHandler = BuildingModeHandler.createBuildHandler(map,playerCount,compPlayerCount);
-		
 		WorldMap.InitiateContinentsUI(map, buildHandler);
 		initArmyTerritoryStarter.main(args); //probably a bug here
 		
