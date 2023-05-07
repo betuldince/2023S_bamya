@@ -602,11 +602,7 @@ public class WorldMap {
 		   
 		   frame = new JFrame();
 		   JPanel panel = SetUpPanel("InitiateArmy");
-		   addSelectedTerritories(gameMap);
-		   
-		 
-	      
-	      
+		   addSelectedTerritories(gameMap); 
 	      panel.add(panel1);
 	      panel.add(panel2);
 	      panel.add(panel3);
