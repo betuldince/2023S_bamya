@@ -27,9 +27,9 @@ public class InitArmyTerritoryStarter {
 		System.out.println("InitArmyTerStarter called");
 		
 		InitArmyTerritoryHandler IATHandler = InitArmyTerritoryHandler.createArmyTerHandler(gameMap);
-		turnList = AllPlayers.makeTurn(AllPlayers.all_players);
-		IATHandler.distributeInitialArmy();
-		WorldMap.InitiateTerritoriesUI(gameMap, buildHandler);
+		//turnList = AllPlayers.makeTurn(AllPlayers.all_players);
+		//IATHandler.distributeInitialArmy();
+		WorldMap.InitiateArmyTerritoryMap(gameMap, IATHandler);
 		
 		
 		

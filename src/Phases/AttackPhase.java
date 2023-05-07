@@ -10,7 +10,9 @@ import domain.Player;
 import domain.buildingmode.BuildingModeHandler;
 import domain.gamemap.GameMap;
 import domain.gamemap.Territory;
+
 //import domain.InitArmyTerritory.initArmyTerritoryStarter;
+
 
 public class AttackPhase {
 	GameMap map = GameMap.Map_initiation();
@@ -23,6 +25,11 @@ public class AttackPhase {
 	}
 	public void run() {
 
+
+
+		
+
+
 /*
 		Territory t1= Territory.TERRITORY1_1;
 		Territory t2= Territory.TERRITORY1_2;
@@ -32,6 +39,13 @@ public class AttackPhase {
 		map.isConnected(t1, t3);
 		
 */
+
+
+		Territory t1= Territory.TERRITORY1_1;
+		Territory t2= Territory.TERRITORY1_2;
+		Territory t3= Territory.TERRITORY1_3;
+		t2.addNeighbour(t3);
+		System.out.println(map.isConnected(t1, t3));
 
 
 		//initArmyTerritoryStarter.main();
