@@ -46,6 +46,39 @@ public class Player {
 				
 		}
 	}
+	public int getPlayerInfantryNumbers() {
+		return armyPiece.getArmyNumber(this).get("infantry");	
+	}
+	public int getPlayerCavalryNumbers() {
+		return armyPiece.getArmyNumber(this).get("cavalry");	
+	}
+	public int getPlayerArtilleryNumbers() {
+		return armyPiece.getArmyNumber(this).get("artillery");	
+	}
+	public void updatePlayerInfantryNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "infantry");
+	}
+	public void updatePlayerCavalryNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "cavalry");	
+	}
+	public void updatePlayerArtilleryNumbers(int unitQuantity) {
+		armyPiece.updateArmyNumber(this, unitQuantity, "artillery");
+	}
+	public void updatePlayerArmyNumberAfterAttack(int unitQuantity) {
+		if (this.getPlayerInfantryNumbers()>=unitQuantity) {
+			this.updatePlayerInfantryNumbers(-1*unitQuantity);			
+		}
+		else if(this.getPlayerCavalryNumbers()>0) {
+			this.updatePlayerCavalryNumbers(-1);
+			this.updatePlayerInfantryNumbers(5-unitQuantity);
+		}
+		else {
+			this.updatePlayerArtilleryNumbers(-1);
+			this.updatePlayerCavalryNumbers(1);
+			this.updatePlayerInfantryNumbers(5-unitQuantity);
+		}
+	}
+
 	public void add_territory(Territory Territory_to_be_added ) {
 		Territories_possesed.add(Territory_to_be_added);
 		
