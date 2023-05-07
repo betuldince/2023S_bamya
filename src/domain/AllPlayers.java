@@ -10,7 +10,7 @@ import domain.userOperations.CurrentLogins;
 
 public class AllPlayers {
 	
-public static ArrayList<Player> all_players = {p1, p2, p3};
+public static ArrayList<Player> all_players;
 public static ArrayList<Player> ordered_all_players; //ordered by makeTurn method
 	
 	
