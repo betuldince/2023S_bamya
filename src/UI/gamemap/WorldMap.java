@@ -18,14 +18,17 @@ import javax.swing.border.Border;
 import javax.swing.JCheckBox;
 
 import domain.gamemap.*;
+import domain.initArmyTerritory.InitArmyTerritoryHandler;
+import domain.initArmyTerritory.InitArmyTerritoryStarter;
 import domain.buildingmode.*;
 
 
 
 public class WorldMap {
 	
-	private static Map map;
+	private static GameMap gameMap;
 	private static BuildingModeHandler buildHandler;
+	public static JFrame frame;
 
 
 	 //Creating Continents (as panels)
@@ -44,54 +47,54 @@ public class WorldMap {
     private static JCheckBox continentBox6 = new JCheckBox("Continent 6");
     
   //Each checkbox is a Territory
-    private static JCheckBox checkbox1_1 = new JCheckBox("Territory 1.1");
-    private static JCheckBox checkbox1_2 = new JCheckBox("Territory 1.2");
-    private static JCheckBox checkbox1_3 = new JCheckBox("Territory 1.3");
-    private static JCheckBox checkbox1_4 = new JCheckBox("Territory 1.4");
-    private static JCheckBox checkbox1_5 = new JCheckBox("Territory 1.5");
-    private static JCheckBox checkbox1_6 = new JCheckBox("Territory 1.6");
-    private static JCheckBox checkbox1_7 = new JCheckBox("Territory 1.7");
+    public static JCheckBox checkbox1_1 = new JCheckBox("Territory 1.1");
+    public static JCheckBox checkbox1_2 = new JCheckBox("Territory 1.2");
+    public static JCheckBox checkbox1_3 = new JCheckBox("Territory 1.3");
+    public static JCheckBox checkbox1_4 = new JCheckBox("Territory 1.4");
+    public static JCheckBox checkbox1_5 = new JCheckBox("Territory 1.5");
+    public static JCheckBox checkbox1_6 = new JCheckBox("Territory 1.6");
+    public static JCheckBox checkbox1_7 = new JCheckBox("Territory 1.7");
     
   //Each checkbox is a Territory
-    private static JCheckBox checkbox2_1 = new JCheckBox("Territory 2.1");
-    private static JCheckBox checkbox2_2 = new JCheckBox("Territory 2.2");
-    private static JCheckBox checkbox2_3 = new JCheckBox("Territory 2.3");
-    private static JCheckBox checkbox2_4 = new JCheckBox("Territory 2.4");
-    private static JCheckBox checkbox2_5 = new JCheckBox("Territory 2.5");
-    private static JCheckBox checkbox2_6 = new JCheckBox("Territory 2.6");
-    private static JCheckBox checkbox2_7 = new JCheckBox("Territory 2.7");
+    public static JCheckBox checkbox2_1 = new JCheckBox("Territory 2.1");
+    public static JCheckBox checkbox2_2 = new JCheckBox("Territory 2.2");
+    public static JCheckBox checkbox2_3 = new JCheckBox("Territory 2.3");
+    public static JCheckBox checkbox2_4 = new JCheckBox("Territory 2.4");
+    public static JCheckBox checkbox2_5 = new JCheckBox("Territory 2.5");
+    public static JCheckBox checkbox2_6 = new JCheckBox("Territory 2.6");
+    public static JCheckBox checkbox2_7 = new JCheckBox("Territory 2.7");
     
-    private static JCheckBox checkbox3_1 = new JCheckBox("Territory 3.1");
-    private static JCheckBox checkbox3_2 = new JCheckBox("Territory 3.2");
-    private static JCheckBox checkbox3_3 = new JCheckBox("Territory 3.3");
-    private static JCheckBox checkbox3_4 = new JCheckBox("Territory 3.4");
-    private static JCheckBox checkbox3_5 = new JCheckBox("Territory 3.5");
-    private static JCheckBox checkbox3_6 = new JCheckBox("Territory 3.6");
-    private static JCheckBox checkbox3_7 = new JCheckBox("Territory 3.7");
+    public static JCheckBox checkbox3_1 = new JCheckBox("Territory 3.1");
+    public static JCheckBox checkbox3_2 = new JCheckBox("Territory 3.2");
+    public static JCheckBox checkbox3_3 = new JCheckBox("Territory 3.3");
+    public static JCheckBox checkbox3_4 = new JCheckBox("Territory 3.4");
+    public static JCheckBox checkbox3_5 = new JCheckBox("Territory 3.5");
+    public static JCheckBox checkbox3_6 = new JCheckBox("Territory 3.6");
+    public static JCheckBox checkbox3_7 = new JCheckBox("Territory 3.7");
 	
-    private static JCheckBox checkbox4_1 = new JCheckBox("Territory 4.1");
-    private static JCheckBox checkbox4_2 = new JCheckBox("Territory 4.2");
-    private static JCheckBox checkbox4_3 = new JCheckBox("Territory 4.3");
-    private static JCheckBox checkbox4_4 = new JCheckBox("Territory 4.4");
-    private static JCheckBox checkbox4_5 = new JCheckBox("Territory 4.5");
-    private static JCheckBox checkbox4_6 = new JCheckBox("Territory 4.6");
-    private static JCheckBox checkbox4_7 = new JCheckBox("Territory 4.7");
+    public static JCheckBox checkbox4_1 = new JCheckBox("Territory 4.1");
+    public static JCheckBox checkbox4_2 = new JCheckBox("Territory 4.2");
+    public static JCheckBox checkbox4_3 = new JCheckBox("Territory 4.3");
+    public static JCheckBox checkbox4_4 = new JCheckBox("Territory 4.4");
+    public static JCheckBox checkbox4_5 = new JCheckBox("Territory 4.5");
+    public static JCheckBox checkbox4_6 = new JCheckBox("Territory 4.6");
+    public static JCheckBox checkbox4_7 = new JCheckBox("Territory 4.7");
 	
-    private static JCheckBox checkbox5_1 = new JCheckBox("Territory 5.1");
-    private static JCheckBox checkbox5_2 = new JCheckBox("Territory 5.2");
-    private static JCheckBox checkbox5_3 = new JCheckBox("Territory 5.3");
-    private static JCheckBox checkbox5_4 = new JCheckBox("Territory 5.4");
-    private static JCheckBox checkbox5_5 = new JCheckBox("Territory 5.5");
-    private static JCheckBox checkbox5_6 = new JCheckBox("Territory 5.6");
-    private static JCheckBox checkbox5_7 = new JCheckBox("Territory 5.7");
+    public static JCheckBox checkbox5_1 = new JCheckBox("Territory 5.1");
+    public static JCheckBox checkbox5_2 = new JCheckBox("Territory 5.2");
+    public static JCheckBox checkbox5_3 = new JCheckBox("Territory 5.3");
+    public static JCheckBox checkbox5_4 = new JCheckBox("Territory 5.4");
+    public static JCheckBox checkbox5_5 = new JCheckBox("Territory 5.5");
+    public static JCheckBox checkbox5_6 = new JCheckBox("Territory 5.6");
+    public static JCheckBox checkbox5_7 = new JCheckBox("Territory 5.7");
 	
-    private static JCheckBox checkbox6_1 = new JCheckBox("Territory 6.1");
-    private static JCheckBox checkbox6_2 = new JCheckBox("Territory 6.2");
-    private static JCheckBox checkbox6_3 = new JCheckBox("Territory 6.3");
-    private static JCheckBox checkbox6_4 = new JCheckBox("Territory 6.4");
-    private static JCheckBox checkbox6_5 = new JCheckBox("Territory 6.5");
-    private static JCheckBox checkbox6_6 = new JCheckBox("Territory 6.6");
-    private static JCheckBox checkbox6_7 = new JCheckBox("Territory 6.7");
+    public static JCheckBox checkbox6_1 = new JCheckBox("Territory 6.1");
+    public static JCheckBox checkbox6_2 = new JCheckBox("Territory 6.2");
+    public static JCheckBox checkbox6_3 = new JCheckBox("Territory 6.3");
+    public static JCheckBox checkbox6_4 = new JCheckBox("Territory 6.4");
+    public static JCheckBox checkbox6_5 = new JCheckBox("Territory 6.5");
+    public static JCheckBox checkbox6_6 = new JCheckBox("Territory 6.6");
+    public static JCheckBox checkbox6_7 = new JCheckBox("Territory 6.7");
 	
 
     static Border blackline = BorderFactory.createLineBorder(Color.black);
@@ -204,6 +207,55 @@ public class WorldMap {
 	}
 	
     
+    private static void addSelectedTerritories(GameMap gameMap, BuildingModeHandler buildHandle) {
+    	
+    	
+		for(Continent c: buildHandle.gameMap.initiatedContinents) {
+	    	  System.out.println("Continent: " + c.contName);
+	      
+	    	  switch (c.contName){
+	    	  	
+	    	  	case "Continent1": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel1.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent2": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel2.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent3": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel3.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent4": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel4.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent5": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel5.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent6": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			panel6.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  
+	    	  
+	    	  }
+	      }
+    }
+    
     
     
     
@@ -214,88 +266,14 @@ public class WorldMap {
 	      createMap();
 	   }*/
 
-	   public static void createContinentsMap(Map map, BuildingModeHandler buildHandle) {    
-	      //JFrame frame = new JFrame("GameMapContinents");
-	      //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	      //InitiateContinentsUI(buildHandle);
-	      //frame.setSize(500, 500);      
-	      //frame.setVisible(true);
-	   }
 	   
-	   public static void createTerritoriesMap(Map map, BuildingModeHandler buildHandle) {    
-	      //JFrame frame = new JFrame("GameMapTerritories");
-	      //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	      //InitiateTerritoriesUI(frame, buildHandle,map);
-	      //frame.setSize(500, 500);      
-	      //frame.setVisible(true);
-	   }
-	   
-	   
-	   
-	   
-	   public static void InitiateContinentsUI(Map map, BuildingModeHandler buildHandle) {
-		   JFrame frame = new JFrame("GameMapContinents");
-		   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		   
-		  JPanel panel = new JPanel();
-	      LayoutManager layoutCont = new GridLayout(4,2);  
-	      panel.setLayout(layoutCont);
-	      
-	      JButton contBtn = new JButton("Select Continents");
-	      contBtn.setBounds(150,200,100,30);
-	      contBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(continentBox1.isSelected()) buildHandle.specifyContinent(map.continent1);
-				if(continentBox2.isSelected()) buildHandle.specifyContinent(map.continent2);
-				if(continentBox3.isSelected()) buildHandle.specifyContinent(map.continent3);
-				if(continentBox4.isSelected()) buildHandle.specifyContinent(map.continent4);
-				if(continentBox5.isSelected()) buildHandle.specifyContinent(map.continent5);
-				if(continentBox6.isSelected()) buildHandle.specifyContinent(map.continent6);
-				
-				frame.dispose();
-				
-				InitiateTerritoriesUI(map, buildHandler);
-				
-				
-			}
-	    	  
-	      });
-	      
-	      initPanel1();
-	      initPanel2();
-	      initPanel3();
-	      initPanel4();
-	      initPanel5();
-	      initPanel6();
-	      
-	      
-	      panel.add(panel1);
-	      panel.add(panel2);
-	      panel.add(panel3);
-	      panel.add(panel4);
-	      panel.add(panel5);
-	      panel.add(panel6);
-	      panel.add(contBtn);
-	      
-	      frame.getContentPane().add(panel, BorderLayout.CENTER);
-	      
-	      frame.setSize(500, 500);      
-	      frame.setVisible(true);
-	      
-	   }
-
-	   public static void InitiateTerritoriesUI( Map map, BuildingModeHandler buildHandle){
-	      //Create a border
-		   JFrame frame = new JFrame("GameMapTerritories");
+	   private static JPanel SetUpPanel(String frameText) {
+		   frame = new JFrame(frameText);
 		   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	      
 		  Border blackline = BorderFactory.createLineBorder(Color.black);
 	      JPanel panel = new JPanel();
-	      LayoutManager layoutCont = new GridLayout(3,2);  
+	      LayoutManager layoutCont = new GridLayout(4,2);  
 	      panel.setLayout(layoutCont);       
 	      
 	      panel1 = new JPanel();
@@ -433,9 +411,84 @@ public class WorldMap {
 			checkbox6_6.setBackground(Color.gray);
 			checkbox6_7.setBackground(Color.gray);
 			
-		
 			
-	      for(Continent c: buildHandle.map.continents) {
+		      
+		      
+		      panel.add(panel1);
+		      panel.add(panel2);
+		      panel.add(panel3);
+		      panel.add(panel4);
+		      panel.add(panel5);
+		      panel.add(panel6);
+		      
+			return panel;
+	   }
+	   
+	   
+	   
+	   
+	   public static void InitiateContinentsUI(GameMap gameMap, BuildingModeHandler buildHandle) {
+		   frame = new JFrame("GameMapContinents");
+		   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		   
+		  JPanel panel = new JPanel();
+	      LayoutManager layoutCont = new GridLayout(4,2);  
+	      panel.setLayout(layoutCont);
+	      
+	      JButton contBtn = new JButton("Select Continents");
+	      contBtn.setBounds(150,200,100,30);
+	      contBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(continentBox1.isSelected()) buildHandle.specifyContinent(gameMap.continent1);
+				if(continentBox2.isSelected()) buildHandle.specifyContinent(gameMap.continent2);
+				if(continentBox3.isSelected()) buildHandle.specifyContinent(gameMap.continent3);
+				if(continentBox4.isSelected()) buildHandle.specifyContinent(gameMap.continent4);
+				if(continentBox5.isSelected()) buildHandle.specifyContinent(gameMap.continent5);
+				if(continentBox6.isSelected()) buildHandle.specifyContinent(gameMap.continent6);
+				
+				frame.dispose();
+				
+				buildHandle.selectTerritories();
+				
+				
+			}
+	    	  
+	      });
+	      
+	      initPanel1();
+	      initPanel2();
+	      initPanel3();
+	      initPanel4();
+	      initPanel5();
+	      initPanel6();
+	      
+	      
+	      panel.add(panel1);
+	      panel.add(panel2);
+	      panel.add(panel3);
+	      panel.add(panel4);
+	      panel.add(panel5);
+	      panel.add(panel6);
+	      panel.add(contBtn);
+	      
+	      frame.getContentPane().add(panel, BorderLayout.CENTER);
+	      
+	      frame.setSize(500, 500);      
+	      frame.setVisible(true);
+	      
+	   }
+
+	   public static void InitiateTerritoriesUI( GameMap gameMap, BuildingModeHandler buildHandle){
+	      //Create a border
+		   
+			
+		  JPanel panel = SetUpPanel("GameMapTerritories");
+			
+	      for(Continent c: buildHandle.gameMap.initiatedContinents) {
 	    	  System.out.println("Continent: " + c.contName);
 	      
 	    	  switch (c.contName){
@@ -464,9 +517,89 @@ public class WorldMap {
 	      frame.setSize(500, 500);      
 	      frame.setVisible(true);
 	      
+	      JButton contBtn = new JButton("Select Territories");
+	      contBtn.setBounds(150,200,100,30);
+	      panel.add(contBtn);
+	      contBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//Territories in continent 1
+				if(checkbox1_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_1);
+				if(checkbox1_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_2);
+				if(checkbox1_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_3);
+				if(checkbox1_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_4);
+				if(checkbox1_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_5);
+				if(checkbox1_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_6);
+				if(checkbox1_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent1, GameMap.territory1_7);
+				
+				//Territories in continent 2
+				if(checkbox2_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_1);
+				if(checkbox2_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_2);
+				if(checkbox2_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_3);
+				if(checkbox2_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_4);
+				if(checkbox2_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_5);
+				if(checkbox2_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_6);
+				if(checkbox2_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent2, GameMap.territory2_7);
+				
+				//Territories in continent 3
+				if(checkbox3_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_1);
+				if(checkbox3_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_2);
+				if(checkbox3_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_3);
+				if(checkbox3_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_4);
+				if(checkbox3_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_5);
+				if(checkbox3_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_6);
+				if(checkbox3_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent3, GameMap.territory3_7);
+			
+				//Territories in continent 4
+				if(checkbox4_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_1);
+				if(checkbox4_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_2);
+				if(checkbox4_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_3);
+				if(checkbox4_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_4);
+				if(checkbox4_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_5);
+				if(checkbox4_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_6);
+				if(checkbox4_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent4, GameMap.territory4_7);
+				
+				//Territories in continent 5
+				if(checkbox5_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_1);
+				if(checkbox5_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_2);
+				if(checkbox5_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_3);
+				if(checkbox5_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_4);
+				if(checkbox5_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_5);
+				if(checkbox5_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_6);
+				if(checkbox5_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent5, GameMap.territory5_7);
+				
+				//Territories in continent 6
+				if(checkbox6_1.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_1);
+				if(checkbox6_2.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_2);
+				if(checkbox6_3.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_3);
+				if(checkbox6_4.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_4);
+				if(checkbox6_5.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_5);
+				if(checkbox6_6.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_6);
+				if(checkbox6_7.isSelected()) buildHandle.specifyTerritory(GameMap.continent6, GameMap.territory6_7);
+				
+				
+				
+				
+				buildHandle.nextPhase();
+				
+				
+			}
+	      
+	      });
+	      
+	    }
+	   
+	   
+	   public static void InitiateArmyTerritoryMap(GameMap gameMap, InitArmyTerritoryHandler IATHandler) {
+		   
 	   }
+}
+	   
+
 	   
 	   
 	   
 
-}
+

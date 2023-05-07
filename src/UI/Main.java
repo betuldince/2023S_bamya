@@ -28,7 +28,7 @@ public class Main {
 		//	AttackPhase attack= new AttackPhase();
 		//	attack.run();
 			
- main
+
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);

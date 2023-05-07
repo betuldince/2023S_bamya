@@ -8,12 +8,12 @@ import domain.ArmyPiece;
 import domain.Dice;
 import domain.Player;
 import domain.buildingmode.BuildingModeHandler;
-import domain.gamemap.Map;
+import domain.gamemap.GameMap;
 import domain.gamemap.Territory;
 import domain.initArmyTerritory.initArmyTerritoryStarter;
 
 public class AttackPhase {
-	Map map = Map.Map_initiation();
+	GameMap map = GameMap.Map_initiation();
 	Dice dice = Dice.Dice_initiation();
 	ArmyPiece armyPiece = ArmyPiece.ArmyPiece_initiation();
 

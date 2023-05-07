@@ -1,7 +1,9 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import domain.buildingmode.BuildingModeHandler;
 import domain.userOperations.CurrentLogins;
@@ -9,6 +11,7 @@ import domain.userOperations.CurrentLogins;
 public class AllPlayers {
 	
 public static ArrayList<Player> all_players;
+public static ArrayList<Player> ordered_all_players; //ordered by makeTurn method
 	
 	
 	public void add_new_player(Player newPlayer) {
@@ -79,5 +82,32 @@ public static ArrayList<Player> all_players;
     	}
     }
 	
+public static ArrayList<Player> makeTurn(ArrayList<Player> playersList) {
+		
+		
+		Map<Player, Integer> diceDict = new HashMap<Player, Integer>();
+		
+		for (Player p: playersList) {
+			diceDict.put(p, p.playerRollsDice());
+		}
+		
+		while (!diceDict.isEmpty()) {
+			int max = 0;
+			Player tempPlayer = null;
+			for (Player p: diceDict.keySet()) {
+				if (diceDict.get(p) >= max) {
+					max = diceDict.get(p);
+					tempPlayer = p;
+				}
+			}
+			ordered_all_players.add(tempPlayer);
+			System.out.println(tempPlayer + "added to turn list");
+			diceDict.remove(tempPlayer);
+			System.out.println(tempPlayer + "is removed from dice dictionary");
+		}
+		
+		return ordered_all_players;
+		
+	}
 
 }

@@ -15,10 +15,10 @@ import domain.buildingmode.*;
 import domain.gamemap.*;
 
 
-public class Map {
+public class GameMap {
 
 	private static int MAXCONTINENT = 6;
-	public static ArrayList<Continent> continents =  new ArrayList<Continent>(); //arraylist
+	public static ArrayList<Continent> initiatedContinents =  new ArrayList<Continent>(); //arraylist
 	//	private static HashSet<Territory> adjacencySet = new HashSet<Territory>();
 
 
@@ -32,45 +32,140 @@ public class Map {
 	public static Continent continent4;
 	public static Continent continent5;
 	public static Continent continent6;
-	private static Map single_map_instance=null;
+	private static GameMap single_map_instance=null;
 
+	public static Territory territory1_1;
+	public static Territory territory1_2;
+	public static Territory territory1_3;
+	public static Territory territory1_4;
+	public static Territory territory1_5;
+	public static Territory territory1_6;
+	public static Territory territory1_7;
+	
+	public static Territory territory2_1;
+	public static Territory territory2_2;
+	public static Territory territory2_3;
+	public static Territory territory2_4;
+	public static Territory territory2_5;
+	public static Territory territory2_6;
+	public static Territory territory2_7;
+	
+	public static Territory territory3_1;
+	public static Territory territory3_2;
+	public static Territory territory3_3;
+	public static Territory territory3_4;
+	public static Territory territory3_5;
+	public static Territory territory3_6;
+	public static Territory territory3_7;
+	
+	public static Territory territory4_1;
+	public static Territory territory4_2;
+	public static Territory territory4_3;
+	public static Territory territory4_4;
+	public static Territory territory4_5;
+	public static Territory territory4_6;
+	public static Territory territory4_7;
+	
+	public static Territory territory5_1;
+	public static Territory territory5_2;
+	public static Territory territory5_3;
+	public static Territory territory5_4;
+	public static Territory territory5_5;
+	public static Territory territory5_6;
+	public static Territory territory5_7;
+	
+	public static Territory territory6_1;
+	public static Territory territory6_2;
+	public static Territory territory6_3;
+	public static Territory territory6_4;
+	public static Territory territory6_5;
+	public static Territory territory6_6;
+	public static Territory territory6_7;
+	
 	/*private void initContinent(Continent c) {
 
 		continentCount++;
 	}*/
 
-	private Map() {
+	private GameMap() {
 		continent1 = Continent.CONTINENT1;
 		continent2 = Continent.CONTINENT2;
 		continent3 = Continent.CONTINENT3;
 		continent4 = Continent.CONTINENT4;
 		continent5 = Continent.CONTINENT5;
 		continent6 = Continent.CONTINENT6;
+		
+		territory1_1 = Territory.TERRITORY1_1;
+		territory1_2 = Territory.TERRITORY1_2;
+		territory1_3 = Territory.TERRITORY1_3;
+		territory1_4 = Territory.TERRITORY1_4;
+		territory1_5 = Territory.TERRITORY1_5;
+		territory1_6 = Territory.TERRITORY1_6;
+		
+		territory2_1 = Territory.TERRITORY2_1;
+		territory2_2 = Territory.TERRITORY2_2;
+		territory2_3 = Territory.TERRITORY2_3;
+		territory2_4 = Territory.TERRITORY2_4;
+		territory2_5 = Territory.TERRITORY2_5;
+		territory2_6 = Territory.TERRITORY2_6;
+		
+		territory3_1 = Territory.TERRITORY3_1;
+		territory3_2 = Territory.TERRITORY3_2;
+		territory3_3 = Territory.TERRITORY3_3;
+		territory3_4 = Territory.TERRITORY3_4;
+		territory3_5 = Territory.TERRITORY3_5;
+		territory3_6 = Territory.TERRITORY3_6;
+		
+		territory4_1 = Territory.TERRITORY4_1;
+		territory4_2 = Territory.TERRITORY4_2;
+		territory4_3 = Territory.TERRITORY4_3;
+		territory4_4 = Territory.TERRITORY4_4;
+		territory4_5 = Territory.TERRITORY4_5;
+		territory4_6 = Territory.TERRITORY4_6;
+	
+		territory5_1 = Territory.TERRITORY5_1;
+		territory5_2 = Territory.TERRITORY5_2;
+		territory5_3 = Territory.TERRITORY5_3;
+		territory5_4 = Territory.TERRITORY5_4;
+		territory5_5 = Territory.TERRITORY5_5;
+		territory5_6 = Territory.TERRITORY5_6;
+		
+		territory6_1 = Territory.TERRITORY6_1;
+		territory6_2 = Territory.TERRITORY6_2;
+		territory6_3 = Territory.TERRITORY6_3;
+		territory6_4 = Territory.TERRITORY6_4;
+		territory6_5 = Territory.TERRITORY6_5;
+		territory6_6 = Territory.TERRITORY6_6;
+		
+		
+		
+		
 	}
-	public static Map Map_initiation() {
+	
+	public static GameMap Map_initiation() {
 		if (single_map_instance == null) {
-			single_map_instance = new Map();
+			single_map_instance = new GameMap();
 		}
 		return single_map_instance;
 	}
 
 	public void specifyContinent(Continent c) {
-		this.continents.add(c);
+		GameMap.initiatedContinents.add(c);
 		System.out.println("Continent: " + c.contName + " is added");
 	}
 
 	private boolean checkNumContinent(BuildingModeHandler buildHandle) {
 		int total_player= buildHandle.compPlayerCount + buildHandle.playerCount;
 
-		if(continents.size() <= MAXCONTINENT && continents.size() >= total_player) {
+		if(initiatedContinents.size() <= MAXCONTINENT && initiatedContinents.size() >= total_player) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	private void specifyTerritory(Territory t) {
-
+	public void specifyTerritory(Continent c, Territory t) {
+		c.initiatedTerritories.add(t);
 	}
 
 	private void checkMap() {
