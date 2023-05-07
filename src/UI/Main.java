@@ -25,8 +25,8 @@ public class Main {
 		public static void main(String[] args) {
 			//to test attackphase related methods
 
-		//	AttackPhase attack= new AttackPhase();
-		//	attack.run();
+			AttackPhase attack= new AttackPhase();
+			attack.run();
 			
 
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane

@@ -207,46 +207,52 @@ public class WorldMap {
 	}
 	
     
-    private static void addSelectedTerritories(GameMap gameMap, BuildingModeHandler buildHandle) {
+    private static void addSelectedTerritories(GameMap gameMap) {
     	
     	
-		for(Continent c: buildHandle.gameMap.initiatedContinents) {
+		for(Continent c: gameMap.initiatedContinents) {
 	    	  System.out.println("Continent: " + c.contName);
 	      
 	    	  switch (c.contName){
 	    	  	
 	    	  	case "Continent1": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel1.add(t.checkbox);
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent2": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel2.add(t.checkbox);
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent3": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel3.add(t.checkbox);
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent4": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel4.add(t.checkbox);
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent5": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel5.add(t.checkbox);
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent6": 
 	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			t.checkbox.setSelected(false);
 	    	  			panel6.add(t.checkbox);
 	    	  		}
 	    	  		break;
@@ -594,6 +600,28 @@ public class WorldMap {
 	   
 	   public static void InitiateArmyTerritoryMap(GameMap gameMap, InitArmyTerritoryHandler IATHandler) {
 		   
+		   frame = new JFrame();
+		   JPanel panel = SetUpPanel("InitiateArmy");
+		   addSelectedTerritories(gameMap);
+		   
+		 
+	      
+	      
+	      panel.add(panel1);
+	      panel.add(panel2);
+	      panel.add(panel3);
+	      panel.add(panel4);
+	      panel.add(panel5);
+	      panel.add(panel6);
+	      
+	      frame.getContentPane().add(panel, BorderLayout.CENTER);
+	      
+	      frame.setSize(500, 500);      
+	      frame.setVisible(true);
+	      
+	      JButton contBtn = new JButton("Next Phase");
+	      contBtn.setBounds(150,200,100,30);
+	      panel.add(contBtn);
 	   }
 }
 	   

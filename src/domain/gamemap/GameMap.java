@@ -166,6 +166,7 @@ public class GameMap {
 
 	public void specifyTerritory(Continent c, Territory t) {
 		c.initiatedTerritories.add(t);
+		System.out.println("Territory" + t + " added to " + c);
 	}
 
 	private void checkMap() {

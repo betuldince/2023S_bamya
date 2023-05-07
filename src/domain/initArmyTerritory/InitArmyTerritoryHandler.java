@@ -12,7 +12,7 @@ public class InitArmyTerritoryHandler {
 	private static InitArmyTerritoryHandler ArmyTerHandler=null;
 	private InitArmyTerritoryHandler(GameMap map) {
 		this.map = map;
-		this.totalPlayerCount = AllPlayers.playerNum();
+		//this.totalPlayerCount = AllPlayers.playerNum();
 	}
 	public static InitArmyTerritoryHandler createArmyTerHandler(GameMap map) {
 		if (ArmyTerHandler == null) {
@@ -33,6 +33,9 @@ public class InitArmyTerritoryHandler {
 		
 		return -1;
 	}
+	
+	
+	
 	public void distributeInitialArmy() {
 		// TODO Auto-generated method stub
 		

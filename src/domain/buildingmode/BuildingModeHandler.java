@@ -48,7 +48,7 @@ public class BuildingModeHandler implements GameMapListener {
 		// TODO Auto-generated method stub
 		WorldMap.frame.dispose();
 		System.out.println("nextPhase() works");
-		
+		InitArmyTerritoryStarter.startInitiatingArmyTerritory();
 		
 	}
 	
