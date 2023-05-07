@@ -10,7 +10,9 @@ import domain.Player;
 import domain.buildingmode.BuildingModeHandler;
 import domain.gamemap.GameMap;
 import domain.gamemap.Territory;
-import domain.initArmyTerritory.InitArmyTerritoryStarter;
+
+//import domain.InitArmyTerritory.initArmyTerritoryStarter;
+
 
 public class AttackPhase {
 	GameMap map = GameMap.Map_initiation();
@@ -24,7 +26,19 @@ public class AttackPhase {
 	public void run() {
 
 
+
 		
+
+
+/*
+		Territory t1= Territory.TERRITORY1_1;
+		Territory t2= Territory.TERRITORY1_2;
+		Territory t3= Territory.TERRITORY1_3;
+		t1.addNeighbour(t2);
+		t2.addNeighbour(t3);
+		map.isConnected(t1, t3);
+		
+*/
 
 
 		Territory t1= Territory.TERRITORY1_1;
@@ -70,22 +84,36 @@ public class AttackPhase {
 
 
 	}
+	
+	
 	public boolean initiateAttack(Territory attackTerritory, Territory targetTerritory) {
 		return map.checkTerritoryAttackValidity(attackTerritory, targetTerritory);	
+		
 	}
+
 	
-	public void attack(Territory attackTerritory, Territory targetTerritory){
-		Player attacker=attackTerritory.getTerritoryOwner();
+	public void attack(Territory attackerTerritory, Territory targetTerritory){
+		Player attacker=attackerTerritory.getTerritoryOwner();
 		Player defender=targetTerritory.getTerritoryOwner();
 		attacker.playerRollsAttackDice();
 		String winner= attacker.getAttackDiceRollWinner();
 		Player winnerPlayer;
+		Player loserPlayer;
+
+		int unitQuantity;
 		if(winner.equals("attacker")) {
 			winnerPlayer=attacker;
+			loserPlayer=defender;
+			unitQuantity=1;
+			
 		}
 		else {
 			winnerPlayer=defender;
+			loserPlayer=attacker;
+			unitQuantity=2;
 		}
+		loserPlayer.updatePlayerArmyNumberAfterAttack(unitQuantity);
+		map.updateMapBattle(attackerTerritory, targetTerritory, winnerPlayer);
 	}
 	
 
