@@ -10,7 +10,7 @@ import UI.gamemap.WorldMap;
 import domain.ArmyPiece;
 import domain.Player;
 
-public enum Territory {
+public enum Territory implements Comparable<Territory> {
 	
 	TERRITORY1_1("Territory1_1", WorldMap.checkbox1_1),
 	TERRITORY1_2("Territory1_2", WorldMap.checkbox1_2),
@@ -80,7 +80,6 @@ public enum Territory {
 	private ArmyPiece armyPiece= ArmyPiece.ArmyPiece_initiation();
 	
 	private HashSet<Territory> adjacencySet = new HashSet<Territory>();
-	private ArrayList<Bridge> bridgeList = new ArrayList<Bridge>();
 	
 	
 	public void addAdjacency(Territory adjacentTerritory) {
@@ -161,8 +160,8 @@ public enum Territory {
 		return this.which_continent;
 	}
 	
-
-	public int compareTo(Object otherTerritory) {
+/*
+	public int compareTo(Territory otherTerritory) {
 		if(this==otherTerritory) {
 			return 1;
 		}
@@ -170,7 +169,7 @@ public enum Territory {
 			return 0;
 		}
 	}
-	
+	*/
 
 	
 	
