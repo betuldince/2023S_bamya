@@ -1,23 +1,28 @@
 package domain.initArmyTerritory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
+import UI.gamemap.WorldMap;
 import domain.AllPlayers;
 import domain.ArmyPiece;
 import domain.Player;
 import domain.gamemap.GameMap;
+import domain.gamemap.GameMapListener;
 
-public class InitArmyTerritoryHandler {
-	public static GameMap map;
+public class InitArmyTerritoryHandler implements GameMapListener{
+	public static GameMap gameMap;
 
 	private static int totalPlayerCount;
 	
 	ArmyPiece armyPiece = ArmyPiece.ArmyPiece_initiation();
 	
+	//InitArmyTerritoryHandler IATHandler = InitArmyTerritoryHandler.createArmyTerHandler(gameMap);
+	
 	//singleton pattern
 	private static InitArmyTerritoryHandler ArmyTerHandler=null;
 	private InitArmyTerritoryHandler(GameMap map) {
-		InitArmyTerritoryHandler.map = map;
+		InitArmyTerritoryHandler.gameMap = gameMap;
 		InitArmyTerritoryHandler.totalPlayerCount = AllPlayers.playerNum();
 	}
 	public static InitArmyTerritoryHandler createArmyTerHandler(GameMap map) {
@@ -56,6 +61,22 @@ public class InitArmyTerritoryHandler {
 		}
 		
 	}
+	@Override
+	public void nextPhase() {
+		// TODO Auto-generated method stub
+		ArrayList<Player> ordered_players = AllPlayers.ordered_all_players;
+		int lastPlayerIndex = ordered_players.size() -1;
+		Player lastPlayer = ordered_players.get(lastPlayerIndex);
+		HashMap<String, Integer> map = armyPiece.getArmyNumber(lastPlayer);
+		int lastPlayerInfantryCount = map.get("infantry");
+		System.out.println("last player infantry count: " + lastPlayerInfantryCount);
+		
+		if(lastPlayerInfantryCount != 0) { //this phase goes on until the last player has 0 army piece
+			WorldMap.InitiateArmyTerritoryMap(gameMap, this);
+		}
+		
+	}
+	
 	
 	
 	

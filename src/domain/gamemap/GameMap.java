@@ -101,6 +101,7 @@ public class GameMap {
 		territory1_4 = Territory.TERRITORY1_4;
 		territory1_5 = Territory.TERRITORY1_5;
 		territory1_6 = Territory.TERRITORY1_6;
+		territory1_7 = Territory.TERRITORY1_7;
 		
 		territory2_1 = Territory.TERRITORY2_1;
 		territory2_2 = Territory.TERRITORY2_2;
@@ -108,6 +109,8 @@ public class GameMap {
 		territory2_4 = Territory.TERRITORY2_4;
 		territory2_5 = Territory.TERRITORY2_5;
 		territory2_6 = Territory.TERRITORY2_6;
+		territory2_7 = Territory.TERRITORY2_7;
+		
 		
 		territory3_1 = Territory.TERRITORY3_1;
 		territory3_2 = Territory.TERRITORY3_2;
@@ -115,6 +118,7 @@ public class GameMap {
 		territory3_4 = Territory.TERRITORY3_4;
 		territory3_5 = Territory.TERRITORY3_5;
 		territory3_6 = Territory.TERRITORY3_6;
+		territory3_7 = Territory.TERRITORY3_7;
 		
 		territory4_1 = Territory.TERRITORY4_1;
 		territory4_2 = Territory.TERRITORY4_2;
@@ -122,6 +126,7 @@ public class GameMap {
 		territory4_4 = Territory.TERRITORY4_4;
 		territory4_5 = Territory.TERRITORY4_5;
 		territory4_6 = Territory.TERRITORY4_6;
+		territory4_7 = Territory.TERRITORY4_7;
 	
 		territory5_1 = Territory.TERRITORY5_1;
 		territory5_2 = Territory.TERRITORY5_2;
@@ -129,6 +134,7 @@ public class GameMap {
 		territory5_4 = Territory.TERRITORY5_4;
 		territory5_5 = Territory.TERRITORY5_5;
 		territory5_6 = Territory.TERRITORY5_6;
+		territory5_7 = Territory.TERRITORY5_7;
 		
 		territory6_1 = Territory.TERRITORY6_1;
 		territory6_2 = Territory.TERRITORY6_2;
@@ -136,6 +142,7 @@ public class GameMap {
 		territory6_4 = Territory.TERRITORY6_4;
 		territory6_5 = Territory.TERRITORY6_5;
 		territory6_6 = Territory.TERRITORY6_6;
+		territory6_7 = Territory.TERRITORY6_7;
 		
 		
 		
@@ -172,6 +179,7 @@ public class GameMap {
 	private void checkMap() {
 
 	}
+	
 	//consider moving this method to territory?
 	public boolean checkTerritoryAttackValidity(Territory attackTerritory,Territory targetTerritory) {
 		if(isNeighbouring(attackTerritory, targetTerritory) & attackTerritory.checkAttackValidity()) {

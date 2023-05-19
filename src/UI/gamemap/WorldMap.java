@@ -1,7 +1,7 @@
 package UI.gamemap;
 
 import java.awt.BorderLayout;
-
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,7 +30,7 @@ public class WorldMap {
 	private static GameMap gameMap;
 	private static BuildingModeHandler buildHandler;
 	public static JFrame frame;
-
+	
 
 	 //Creating Continents (as panels)
     private static JPanel panel1 = new JPanel();
@@ -262,6 +263,23 @@ public class WorldMap {
 	      }
     }
     
+  
+    //implemented in order to make user select only 1 checkbox at a time
+    private static ButtonGroup createCheckBoxGroup(GameMap gameMap) {
+		
+    	ButtonGroup checkBoxGroup =  new ButtonGroup();
+    	
+    	for(Continent c: gameMap.initiatedContinents) {
+	    	  
+    		for (Territory t: c.initiatedTerritories) {
+	  			checkBoxGroup.add(t.checkbox);
+	  			System.out.println("CheckBox " + t.checkbox + " added to checkBoxGroup");
+	  		}
+    	}	
+    	
+    	return checkBoxGroup;
+    	
+    }
     
     
     
@@ -290,7 +308,7 @@ public class WorldMap {
 	      panel6 = new JPanel();
 	      
 	     
-	      String spaces = "                   ";
+	   
 	      
 	      LayoutManager layoutTer = new GridLayout(2,3);
 	      
@@ -609,10 +627,9 @@ public class WorldMap {
 		   panel.setLayout(layoutCont);
 		   addSelectedTerritories(gameMap);
 		   
-		 
-	      
-	      
-
+		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
+		  
+		   
 	      panel.add(panel1);
 	      panel.add(panel2);
 	      panel.add(panel3);
@@ -625,10 +642,22 @@ public class WorldMap {
 	      frame.setSize(500, 500);      
 	      frame.setVisible(true);
 	      
+	      
 	      JButton contBtn = new JButton("Next Phase");
 	      contBtn.setBounds(150,200,100,30);
 	      panel.add(contBtn);
+	      contBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				IATHandler.nextPhase();
+			}
+	    	  
+	      });
 	   }
+	   
+	   
 }
 	   
 
