@@ -10,7 +10,7 @@ import domain.userOperations.CurrentLogins;
 
 public class AllPlayers {
 	
-public static ArrayList<Player> all_players;
+public static ArrayList<Player> all_players; //used before turns are determined by dice rolls
 public static ArrayList<Player> ordered_all_players; //ordered by makeTurn method
 	
 	
@@ -82,6 +82,8 @@ public static ArrayList<Player> ordered_all_players; //ordered by makeTurn metho
     	}
     }
 	
+    
+    //makes all players roll a die, stores each players value in a map, then adds them to ordered_all_players list
 public static ArrayList<Player> makeTurn(ArrayList<Player> playersList) {
 		
 		
