@@ -43,6 +43,7 @@ public class BuildingModeHandler implements GameMapListener {
 		System.out.println("selectedContinents() works");
 		WorldMap.InitiateTerritoriesUI(gameMap, buildHandle);
 	}
+	
 	@Override
 	public void nextPhase() {
 		// TODO Auto-generated method stub
