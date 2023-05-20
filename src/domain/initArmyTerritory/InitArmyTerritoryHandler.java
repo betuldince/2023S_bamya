@@ -9,6 +9,7 @@ import domain.ArmyPiece;
 import domain.Player;
 import domain.gamemap.GameMap;
 import domain.gamemap.GameMapListener;
+import domain.gamemap.Territory;
 
 public class InitArmyTerritoryHandler implements GameMapListener{
 	public static GameMap gameMap;
@@ -16,6 +17,8 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	private static int totalPlayerCount;
 	
 	ArmyPiece armyPiece = ArmyPiece.ArmyPiece_initiation();
+	
+	private int turnIndex = 0; //in order to keep track of turns while deploying army
 	
 	//InitArmyTerritoryHandler IATHandler = InitArmyTerritoryHandler.createArmyTerHandler(gameMap);
 	
@@ -61,9 +64,13 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		}
 		
 	}
+	
 	@Override
-	public void nextPhase() {
+	public void nextTurn(Territory t) {
 		// TODO Auto-generated method stub
+		
+		WorldMap.frame.dispose(); //closing previous map
+		
 		ArrayList<Player> ordered_players = AllPlayers.ordered_all_players;
 		int lastPlayerIndex = ordered_players.size() -1;
 		Player lastPlayer = ordered_players.get(lastPlayerIndex);
@@ -71,9 +78,61 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		int lastPlayerInfantryCount = map.get("infantry");
 		System.out.println("last player infantry count: " + lastPlayerInfantryCount);
 		
-		if(lastPlayerInfantryCount != 0) { //this phase goes on until the last player has 0 army piece
-			WorldMap.InitiateArmyTerritoryMap(gameMap, this);
+		int queueSize = ordered_players.size() ; //in order to get modulus
+		turnIndex = turnIndex % queueSize;
+		
+		//if player's turn is completed then it's next player's turn, if not same player repeats
+		boolean turnCompleted = completeTurn(ordered_players.get(turnIndex), t, armyPiece);
+		
+		if(turnCompleted) {
+			turnIndex++;
+			turnIndex = turnIndex % queueSize; //just to be safe
 		}
+		
+		
+		if(lastPlayerInfantryCount != 0) { //this phase goes on until the last player has 0 army piece
+			WorldMap.InitiateArmyTerritoryMap(gameMap, this, ordered_players.get(turnIndex));
+		} else {
+			WorldMap.
+		}
+		
+	}
+	
+	
+	//method checks is if the selected territory is valid (unoccupied or occupied by user)
+	// if it returns true then turn will continue from next user
+	// if it returns false then user's turn will repeat until they choose valid territory
+	public boolean completeTurn(Player p, Territory t, ArmyPiece ap) {
+		
+		boolean b;
+		
+		if(t.getTerritoryOwner() == p) {
+			ap.updateArmyNumber(t, 1,  "infantry"); //increases number of troops in territory
+			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
+			b = true;
+			
+			System.out.println(ap.getArmyNumber(p));
+			
+		} else if (t.getTerritoryOwner() == null) {
+			ap.addNewTerritoryArmy(t, "infantry", 1); //increases number of troops in territory
+			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
+			t.setTerritoryOwner(p);
+			
+			System.out.println(ap.getArmyNumber(p));
+			
+			
+			b = true; 
+		} else {
+			b = false;
+		}
+		
+		return b;
+	}
+	
+	
+	@Override
+	public void nextPhase() {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -21,6 +21,7 @@ import javax.swing.JCheckBox;
 import domain.gamemap.*;
 import domain.initArmyTerritory.InitArmyTerritoryHandler;
 import domain.initArmyTerritory.InitArmyTerritoryStarter;
+import domain.Player;
 import domain.buildingmode.*;
 
 
@@ -616,10 +617,10 @@ public class WorldMap {
 	    }
 	   
 	   
-	   public static void InitiateArmyTerritoryMap(GameMap gameMap, InitArmyTerritoryHandler IATHandler) {
+	   public static void InitiateArmyTerritoryMap(GameMap gameMap, InitArmyTerritoryHandler IATHandler, Player p) {
 		   
 		   frame = new JFrame();
-		   JPanel panel = SetUpPanel("InitiateArmy");
+		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
 
 		   addSelectedTerritories(gameMap); 
 
@@ -643,7 +644,7 @@ public class WorldMap {
 	      frame.setVisible(true);
 	      
 	      
-	      JButton contBtn = new JButton("Next Phase");
+	      JButton contBtn = new JButton("Next Turn");
 	      contBtn.setBounds(150,200,100,30);
 	      panel.add(contBtn);
 	      contBtn.addActionListener(new ActionListener() {
@@ -651,10 +652,76 @@ public class WorldMap {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				IATHandler.nextPhase();
+				
+				Territory t = whichTerritorySelected();
+				IATHandler.nextTurn(t);
 			}
 	    	  
 	      });
+	   }
+	   
+	   
+	   private static Territory whichTerritorySelected() {
+		   
+		 //Territories in continent 1
+			if(checkbox1_1.isSelected()) return GameMap.territory1_1;
+			if(checkbox1_2.isSelected()) return GameMap.territory1_2;
+			if(checkbox1_3.isSelected()) return GameMap.territory1_3;
+			if(checkbox1_4.isSelected()) return GameMap.territory1_4;
+			if(checkbox1_5.isSelected()) return GameMap.territory1_5;
+			if(checkbox1_6.isSelected()) return GameMap.territory1_6;
+			if(checkbox1_7.isSelected()) return GameMap.territory1_7;
+			
+			//Territories in continent 2
+			if(checkbox2_1.isSelected()) return GameMap.territory2_1;
+			if(checkbox2_2.isSelected()) return GameMap.territory2_2;
+			if(checkbox2_3.isSelected()) return GameMap.territory2_3;
+			if(checkbox2_4.isSelected()) return GameMap.territory2_4;
+			if(checkbox2_5.isSelected()) return GameMap.territory2_5;
+			if(checkbox2_6.isSelected()) return GameMap.territory2_6;
+			if(checkbox2_7.isSelected()) return GameMap.territory2_7;
+			
+			//Territories in continent 3
+			if(checkbox3_1.isSelected()) return GameMap.territory3_1;
+			if(checkbox3_2.isSelected()) return GameMap.territory3_2;
+			if(checkbox3_3.isSelected()) return GameMap.territory3_3;
+			if(checkbox3_4.isSelected()) return GameMap.territory3_4;
+			if(checkbox3_5.isSelected()) return GameMap.territory3_5;
+			if(checkbox3_6.isSelected()) return GameMap.territory3_6;
+			if(checkbox3_7.isSelected()) return GameMap.territory3_7;
+		
+			//Territories in continent 4
+			if(checkbox4_1.isSelected()) return GameMap.territory4_1;
+			if(checkbox4_2.isSelected()) return GameMap.territory4_2;
+			if(checkbox4_3.isSelected()) return GameMap.territory4_3;
+			if(checkbox4_4.isSelected()) return GameMap.territory4_4;
+			if(checkbox4_5.isSelected()) return GameMap.territory4_5;
+			if(checkbox4_6.isSelected()) return GameMap.territory4_6;
+			if(checkbox4_7.isSelected()) return GameMap.territory4_7;
+			
+			//Territories in continent 5
+			if(checkbox5_1.isSelected()) return GameMap.territory5_1;
+			if(checkbox5_2.isSelected()) return GameMap.territory5_2;
+			if(checkbox5_3.isSelected()) return GameMap.territory5_3;
+			if(checkbox5_4.isSelected()) return GameMap.territory5_4;
+			if(checkbox5_5.isSelected()) return GameMap.territory5_5;
+			if(checkbox5_6.isSelected()) return GameMap.territory5_6;
+			if(checkbox5_7.isSelected()) return GameMap.territory5_7;
+			
+			//Territories in continent 6
+			if(checkbox6_1.isSelected()) return GameMap.territory6_1;
+			if(checkbox6_2.isSelected()) return GameMap.territory6_2;
+			if(checkbox6_3.isSelected()) return GameMap.territory6_3;
+			if(checkbox6_4.isSelected()) return GameMap.territory6_4;
+			if(checkbox6_5.isSelected()) return GameMap.territory6_5;
+			if(checkbox6_6.isSelected()) return GameMap.territory6_6;
+			if(checkbox6_7.isSelected()) return GameMap.territory6_7;
+			
+			else {
+				System.out.println("Error selecting territories");
+				return null;
+			}
+		   
 	   }
 	   
 	   
