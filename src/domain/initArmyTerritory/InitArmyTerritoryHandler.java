@@ -40,7 +40,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	public int calculateInitialArmy(int totalPlayerCount) {
 		
 		switch (totalPlayerCount) {
-			case 2: return 40; 
+			case 2: return 2; 
 			case 3: return 35; 
 			case 4: return 30; 
 			case 5: return 25; 
@@ -111,6 +111,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		if(t.getTerritoryOwner() == p) {
 			ap.updateArmyNumber(t, 1,  "infantry"); //increases number of troops in territory
 			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
+			
 			b = true;
 			
 			System.out.println(ap.getArmyNumber(p));
@@ -119,6 +120,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 			ap.addNewTerritoryArmy(t, "infantry", 1); //increases number of troops in territory
 			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
 			t.setTerritoryOwner(p);
+			p.add_territory(t);
 			
 			System.out.println(ap.getArmyNumber(p));
 			
@@ -136,6 +138,8 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	public void nextPhase() {
 		// TODO Auto-generated method stub
 		System.out.println("next phase btn clicked");
+		
+		
 	}
 	
 	

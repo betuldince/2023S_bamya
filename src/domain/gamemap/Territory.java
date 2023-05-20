@@ -12,7 +12,7 @@ import domain.Player;
 
 public enum Territory implements Comparable<Territory> {
 	
-	TERRITORY1_1("Territory1_1", WorldMap.checkbox1_1),
+	TERRITORY1_1("Territory1_1", WorldMap.checkbox1_1, WorldMap.panel1_1),
 	TERRITORY1_2("Territory1_2", WorldMap.checkbox1_2),
 	TERRITORY1_3("Territory1_3", WorldMap.checkbox1_3),
 	TERRITORY1_4("Territory1_4", WorldMap.checkbox1_4),

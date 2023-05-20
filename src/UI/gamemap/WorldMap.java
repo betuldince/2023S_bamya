@@ -264,6 +264,67 @@ public class WorldMap {
 	      }
     }
     
+    private static void addPlayersTerritories(Player p) {
+    	
+    	
+		for(Continent c: gameMap.initiatedContinents) {
+	    	  System.out.println("Continent: " + c.contName);
+	      
+	    	  switch (c.contName){
+	    	  	
+	    	  	case "Continent1": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+		    	  		if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel1.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent2": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel2.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent3": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel3.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent4": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel4.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent5": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel5.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent6": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  			panel6.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  
+	    	  
+	    	  }
+	      }
+    }
+    
   
     //implemented in order to make user select only 1 checkbox at a time
     private static ButtonGroup createCheckBoxGroup(GameMap gameMap) {
@@ -660,6 +721,48 @@ public class WorldMap {
 	      });
 	   }
 	   
+	   public static void InitiatePlayersTerritoryMap(GameMap gameMap, Player p) {
+		   
+		   frame = new JFrame();
+		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
+
+		   addPlayersTerritories(p); 
+
+		   LayoutManager layoutCont = new GridLayout(4,2);  
+		   panel.setLayout(layoutCont);
+		   addPlayersTerritories(p);
+		   
+		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
+		  
+		   
+	      panel.add(panel1);
+	      panel.add(panel2);
+	      panel.add(panel3);
+	      panel.add(panel4);
+	      panel.add(panel5);
+	      panel.add(panel6);
+	      
+	      frame.getContentPane().add(panel, BorderLayout.CENTER);
+	      
+	      frame.setSize(500, 500);      
+	      frame.setVisible(true);
+	      
+	      
+	      JButton contBtn = new JButton("Next Turn");
+	      contBtn.setBounds(150,200,100,30);
+	      panel.add(contBtn);
+	      contBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				Territory t = whichTerritorySelected();
+				IATHandler.nextTurn(t);
+			}
+	    	  
+	      });
+	   }
 	   
 	   private static Territory whichTerritorySelected() {
 		   
