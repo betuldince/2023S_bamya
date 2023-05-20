@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import UI.gamemap.WorldMap;
+import UI.otherScreens.NextPhasePopUpWindow;
 import domain.AllPlayers;
 import domain.ArmyPiece;
 import domain.Player;
@@ -93,7 +94,8 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		if(lastPlayerInfantryCount != 0) { //this phase goes on until the last player has 0 army piece
 			WorldMap.InitiateArmyTerritoryMap(gameMap, this, ordered_players.get(turnIndex));
 		} else {
-			WorldMap.
+			NextPhasePopUpWindow nxtPhase = new NextPhasePopUpWindow();
+			nxtPhase.createNextPhasePopUp(this);
 		}
 		
 	}
@@ -133,7 +135,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	@Override
 	public void nextPhase() {
 		// TODO Auto-generated method stub
-		
+		System.out.println("next phase btn clicked");
 	}
 	
 	
