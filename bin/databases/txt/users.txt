@@ -4,3 +4,5 @@ melih{password:melih,icon:crown}
 ege{password:ege,icon:crown}
 yigit{password:yigit,icon:crown}
 aaa{password:aaa,icon:crown}
+ege1{password:123,icon:crown}
+ege2{password:123,icon:crown}

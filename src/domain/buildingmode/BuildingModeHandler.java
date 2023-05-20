@@ -52,5 +52,10 @@ public class BuildingModeHandler implements GameMapListener {
 		InitArmyTerritoryStarter.startInitiatingArmyTerritory();
 		
 	}
+	@Override
+	public void nextTurn(Territory t) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -27,9 +27,12 @@ public class InitArmyTerritoryStarter {
 		System.out.println("InitArmyTerStarter called");
 		
 		InitArmyTerritoryHandler IATHandler = InitArmyTerritoryHandler.createArmyTerHandler(gameMap);
-		turnList = AllPlayers.makeTurn(AllPlayers.all_players);
+		turnList = AllPlayers.makeTurn(AllPlayers.all_players); //initiates (creates) ordered_all_players
 		IATHandler.distributeInitialArmy(turnList);
-		WorldMap.InitiateArmyTerritoryMap(gameMap, IATHandler);
+		
+		//Initiates a while loop implemented by nextPhase() observer pattern in IATHandler
+		Player firstPlayer = turnList.get(0);
+		WorldMap.InitiateArmyTerritoryMap(gameMap, IATHandler, firstPlayer);
 		
 		
 		
