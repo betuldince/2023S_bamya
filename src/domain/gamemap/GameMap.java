@@ -157,8 +157,10 @@ public class GameMap {
 	}
 
 	public void specifyContinent(Continent c) {
+		if (!GameMap.initiatedContinents.contains(c)) {
 		GameMap.initiatedContinents.add(c);
 		System.out.println("Continent: " + c.contName + " is added");
+		}
 	}
 
 	private boolean checkNumContinent(BuildingModeHandler buildHandle) {
@@ -172,8 +174,10 @@ public class GameMap {
 	}
 
 	public void specifyTerritory(Continent c, Territory t) {
+		if (! c.initiatedTerritories.contains(t)) {
 		c.initiatedTerritories.add(t);
 		System.out.println("Territory" + t + " added to " + c);
+		}
 	}
 
 	private void checkMap() {

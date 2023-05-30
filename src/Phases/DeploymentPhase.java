@@ -3,6 +3,8 @@ package Phases;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import UI.deployment.DeploymentPhaseModeHandler;
+import UI.gamemap.WorldMap;
 import UI.otherScreens.InformationGiver;
 import UI.user_input_taker.ArmyCardChoiceCondtionScreen;
 import UI.user_input_taker.TerritoryCardSelectionScreen;
@@ -17,6 +19,7 @@ import domain.TerritoryCard;
 import domain.TerritoryCardDeck;
 import domain.ChanceCards.ChanceCardDeck;
 import domain.gamemap.Continent;
+import domain.gamemap.GameMap;
 import domain.gamemap.Territory;
 
 public class DeploymentPhase {
@@ -42,7 +45,7 @@ public class DeploymentPhase {
 	
 
 	
-	public void run() throws InterruptedException {
+	public void run(Boolean next_hase) throws InterruptedException {
 		// first ask the player if s/he wishes to trade in his/her cards:
 		//kart değişim ekranı oluşturman lazım:
 		InformationGiver.run("Deployment Phase for the player "+current_player.Player_Name+" has started",1);
@@ -301,6 +304,12 @@ public class DeploymentPhase {
 		
 		// now do the unit distribution among the territories: 
 		
+		GameMap map = GameMap.Map_initiation();
+		DeploymentPhaseHandler Handler = new DeploymentPhaseHandler( this.current_player, map,turnly_total_number_of_infantry,turnly_total_number_of_cavalyr,turnly_total_number_of_artiellry,  next_hase);
+		WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, this.current_player, Handler);
+		
+		
+
 		
 		
 		

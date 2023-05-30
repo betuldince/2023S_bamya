@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import UI.gamemap.WorldMap;
 import domain.ArmyPiece;
@@ -13,55 +15,60 @@ import domain.Player;
 public enum Territory implements Comparable<Territory> {
 	
 	TERRITORY1_1("Territory1_1", WorldMap.checkbox1_1, WorldMap.panel1_1),
-	TERRITORY1_2("Territory1_2", WorldMap.checkbox1_2),
-	TERRITORY1_3("Territory1_3", WorldMap.checkbox1_3),
-	TERRITORY1_4("Territory1_4", WorldMap.checkbox1_4),
-	TERRITORY1_5("Territory1_5", WorldMap.checkbox1_5),
-	TERRITORY1_6("Territory1_6", WorldMap.checkbox1_6),
-	TERRITORY1_7("Territory1_7", WorldMap.checkbox1_7),
+	TERRITORY1_2("Territory1_2", WorldMap.checkbox1_2, WorldMap.panel1_2),
+	TERRITORY1_3("Territory1_3", WorldMap.checkbox1_3, WorldMap.panel1_3),
+	TERRITORY1_4("Territory1_4", WorldMap.checkbox1_4, WorldMap.panel1_4),
+	TERRITORY1_5("Territory1_5", WorldMap.checkbox1_5, WorldMap.panel1_5),
+	TERRITORY1_6("Territory1_6", WorldMap.checkbox1_6, WorldMap.panel1_6),
+	TERRITORY1_7("Territory1_7", WorldMap.checkbox1_7, WorldMap.panel1_7),
 	
-	TERRITORY2_1("Territory2_1", WorldMap.checkbox2_1),
-	TERRITORY2_2("Territory2_2", WorldMap.checkbox2_2),
-	TERRITORY2_3("Territory2_3", WorldMap.checkbox2_3),
-	TERRITORY2_4("Territory2_4", WorldMap.checkbox2_4),
-	TERRITORY2_5("Territory2_5", WorldMap.checkbox2_5),
-	TERRITORY2_6("Territory2_6", WorldMap.checkbox2_6),
-	TERRITORY2_7("Territory2_7", WorldMap.checkbox2_7),
+	TERRITORY2_1("Territory2_1", WorldMap.checkbox2_1, WorldMap.panel2_1),
+	TERRITORY2_2("Territory2_2", WorldMap.checkbox2_2, WorldMap.panel2_2),
+	TERRITORY2_3("Territory2_3", WorldMap.checkbox2_3, WorldMap.panel2_3),
+	TERRITORY2_4("Territory2_4", WorldMap.checkbox2_4, WorldMap.panel2_4),
+	TERRITORY2_5("Territory2_5", WorldMap.checkbox2_5, WorldMap.panel2_5),
+	TERRITORY2_6("Territory2_6", WorldMap.checkbox2_6, WorldMap.panel2_6),
+	TERRITORY2_7("Territory2_7", WorldMap.checkbox2_7, WorldMap.panel2_7),
 	
-	TERRITORY3_1("Territory3_1", WorldMap.checkbox3_1),
-	TERRITORY3_2("Territory3_2", WorldMap.checkbox3_2),
-	TERRITORY3_3("Territory3_3", WorldMap.checkbox3_3),
-	TERRITORY3_4("Territory3_4", WorldMap.checkbox3_4),
-	TERRITORY3_5("Territory3_5", WorldMap.checkbox3_5),
-	TERRITORY3_6("Territory3_6", WorldMap.checkbox3_6),
-	TERRITORY3_7("Territory3_7", WorldMap.checkbox3_7),
+	TERRITORY3_1("Territory3_1", WorldMap.checkbox3_1, WorldMap.panel3_1),
+	TERRITORY3_2("Territory3_2", WorldMap.checkbox3_2, WorldMap.panel3_2),
+	TERRITORY3_3("Territory3_3", WorldMap.checkbox3_3, WorldMap.panel3_3),
+	TERRITORY3_4("Territory3_4", WorldMap.checkbox3_4, WorldMap.panel3_4),
+	TERRITORY3_5("Territory3_5", WorldMap.checkbox3_5, WorldMap.panel3_5),
+	TERRITORY3_6("Territory3_6", WorldMap.checkbox3_6, WorldMap.panel3_6),
+	TERRITORY3_7("Territory3_7", WorldMap.checkbox3_7, WorldMap.panel3_7),
 	
-	TERRITORY4_1("Territory4_1", WorldMap.checkbox4_1),
-	TERRITORY4_2("Territory4_2", WorldMap.checkbox4_2),
-	TERRITORY4_3("Territory4_3", WorldMap.checkbox4_3),
-	TERRITORY4_4("Territory4_4", WorldMap.checkbox4_4),
-	TERRITORY4_5("Territory4_5", WorldMap.checkbox4_5),
-	TERRITORY4_6("Territory4_6", WorldMap.checkbox4_6),
-	TERRITORY4_7("Territory4_7", WorldMap.checkbox4_7),
+	TERRITORY4_1("Territory4_1", WorldMap.checkbox4_1, WorldMap.panel4_1),
+	TERRITORY4_2("Territory4_2", WorldMap.checkbox4_2, WorldMap.panel4_2),
+	TERRITORY4_3("Territory4_3", WorldMap.checkbox4_3, WorldMap.panel4_3),
+	TERRITORY4_4("Territory4_4", WorldMap.checkbox4_4, WorldMap.panel4_4),
+	TERRITORY4_5("Territory4_5", WorldMap.checkbox4_5, WorldMap.panel4_5),
+	TERRITORY4_6("Territory4_6", WorldMap.checkbox4_6, WorldMap.panel4_6),
+	TERRITORY4_7("Territory4_7", WorldMap.checkbox4_7, WorldMap.panel4_7),
 	
-	TERRITORY5_1("Territory5_1", WorldMap.checkbox5_1),
-	TERRITORY5_2("Territory5_2", WorldMap.checkbox5_2),
-	TERRITORY5_3("Territory5_3", WorldMap.checkbox5_3),
-	TERRITORY5_4("Territory5_4", WorldMap.checkbox5_4),
-	TERRITORY5_5("Territory5_5", WorldMap.checkbox5_5),
-	TERRITORY5_6("Territory5_6", WorldMap.checkbox5_6),
-	TERRITORY5_7("Territory5_7", WorldMap.checkbox5_7),
+	TERRITORY5_1("Territory5_1", WorldMap.checkbox5_1, WorldMap.panel5_1),
+	TERRITORY5_2("Territory5_2", WorldMap.checkbox5_2, WorldMap.panel5_2),
+	TERRITORY5_3("Territory5_3", WorldMap.checkbox5_3, WorldMap.panel5_3),
+	TERRITORY5_4("Territory5_4", WorldMap.checkbox5_4, WorldMap.panel5_4),
+	TERRITORY5_5("Territory5_5", WorldMap.checkbox5_5, WorldMap.panel5_5),
+	TERRITORY5_6("Territory5_6", WorldMap.checkbox5_6, WorldMap.panel5_6),
+	TERRITORY5_7("Territory5_7", WorldMap.checkbox5_7, WorldMap.panel5_7),
 	
-	TERRITORY6_1("Territory6_1", WorldMap.checkbox6_1),
-	TERRITORY6_2("Territory6_2", WorldMap.checkbox6_2),
-	TERRITORY6_3("Territory6_3", WorldMap.checkbox6_3),
-	TERRITORY6_4("Territory6_4", WorldMap.checkbox6_4),
-	TERRITORY6_5("Territory6_5", WorldMap.checkbox6_5),
-	TERRITORY6_6("Territory6_6", WorldMap.checkbox6_6),
-	TERRITORY6_7("Territory6_7", WorldMap.checkbox6_7);
+	TERRITORY6_1("Territory6_1", WorldMap.checkbox6_1 , WorldMap.panel6_1),
+	TERRITORY6_2("Territory6_2", WorldMap.checkbox6_2, WorldMap.panel6_2),
+	TERRITORY6_3("Territory6_3", WorldMap.checkbox6_3, WorldMap.panel6_3),
+	TERRITORY6_4("Territory6_4", WorldMap.checkbox6_4, WorldMap.panel6_4),
+	TERRITORY6_5("Territory6_5", WorldMap.checkbox6_5, WorldMap.panel6_5),
+	TERRITORY6_6("Territory6_6", WorldMap.checkbox6_6, WorldMap.panel6_6),
+	TERRITORY6_7("Territory6_7", WorldMap.checkbox6_7, WorldMap.panel6_7);
 	
 	private final String territoryName;
 	public final JCheckBox checkbox;
+	public JPanel panel;
+	public JTextField unit1;
+	public JTextField unit2;
+	public JTextField unit3;
+	
 	
 	private Player territoryOwner;
 	private Continent which_continent;
@@ -72,6 +79,14 @@ public enum Territory implements Comparable<Territory> {
 		// TODO Auto-generated constructor stub
 		this.territoryName = string;
 		this.checkbox = checkbox;
+		
+	}
+	Territory(String string, JCheckBox checkbox, JPanel panel) {
+		// TODO Auto-generated constructor stub
+		this.territoryName = string;
+		this.checkbox = checkbox;
+		this.panel=panel;
+		
 		
 	}
 	

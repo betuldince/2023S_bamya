@@ -3,6 +3,7 @@ package UI.gamemap;
 import java.awt.BorderLayout;
 import java.awt.CheckboxGroup;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,11 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
+
+import Phases.DeploymentPhaseHandler;
+
 import javax.swing.JCheckBox;
 
 import domain.gamemap.*;
@@ -98,6 +103,62 @@ public class WorldMap {
     public static JCheckBox checkbox6_6 = new JCheckBox("Territory 6.6");
     public static JCheckBox checkbox6_7 = new JCheckBox("Territory 6.7");
 	
+    // each territory has a corresponding panel for entering unit numbers
+    public static JPanel panel1_1 = new JPanel();
+    public static JPanel panel1_2 = new JPanel();
+    public static JPanel panel1_3 = new JPanel();
+    public static JPanel panel1_4 = new JPanel();
+    public static JPanel panel1_5 = new JPanel();
+    public static JPanel panel1_6 = new JPanel();
+    public static JPanel panel1_7 = new JPanel();
+    
+    public static JPanel panel2_1 = new JPanel();
+    public static JPanel panel2_2 = new JPanel();
+    public static JPanel panel2_3 = new JPanel();
+    public static JPanel panel2_4 = new JPanel();
+    public static JPanel panel2_5 = new JPanel();
+    public static JPanel panel2_6 = new JPanel();
+    public static JPanel panel2_7 = new JPanel();
+    
+    public static JPanel panel3_1 = new JPanel();
+    public static JPanel panel3_2 = new JPanel();
+    public static JPanel panel3_3 = new JPanel();
+    public static JPanel panel3_4 = new JPanel();
+    public static JPanel panel3_5 = new JPanel();
+    public static JPanel panel3_6 = new JPanel();
+    public static JPanel panel3_7 = new JPanel();
+    
+    public static JPanel panel4_1 = new JPanel();
+    public static JPanel panel4_2 = new JPanel();
+    public static JPanel panel4_3 = new JPanel();
+    public static JPanel panel4_4 = new JPanel();
+    public static JPanel panel4_5 = new JPanel();
+    public static JPanel panel4_6 = new JPanel();
+    public static JPanel panel4_7 = new JPanel();
+    
+    public static JPanel panel5_1 = new JPanel();
+    public static JPanel panel5_2 = new JPanel();
+    public static JPanel panel5_3 = new JPanel();
+    public static JPanel panel5_4 = new JPanel();
+    public static JPanel panel5_5 = new JPanel();
+    public static JPanel panel5_6 = new JPanel();
+    public static JPanel panel5_7 = new JPanel();
+    
+    public static JPanel panel6_1 = new JPanel();
+    public static JPanel panel6_2 = new JPanel();
+    public static JPanel panel6_3 = new JPanel();
+    public static JPanel panel6_4 = new JPanel();
+    public static JPanel panel6_5 = new JPanel();
+    public static JPanel panel6_6 = new JPanel();
+    public static JPanel panel6_7 = new JPanel();
+    
+    
+    
+    
+
+    
+    // done
+    
 
     static Border blackline = BorderFactory.createLineBorder(Color.black);
     
@@ -141,6 +202,80 @@ public class WorldMap {
 	    panel6.setBorder(blackline);
 	    panel6.setBackground(Color.gray);
 	    panel6.add(continentBox6);
+    }
+    
+    
+    // ****initialize panels for the deployment phase
+    
+    private static void d_initPanel1() {
+	    panel1.setBorder(blackline);
+	    panel1.setBackground(Color.red);
+	    panel1.add(continentBox1);
+    }
+    
+    //Continent 2
+    private static void d_initPanel2() {
+	    panel2.setBorder(blackline);
+	    panel2.setBackground(Color.green);
+	    panel2.add(continentBox2);
+    }
+    
+    //Continent 3
+    private static void d_initPanel3() {
+    panel3.setBorder(blackline);
+	    panel3.setBackground(Color.blue);
+	    panel3.add(continentBox3);
+    }
+    
+  //Continent 4
+    private static void d_initPanel4() {
+	    panel4.setBorder(blackline);
+	    panel4.setBackground(Color.magenta);
+	    panel4.add(continentBox4);
+    }
+    
+  //Continent 5
+    private static void d_initPanel5() {
+	    panel5.setBorder(blackline);
+	    panel5.setBackground(Color.yellow);
+	    panel5.add(continentBox5);
+    }
+    
+  //Continent 6
+    private static void d_initPanel6() {
+	    panel6.setBorder(blackline);
+	    panel6.setBackground(Color.gray);
+	    panel6.add(continentBox6);
+    }
+    // *****done
+    
+    
+    
+    // j plane text field adder method
+    private static void deployment_Panel_modifier(JPanel panel, Territory t) {
+    	JTextField  unit1= new JTextField();
+    	JTextField  unit2= new JTextField();
+    	JTextField  unit3= new JTextField();
+    	
+    	unit1.setPreferredSize(new Dimension(250,40));
+    	unit2.setPreferredSize(new Dimension(250,40));
+    	unit3.setPreferredSize(new Dimension(250,40));
+    	
+    	unit1.setText("unit 1");
+    	unit1.setText("unit 2");
+    	unit1.setText("unit 3");
+    	
+    	panel.add(unit1);
+    	panel.add(unit2);
+    	panel.add(unit3);
+    	
+    	t.unit1=unit1;
+    	t.unit2=unit2;
+    	t.unit3=unit3;
+    	
+    	
+    	
+    	
     }
     
     private static void addTerritoriesContinent1() {
@@ -317,6 +452,75 @@ public class WorldMap {
 	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
 	    	  				t.checkbox.setSelected(false);
 		    	  			panel6.add(t.checkbox);
+	    	  		}
+	    	  		break;
+	    	  
+	    	  
+	    	  }
+	      }
+    }
+    
+private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod kullanılmadan önce bütün continentlar ve territorilerin initaited olmuş olması gerekioyr
+    	
+    	
+		for(Continent c: gameMap.initiatedContinents) { 
+	    	  System.out.println("Continent: " + c.contName);
+	      
+	    	  switch (c.contName){
+	    	  	
+	    	  	case "Continent1": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+		    	  		if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+		    	  		    deployment_Panel_modifier(t.panel, t);
+		    	  		
+		    	  		
+		    	  			panel1.add(t.panel);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent2": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+	    	  			    deployment_Panel_modifier(t.panel,t);
+		    	  			panel2.add(t.panel);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent3": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+	    	  			    deployment_Panel_modifier(t.panel,t);
+		    	  			panel3.add(t.panel);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent4": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+	    	  			    deployment_Panel_modifier(t.panel,t);
+		    	  			panel4.add(t.panel);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent5": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+	    	  			    deployment_Panel_modifier(t.panel,t);
+		    	  			panel5.add(t.panel);
+	    	  		}
+	    	  		break;
+	    	  	
+	    	  	case "Continent6": 
+	    	  		for (Territory t: c.initiatedTerritories) {
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  				t.checkbox.setSelected(false);
+	    	  			    deployment_Panel_modifier(t.panel,t);
+		    	  			panel6.add(t.panel);
 	    	  		}
 	    	  		break;
 	    	  
@@ -510,6 +714,61 @@ public class WorldMap {
 			return panel;
 	   }
 	   
+	  public static void initiateAllContinentsforDeploymentPhase(DeploymentPhaseHandler handler) {
+		  handler.specifyContinent(gameMap.continent1);
+		  handler.specifyContinent(gameMap.continent2);
+		  handler.specifyContinent(gameMap.continent3);
+		  handler.specifyContinent(gameMap.continent4);
+		  handler.specifyContinent(gameMap.continent5);
+		  handler.specifyContinent(gameMap.continent6);
+		  
+	  }
+	  public static void initiateAllTerritoriesforDeploymentPhase(DeploymentPhaseHandler handler) {
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_1);
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_2);
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_3);
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_4);
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_5);
+		  handler.specifyTerritory(GameMap.continent1, GameMap.territory1_6);
+		  
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_1);
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_2);
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_3);
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_4);
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_5);
+		  handler.specifyTerritory(GameMap.continent2, GameMap.territory2_6);
+		  
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_1);
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_2);
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_3);
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_4);
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_5);
+		  handler.specifyTerritory(GameMap.continent3, GameMap.territory3_6);
+		  
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_1);
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_2);
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_3);
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_4);
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_5);
+		  handler.specifyTerritory(GameMap.continent4, GameMap.territory4_6);
+		  
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_1);
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_2);
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_3);
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_4);
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_5);
+		  handler.specifyTerritory(GameMap.continent5, GameMap.territory5_6);
+		  
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_1);
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_2);
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_3);
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_4);
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_5);
+		  handler.specifyTerritory(GameMap.continent6, GameMap.territory6_6);
+		  
+	  }
+	  
+	   
 	   
 	   
 	   
@@ -691,6 +950,7 @@ public class WorldMap {
 		   
 		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
 		  
+	
 		   
 	      panel.add(panel1);
 	      panel.add(panel2);
@@ -716,6 +976,94 @@ public class WorldMap {
 				
 				Territory t = whichTerritorySelected();
 				IATHandler.nextTurn(t);
+			}
+	    	  
+	      });
+	   }
+	   public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler) {
+		   
+		   frame = new JFrame();
+		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
+
+		   
+	
+
+		   LayoutManager layoutCont = new GridLayout(4,2);  
+		   panel.setLayout(layoutCont);
+		   addPlayersTerritories(p);
+		   
+		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
+		  
+		  
+		  
+		  d_initPanel1();
+		  d_initPanel2();
+		  d_initPanel3();
+		  d_initPanel4();
+		  d_initPanel5();
+		  d_initPanel6();
+		  
+		  initiateAllContinentsforDeploymentPhase(handler);
+		  initiateAllTerritoriesforDeploymentPhase(handler);
+		  addPlayersTerritoriesDeploymentPhase(p); 
+		  
+		   
+	      panel.add(panel1);
+	      panel.add(panel2);
+	      panel.add(panel3);
+	      panel.add(panel4);
+	      panel.add(panel5);
+	      panel.add(panel6);
+	      
+	      frame.getContentPane().add(panel, BorderLayout.CENTER);
+	      
+	      frame.setSize(500, 500);      
+	      frame.setVisible(true);
+	      
+	      
+	      
+	      
+	      JButton contBtn = new JButton("Distribute the Units");
+	      contBtn.setBounds(150,200,100,30);
+	      panel.add(contBtn);
+	      
+	      JPanel information_panel=new JPanel();
+	      
+	  	  JTextField  i_unit1= new JTextField();
+    	  JTextField  i_unit2= new JTextField();
+    	  JTextField  i_unit3= new JTextField();
+    	
+    	  i_unit1.setPreferredSize(new Dimension(250,40));
+    	  i_unit2.setPreferredSize(new Dimension(250,40));
+    	  i_unit3.setPreferredSize(new Dimension(250,40));
+    	
+    	  i_unit1.setText("number of Infantry is: "+Integer.toString(handler.unit1));
+    	  i_unit2.setText("number of Cavalyr is: "+Integer.toString(handler.unit2));
+    	  i_unit3.setText("number of Artillery is: "+Integer.toString(handler.unit3));
+    	
+    	  information_panel.add(i_unit1);
+    	  information_panel.add(i_unit2);
+    	  information_panel.add(i_unit3);
+    	  
+    	  panel.add(information_panel);
+    	  
+    	  
+	      
+	      contBtn.addActionListener(new ActionListener() {
+	    	  
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				//get the unit values for all the territories
+				
+			
+				frame.setVisible(false);
+				frame.dispose();
+				
+				handler.distributeUnits(gameMap,p,handler);
+				
 			}
 	    	  
 	      });
