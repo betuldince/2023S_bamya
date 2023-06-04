@@ -13,6 +13,9 @@ import domain.Dice;
 import domain.Player;
 import domain.buildingmode.*;
 import domain.gamemap.*;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
 
 
 public class GameMap {
@@ -189,7 +192,7 @@ public class GameMap {
 			return false;
 		}
 	}
-	//implement breadth first search to connect indirectly neighbouring territories
+	//implement breadth first search to connect indirectly neighboring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if((isConnected(defortifiedTerritory, fortifiedTerritory)) && (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType)) &&
 				(((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType)))>=2)) {
@@ -200,11 +203,39 @@ public class GameMap {
 		}
 
 	}
+	
+	
+	/** fortifyTerritory:
+	 * Fortifies the selected territory using army units from another territory by specifying the unitType and unitQuantity.
+	 * <p>
+	 * REQUIRES: Existing territories with neighborings, army quantities and army units specified 
+	 * MODIFIES: The quantity of army units located on the fortified and defortified territories. This information is stored in ArmyPiece
+	 * class so it modifies the hashmap values in this class.  
+	 * Effects: Void return but increases the number of army quantities of specificed units in the fortified territory given 
+	 * 			in the (HashMap territoryArmyPieceMap of the) ArmyPiece class while decreasing	the army units in the defortified 
+	 * 			territory with the same quantity and type 
+	 * 			if the territories fulfil the conditions such as:
+	 * 				* The territories must be connected meaning that there has to be an existing path between the territories (neighbors of
+	 * 				neighbors)
+	 * 				* The remaining number of total army units (with given weights) in the defortified territory must be higher 
+	 * 				than 2 after defortification
+	 * 				* The defortified territory must have at least unitQuantity amount of unitType
+	 * @param  defortifiedTerritory : variable of type Territory, territory the units will be moved from
+	 * @param  fortifiedTerritory : variable of type Territory, territory the units will be moved to
+	 * @param  unitType : variable of type string specifying the type of unit that will be moved
+	 * @param  unitQuantity : variable of type int specifying the number of units that will be moved
+	 * @return void
+	 * 				
+	 */
+	
+	
 	public void fortifyTerritory(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if(checkTerritoryFortificationValidity(defortifiedTerritory,fortifiedTerritory,unitType,unitQuantity)){
 			fortifyMap(defortifiedTerritory,fortifiedTerritory,unitType,unitQuantity);
 		}
 	}
+	
+	
 	public void fortifyMap(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if(unitType.equals("infantry")) {
 			defortifiedTerritory.updateInfantryUnitNumbers(-1*unitQuantity);
