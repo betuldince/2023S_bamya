@@ -69,26 +69,37 @@ public enum Territory implements Comparable<Territory> {
 	public JTextField unit2;
 	public JTextField unit3;
 	
+	private int x_pos;
+	private int y_pos;
+	
 	
 	private Player territoryOwner;
 	private Continent which_continent;
 	
 	int number_of_units_on_the_territory=0;	//this variable will deleted
 
-	Territory(String string, JCheckBox checkbox) {
-		// TODO Auto-generated constructor stub
-		this.territoryName = string;
-		this.checkbox = checkbox;
-		
-	}
+	
 	Territory(String string, JCheckBox checkbox, JPanel panel) {
 		// TODO Auto-generated constructor stub
 		this.territoryName = string;
 		this.checkbox = checkbox;
 		this.panel=panel;
 		
+		x_pos = Character.getNumericValue(territoryName.charAt(territoryName.length()-3)); System.out.println(territoryName + "x =" + x_pos);
+		y_pos = Character.getNumericValue(territoryName.charAt(territoryName.length()-1)); System.out.println(territoryName + "y =" + y_pos);
+		
 		
 	}
+	
+	public int getXCoordinate() {
+		return x_pos;
+	}
+	
+	public int getYCoordinate() {
+		return y_pos;
+	}
+	
+	
 	
 	boolean tEnabled = false;
 	int occupied;

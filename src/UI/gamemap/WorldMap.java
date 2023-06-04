@@ -5,10 +5,13 @@ import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridLayout;
+import java.awt.Insets;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -39,12 +42,14 @@ public class WorldMap {
 	
 
 	 //Creating Continents (as panels)
-    private static JPanel panel1 = new JPanel();
-    private static JPanel panel2 = new JPanel();
-    private static JPanel panel3 = new JPanel();
-    private static JPanel panel4 = new JPanel();
-    private static JPanel panel5 = new JPanel();
-    private static JPanel panel6 = new JPanel();
+    private static JPanel panel1 = new JPanel(new GridBagLayout());
+    private static JPanel panel2 = new JPanel(new GridBagLayout());
+    private static JPanel panel3 = new JPanel(new GridBagLayout());
+    private static JPanel panel4 = new JPanel(new GridBagLayout());
+    private static JPanel panel5 = new JPanel(new GridBagLayout());
+    private static JPanel panel6 = new JPanel(new GridBagLayout());
+    
+    private static GridBagConstraints gbc = new GridBagConstraints();
     
     private static JCheckBox continentBox1 = new JCheckBox("Continent 1");
     private static JCheckBox continentBox2 = new JCheckBox("Continent 2");
@@ -278,6 +283,16 @@ public class WorldMap {
     	
     }
     
+    //methods for adding territories to panels in certain grids
+    private static void addTerritoryCheckBox(JPanel panel, GridBagConstraints gbc, JCheckBox cb, int x, int y) {
+        
+        gbc.gridx = x; System.out.println("x = " + x);
+        gbc.gridy = y; System.out.println("y = " + y);
+        //gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(5, 5, 5, 5);
+        panel.add(cb, gbc);
+    }
+    
     private static void addTerritoriesContinent1() {
     	panel1.add(checkbox1_1);
 		panel1.add(checkbox1_2);
@@ -344,7 +359,8 @@ public class WorldMap {
 	}
 	
     
-    private static void addSelectedTerritories(GameMap gameMap) {
+    private static void addSelectedTerritories(GameMap gameMap, JPanel panel) {
+    	
     	
     	
 		for(Continent c: gameMap.initiatedContinents) {
@@ -355,42 +371,42 @@ public class WorldMap {
 	    	  	case "Continent1": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel1.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent2": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel2.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent3": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel3.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent4": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel4.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent5": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel5.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent6": 
 	    	  		for (Territory t: c.initiatedTerritories) {
 	    	  			t.checkbox.setSelected(false);
-	    	  			panel6.add(t.checkbox);
+	    	  			addTerritoryCheckBox(panel, gbc, t.checkbox, t.getXCoordinate(), t.getYCoordinate());
 	    	  		}
 	    	  		break;
 	    	  
@@ -576,7 +592,7 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 	     
 	   
 	      
-	      LayoutManager layoutTer = new GridLayout(2,3);
+	      LayoutManager layoutTer = new GridBagLayout();
 	      
 	      //Continent 1
 	      //panel1.add(new JLabel());  
@@ -942,11 +958,11 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 		   frame = new JFrame();
 		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
 
-		   addSelectedTerritories(gameMap); 
+		   
 
-		   LayoutManager layoutCont = new GridLayout(4,2);  
+		   LayoutManager layoutCont = new GridBagLayout();  
 		   panel.setLayout(layoutCont);
-		   addSelectedTerritories(gameMap);
+		   addSelectedTerritories(gameMap, panel);
 		   
 		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
 		  

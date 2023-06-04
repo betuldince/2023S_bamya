@@ -149,6 +149,14 @@ public class GameMap {
 		
 	}
 	
+	public int getXCoordinateTerritory(Territory t) {
+		return t.getXCoordinate();
+	}
+	
+	public int getYCoordinateTerritory(Territory t) {
+		return t.getYCoordinate();
+	}
+	
 	public static GameMap Map_initiation() {
 		if (single_map_instance == null) {
 			single_map_instance = new GameMap();
