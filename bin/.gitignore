@@ -1,3 +1,4 @@
-/domain/
-/UI/
+/module-info.class
 /Phases/
+/domain/
+/test/

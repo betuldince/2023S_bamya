@@ -13,17 +13,114 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Phases.AttackPhase;
+import Phases.RunningMode;
 import UI.otherScreens.pause.PauseButton;
 import UI.validation.*;
+import domain.AllPlayers;
+import domain.AllTerritories;
+import domain.ArmyPiece;
+import domain.Player;
 import domain.StartingHandler;
+import domain.gamemap.GameMap;
 import domain.userOperations.CurrentLogins;
 
 public class Main {
 
 	
 		
-		public static void main(String[] args) {
+		public static void main(String[] args) throws InterruptedException {
 			//to test attackphase related methods
+			AllPlayers ordered_all_players=AllPlayers.createAllPlayers();
+			AllTerritories AllTerritories= new AllTerritories();
+			
+			Player player1= new Player("melih");
+			Player player2= new Player("begüm");
+			
+			ordered_all_players.add_new_player(player1);
+			ordered_all_players.add_new_player(player2);
+			
+			GameMap map=GameMap.Map_initiation();
+			AllTerritories.add_a_new_territory(GameMap.territory1_1);
+			AllTerritories.add_a_new_territory(GameMap.territory1_2);
+			AllTerritories.add_a_new_territory(GameMap.territory1_3);
+			AllTerritories.add_a_new_territory(GameMap.territory1_4);
+			AllTerritories.add_a_new_territory(GameMap.territory1_5);
+			AllTerritories.add_a_new_territory(GameMap.territory1_6);
+			
+			AllTerritories.add_a_new_territory(GameMap.territory2_1);
+			AllTerritories.add_a_new_territory(GameMap.territory2_2);
+			AllTerritories.add_a_new_territory(GameMap.territory2_3);
+			AllTerritories.add_a_new_territory(GameMap.territory2_4);
+			AllTerritories.add_a_new_territory(GameMap.territory2_5);
+			AllTerritories.add_a_new_territory(GameMap.territory2_6);
+			
+			AllTerritories.add_a_new_territory(GameMap.territory3_1);
+			AllTerritories.add_a_new_territory(GameMap.territory3_2);
+			AllTerritories.add_a_new_territory(GameMap.territory3_3);
+			AllTerritories.add_a_new_territory(GameMap.territory3_4);
+			AllTerritories.add_a_new_territory(GameMap.territory3_5);
+			AllTerritories.add_a_new_territory(GameMap.territory3_6);
+			
+			AllTerritories.add_a_new_territory(GameMap.territory4_1);
+			AllTerritories.add_a_new_territory(GameMap.territory4_2);
+			AllTerritories.add_a_new_territory(GameMap.territory4_3);
+			AllTerritories.add_a_new_territory(GameMap.territory4_4);
+			AllTerritories.add_a_new_territory(GameMap.territory4_5);
+			AllTerritories.add_a_new_territory(GameMap.territory4_6);
+			
+			AllTerritories.add_a_new_territory(GameMap.territory5_1);
+			AllTerritories.add_a_new_territory(GameMap.territory5_2);
+			AllTerritories.add_a_new_territory(GameMap.territory5_3);
+			AllTerritories.add_a_new_territory(GameMap.territory5_4);
+			AllTerritories.add_a_new_territory(GameMap.territory5_5);
+			AllTerritories.add_a_new_territory(GameMap.territory5_6);
+			
+			AllTerritories.add_a_new_territory(GameMap.territory6_1);
+			AllTerritories.add_a_new_territory(GameMap.territory6_2);
+			AllTerritories.add_a_new_territory(GameMap.territory6_3);
+			AllTerritories.add_a_new_territory(GameMap.territory6_4);
+			AllTerritories.add_a_new_territory(GameMap.territory6_5);
+			AllTerritories.add_a_new_territory(GameMap.territory6_6);
+			
+			ArmyPiece army=ArmyPiece.ArmyPiece_initiation();
+			
+			for (int a=0; a<18; a++) {
+				player1.add_territory(AllTerritories.get_the_nth_territory(a));
+				army.addNewTerritoryArmy(AllTerritories.get_the_nth_territory(a), "Infantry", 1);
+				army.addNewPlayerArmy(player1, "Infantry", 1);
+				
+			}
+			for (int a=0; a<18; a++) {
+				player2.add_territory(AllTerritories.get_the_nth_territory(a+18));
+				army.addNewTerritoryArmy(AllTerritories.get_the_nth_territory(a+18), "Infantry", 1);
+				army.addNewPlayerArmy(player2, "Infantry", 1);
+				
+			}
+			
+			RunningMode game=new RunningMode(ordered_all_players, AllTerritories);
+			game.run();
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 
 			AttackPhase attack= new AttackPhase();
 			attack.run();

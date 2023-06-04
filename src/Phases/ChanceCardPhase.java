@@ -38,6 +38,9 @@ public class ChanceCardPhase {
 		
 		InformationGiver.run("The assigned chance card is "+our_chance_card.get_the_name(),1);
 		
+		Dice our_dice1=Dice.Dice_initiation();
+		this.our_dice=our_dice1;
+		
 		our_chance_card.run(other_players, current_player, our_dice);
 		
 		return 1; // 1 means phase is complete with SUCCESS code.

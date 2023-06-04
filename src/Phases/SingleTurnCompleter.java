@@ -29,6 +29,10 @@ public class SingleTurnCompleter {
 			our_deployment_phase.run(next_phase);
 			
 			while (next_phase) { // wait for the deployment phase to complete
+				//System.out.println("hayır");
+				
+			}
+				System.out.println("evet");
 				AttackPhase our_attack_phase=new AttackPhase();
 				our_attack_phase.run();
 			
@@ -47,7 +51,7 @@ public class SingleTurnCompleter {
 				TerritoryArmyCardPhase our_territory_army_card_phase=new TerritoryArmyCardPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player);
 				our_territory_army_card_phase.run();
 				
-			}
+			
 			
 			
 			

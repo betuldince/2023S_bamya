@@ -154,6 +154,10 @@ public enum Territory implements Comparable<Territory> {
 		armyPiece.updateArmyNumber(this, unitQuantity, "cavalry");
 	}
 	
+	public void set_continent(Continent con) {
+		this.which_continent=con;
+	}
+	
 	
 	
 	

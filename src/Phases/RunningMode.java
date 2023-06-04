@@ -23,7 +23,9 @@ public class RunningMode {
 	AllTerritories all_territories=null;
 	ArmyPiece army_information=null;
 	
-	public RunningMode(AllPlayers ordered_all_players,AllTerritories all_territories, ArmyPiece army_information ) {
+	public RunningMode(AllPlayers ordered_all_players,AllTerritories all_territories) {
+		ArmyPiece army_information=ArmyPiece.ArmyPiece_initiation();
+		
 		our_dice=Dice.Dice_initiation(6,1);
 		this.all_players=ordered_all_players;
 		this.all_territories=all_territories;

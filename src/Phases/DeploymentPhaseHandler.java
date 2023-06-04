@@ -141,12 +141,14 @@ public class DeploymentPhaseHandler {
 			}
 			if (this.unit1==0 && this.unit2==0 && this.unit3==0) {
 				// finish the deployment phase and proceed with the next phase
+				System.out.println("tamamlandı");
 				next_phase=false;
 				
 				//
 				
 			}
 			else { // deployment devam ediyor
+				System.out.println("sisteme işlendi devam ediyor**************");
 				WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(gameMap, p, handler);
 				
 			}
@@ -155,6 +157,7 @@ public class DeploymentPhaseHandler {
 		}
 		else {
 			// wrong unit numbers tekrardan
+			System.out.println("olmadı yeniden");
 			WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(gameMap, p, handler);
 		}
 		

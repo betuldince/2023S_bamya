@@ -158,6 +158,71 @@ public class WorldMap {
 
     
     // done
+    private static void refresh_panels() {
+    	panel1 = new JPanel();
+        panel2 = new JPanel();
+        panel3 = new JPanel();
+        panel4 = new JPanel();
+        panel5 = new JPanel();
+        panel6 = new JPanel();
+        
+        continentBox1 = new JCheckBox("Continent 1");
+        continentBox2 = new JCheckBox("Continent 2");
+        continentBox3 = new JCheckBox("Continent 3");
+        continentBox4 = new JCheckBox("Continent 4");
+        continentBox5 = new JCheckBox("Continent 5");
+        continentBox6 = new JCheckBox("Continent 6");
+        
+        panel1_1 = new JPanel();
+        panel1_2 = new JPanel();
+        panel1_3 = new JPanel();
+        panel1_4 = new JPanel();
+        panel1_5 = new JPanel();
+        panel1_6 = new JPanel();
+        panel1_7 = new JPanel();
+        
+        panel2_1 = new JPanel();
+        panel2_2 = new JPanel();
+        panel2_3 = new JPanel();
+        panel2_4 = new JPanel();
+        panel2_5 = new JPanel();
+        panel2_6 = new JPanel();
+        panel2_7 = new JPanel();
+        
+        panel3_1 = new JPanel();
+        panel3_2 = new JPanel();
+        panel3_3 = new JPanel();
+        panel3_4 = new JPanel();
+        panel3_5 = new JPanel();
+        panel3_6 = new JPanel();
+        panel3_7 = new JPanel();
+        
+        panel4_1 = new JPanel();
+        panel4_2 = new JPanel();
+        panel4_3 = new JPanel();
+        panel4_4 = new JPanel();
+        panel4_5 = new JPanel();
+        panel4_6 = new JPanel();
+        panel4_7 = new JPanel();
+        
+        panel5_1 = new JPanel();
+        panel5_2 = new JPanel();
+        panel5_3 = new JPanel();
+        panel5_4 = new JPanel();
+        panel5_5 = new JPanel();
+        panel5_6 = new JPanel();
+        panel5_7 = new JPanel();
+        
+        panel6_1 = new JPanel();
+        panel6_2 = new JPanel();
+        panel6_3 = new JPanel();
+        panel6_4 = new JPanel();
+        panel6_5 = new JPanel();
+        panel6_6 = new JPanel();
+        panel6_7 = new JPanel();
+        
+    	
+    }
     
 
     static Border blackline = BorderFactory.createLineBorder(Color.black);
@@ -257,13 +322,13 @@ public class WorldMap {
     	JTextField  unit2= new JTextField();
     	JTextField  unit3= new JTextField();
     	
-    	unit1.setPreferredSize(new Dimension(250,40));
-    	unit2.setPreferredSize(new Dimension(250,40));
-    	unit3.setPreferredSize(new Dimension(250,40));
+    	unit1.setPreferredSize(new Dimension(60,40));
+    	unit2.setPreferredSize(new Dimension(60,40));
+    	unit3.setPreferredSize(new Dimension(60,40));
     	
-    	unit1.setText("unit 1");
-    	unit1.setText("unit 2");
-    	unit1.setText("unit 3");
+    	unit1.setText("I");
+    	unit2.setText("C");
+    	unit3.setText("A");
     	
     	panel.add(unit1);
     	panel.add(unit2);
@@ -981,6 +1046,7 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 	      });
 	   }
 	   public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler) {
+		   refresh_panels();
 		   
 		   frame = new JFrame();
 		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
