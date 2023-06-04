@@ -15,9 +15,9 @@ public class ArmyPiece {
 	private static HashMap<String, Integer> armyUnitWeights= new HashMap<String,Integer>();
 	
 	private ArmyPiece() {
-		armyUnitWeights.put("Infantry", 1);
-		armyUnitWeights.put("Cavalyr", 5);
-		armyUnitWeights.put("Artillery", 10);
+		armyUnitWeights.put("infantry", 1);
+		armyUnitWeights.put("cavalry", 5);
+		armyUnitWeights.put("artillery", 10);
 
 	}
 	public static ArmyPiece ArmyPiece_initiation() {

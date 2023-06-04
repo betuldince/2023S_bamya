@@ -157,10 +157,8 @@ public class GameMap {
 	}
 
 	public void specifyContinent(Continent c) {
-		if (!GameMap.initiatedContinents.contains(c)) {
 		GameMap.initiatedContinents.add(c);
 		System.out.println("Continent: " + c.contName + " is added");
-		}
 	}
 
 	private boolean checkNumContinent(BuildingModeHandler buildHandle) {
@@ -174,10 +172,8 @@ public class GameMap {
 	}
 
 	public void specifyTerritory(Continent c, Territory t) {
-		if (! c.initiatedTerritories.contains(t)) {
 		c.initiatedTerritories.add(t);
 		System.out.println("Territory" + t + " added to " + c);
-		}
 	}
 
 	private void checkMap() {
@@ -186,7 +182,7 @@ public class GameMap {
 	
 	//consider moving this method to territory?
 	public boolean checkTerritoryAttackValidity(Territory attackTerritory,Territory targetTerritory) {
-		if(isNeighbouring(attackTerritory, targetTerritory) & attackTerritory.checkAttackValidity()) {
+		if(isNeighbouring(attackTerritory, targetTerritory) && attackTerritory.checkAttackValidity()) {
 			return true;
 		}
 		else {
@@ -195,14 +191,19 @@ public class GameMap {
 	}
 	//implement breadth first search to connect indirectly neighbouring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
-		if(isNeighbouring(defortifiedTerritory, fortifiedTerritory) & (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType))&
-				((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType))>=2)) {
+		if((isConnected(defortifiedTerritory, fortifiedTerritory)) && (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType)) &&
+				(((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType)))>=2)) {
 			return true;
 		}
 		else {
 			return false;
 		}
 
+	}
+	public void fortifyTerritory(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
+		if(checkTerritoryFortificationValidity(defortifiedTerritory,fortifiedTerritory,unitType,unitQuantity)){
+			fortifyMap(defortifiedTerritory,fortifiedTerritory,unitType,unitQuantity);
+		}
 	}
 	public void fortifyMap(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if(unitType.equals("infantry")) {
