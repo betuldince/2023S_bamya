@@ -18,6 +18,13 @@ class RequestLoginTest {
 		assertEquals(expectedResult, result, "admin nickname with admin password should be a valid login");
 	}
 	
+	/* 
+	 * Requesting a login with admin nickname and admin password should give 
+	 * already logged in warning after the test above. This is because CurrentLogins 
+	 * would be modified to contain admin login by the requestLogin. This behavior
+	 * was described in the requestLogin specifications in the MODIFIES section.
+	 */
+	
 	@Test
 	void invalidInput() {
 		UserOperationHandler handler = new UserOperationHandler();
