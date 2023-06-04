@@ -17,6 +17,17 @@ public class StartingHandler {
 		
 		return handler;	
 	}
+	
+	/**validatePlayerInput
+	 * Validates the player count.
+	 * <p>
+	 * REQUIRES: None
+	 * MODIFIES: None
+	 * EFFECTS: Returns true if count is valid, else false.
+	 * 
+	 * @param input a string stating the desired player count
+	 * @return isValidInput a boolean, the validity of the input
+	 */
 
 	public boolean validatePlayerInput(String input) {
 		Start start = new Start(input);
@@ -24,6 +35,19 @@ public class StartingHandler {
 
 		return isValidInput;
 	}
+	
+	
+	
+	/**validateComputerInput
+	 * Validates the computer count.
+	 * <p>
+	 * REQUIRES: a validated player count as integer
+	 * MODIFIES: None
+	 * EFFECTS: Returns true if count is valid, else false.
+	 * 
+	 * @param input a string stating the desired computer count
+	 * @return isValidInput a boolean, the validity of the input
+	 */
 	
 	public boolean validateComputerInput(String input, int playerCount) {
 		Start start = new Start(input, playerCount);
