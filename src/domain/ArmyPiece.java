@@ -74,6 +74,67 @@ public class ArmyPiece {
 		return armyUnitWeights.get(armyType);
 		
 	}
+	public void updateMapArmiesBattle(Territory attackerTerritory, Territory defenderTerritory, Player winner) {
+		if(attackerTerritory.getTerritoryOwner().equals(winner)) {
+			if(defenderTerritory.getInfantryUnitNumbers()>=1) {
+				defenderTerritory.updateInfantryUnitNumbers(-1);
+			}
+			else if(defenderTerritory.getCavalryUnitNumber()>0) {
+				defenderTerritory.updateCavalryUnitNumbers(-1);
+				defenderTerritory.updateInfantryUnitNumbers(4);
+			}
+			else {
+				defenderTerritory.updateArtilleryUnitNumbers(-1);
+				defenderTerritory.updateCavalryUnitNumbers(1);
+				defenderTerritory.updateInfantryUnitNumbers(4);
+			}
+			//case defeated defender territory
+			if(defenderTerritory.getTotalNumberOfArmyUnits()==0) {
+				//update territory owner
+				defenderTerritory.setTerritoryOwner(winner);
+				Player attacker= attackerTerritory.getTerritoryOwner();
+				Player defender= defenderTerritory.getTerritoryOwner();
+				
+				//Update Players' territory lists
+				attacker.add_territory(defenderTerritory);
+				defender.remove_Territory(defenderTerritory);
+
+			}
+		}
+		else {
+			if(attackerTerritory.getInfantryUnitNumbers()>=2) {
+				attackerTerritory.updateInfantryUnitNumbers(-2);
+			}
+			else if(attackerTerritory.getCavalryUnitNumber()>0){
+				attackerTerritory.updateCavalryUnitNumbers(-1);
+				attackerTerritory.updateArtilleryUnitNumbers(3);
+			}
+			else {
+				attackerTerritory.updateArtilleryUnitNumbers(-1);
+				attackerTerritory.updateCavalryUnitNumbers(1);
+				attackerTerritory.updateInfantryUnitNumbers(3);	
+			}				
+			//attacker never loses territory during an attack
+
+		}		
+
+	}
+	public void fortifyMapArmies(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
+		if(unitType.equals("infantry")) {
+			defortifiedTerritory.updateInfantryUnitNumbers(-1*unitQuantity);
+			fortifiedTerritory.updateInfantryUnitNumbers(unitQuantity);
+
+		}
+		else if (unitType.equals("cavalry")) {
+			defortifiedTerritory.updateCavalryUnitNumbers(-1*unitQuantity);
+			defortifiedTerritory.updateCavalryUnitNumbers(unitQuantity);
+		}
+		else {
+			defortifiedTerritory.updateArtilleryUnitNumbers(-1*unitQuantity);
+			defortifiedTerritory.updateArtilleryUnitNumbers(unitQuantity);
+		}
+	}
+	
 	
 	
 }

@@ -258,17 +258,17 @@ public class DeploymentPhase {
 								
 								// update the army information
 								
-								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("Infantry")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("Infantry"),  "Infantry");
-								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("Cavalyr")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("Cavalyr"),  "Cavalyr");
-								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("Artillery")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("Artillery"),  "Artillery");
+								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("infantry")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("infantry"),  "infantry");
+								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("cavalry")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("cavalry"),  "cavalry");
+								this.the_army_information.updateArmyNumber(this.other_players.get_the_nth_player(h), -this.the_army_information.getArmyNumber(subject).get("artillery")+this.the_army_information.getArmyNumber(this.other_players.get_the_nth_player(h)).get("artillery"),  "artillery");
 								
 								
 								
-								this.the_army_information.updateArmyNumber(subject, 1, "Infantry");
-								this.the_army_information.updateArmyNumber(subject, 0, "Cavalyr");
-								this.the_army_information.updateArmyNumber(subject, 0, "Artillery");
+								this.the_army_information.updateArmyNumber(subject, 1, "infantry");
+								this.the_army_information.updateArmyNumber(subject, 0, "cavalry");
+								this.the_army_information.updateArmyNumber(subject, 0, "artillery");
 								
-								this.the_army_information.updateArmyNumber(current_player, this.the_army_information.getArmyNumber(current_player).get("Infantry")+1 , "Infantry");
+								this.the_army_information.updateArmyNumber(current_player, this.the_army_information.getArmyNumber(current_player).get("infantry")+1 , "infantry");
 								
 								
 								

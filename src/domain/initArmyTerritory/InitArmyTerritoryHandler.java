@@ -3,6 +3,7 @@ package domain.initArmyTerritory;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import Phases.AttackPhase;
 import UI.gamemap.WorldMap;
 import UI.otherScreens.NextPhasePopUpWindow;
 import domain.AllPlayers;
@@ -138,8 +139,9 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	public void nextPhase() {
 		// TODO Auto-generated method stub
 		System.out.println("next phase btn clicked");
-		
-		
+		AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
+		attackPhaseHandler.setAttacker(AllPlayers.ordered_all_players.get(0));
+		attackPhaseHandler.selectAttackTerritory();
 	}
 	
 	
