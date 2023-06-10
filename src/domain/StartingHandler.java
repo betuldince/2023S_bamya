@@ -58,6 +58,4 @@ public class StartingHandler {
 		allPlayers.createGamePlayers(computerCount);
 		BuildingModeStarter.main(null);		
 	}	
-	
-
 }

@@ -29,8 +29,8 @@ public class SingleTurnCompleter {
 			our_deployment_phase.run(next_phase);
 			
 			while (next_phase) { // wait for the deployment phase to complete
-				AttackPhase our_attack_phase=new AttackPhase();
-				our_attack_phase.run();
+				AttackPhase our_attack_phase= AttackPhase.GetAttackPhaseHandler();
+				//our_attack_phase.run();
 			
 				
 				// now we will check the winning condition: i.e. if the territories this player has corresponds to all territories we game is won by this player
