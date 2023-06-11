@@ -413,50 +413,66 @@ public class WorldMap {
 
 			case "Continent1": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					panel1.add(t.checkbox);
+				} 
 				}
+				
 				break;
 
 			case "Continent2": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					panel2.add(t.checkbox);
 				}
+				}
+				
 				break;
 
 			case "Continent3": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+						
+					
 						t.checkbox.setSelected(false);
 					panel3.add(t.checkbox);
 				}
+			}
+			
 				break;
 
 			case "Continent4": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+						
 						t.checkbox.setSelected(false);
 					panel4.add(t.checkbox);
 				}
+				}
+				
 				break;
 
 			case "Continent5": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					panel5.add(t.checkbox);
 				}
+				}
+				
 				break;
 
 			case "Continent6": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+						
 						t.checkbox.setSelected(false);
 					panel6.add(t.checkbox);
 				}
+				}
+				
 				break;
 
 
@@ -1280,94 +1296,108 @@ public class WorldMap {
 
 		});
 	}
-	public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler) {
+	public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler, boolean next_phase) {
+		   
+		   
+		   frame = new JFrame();
+		   JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
 
-		frame = new JFrame();
-		JPanel panel = SetUpPanel("InitiateArmy: " + p.Player_Name + "'s turn");
+		   
+	
 
-
-
-
-		LayoutManager layoutCont = new GridLayout(4,2);  
-		panel.setLayout(layoutCont);
-		addPlayersTerritories(p);
-
-		ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
-
-
-
-		d_initPanel1();
-		d_initPanel2();
-		d_initPanel3();
-		d_initPanel4();
-		d_initPanel5();
-		d_initPanel6();
-
-		initiateAllContinentsforDeploymentPhase(handler);
-		initiateAllTerritoriesforDeploymentPhase(handler);
-		addPlayersTerritoriesDeploymentPhase(p); 
-
-
-		panel.add(panel1);
-		panel.add(panel2);
-		panel.add(panel3);
-		panel.add(panel4);
-		panel.add(panel5);
-		panel.add(panel6);
-
-		frame.getContentPane().add(panel, BorderLayout.CENTER);
-
-		frame.setSize(500, 500);      
-		frame.setVisible(true);
-
-
-
-
-		JButton contBtn = new JButton("Distribute the Units");
-		contBtn.setBounds(150,200,100,30);
-		panel.add(contBtn);
-
-		JPanel information_panel=new JPanel();
-
-		JTextField  i_unit1= new JTextField();
-		JTextField  i_unit2= new JTextField();
-		JTextField  i_unit3= new JTextField();
-
-		i_unit1.setPreferredSize(new Dimension(250,40));
-		i_unit2.setPreferredSize(new Dimension(250,40));
-		i_unit3.setPreferredSize(new Dimension(250,40));
-
-		i_unit1.setText("number of Infantry is: "+Integer.toString(handler.unit1));
-		i_unit2.setText("number of Cavalyr is: "+Integer.toString(handler.unit2));
-		i_unit3.setText("number of Artillery is: "+Integer.toString(handler.unit3));
-
-		information_panel.add(i_unit1);
-		information_panel.add(i_unit2);
-		information_panel.add(i_unit3);
-
-		panel.add(information_panel);
-
-
-
-		contBtn.addActionListener(new ActionListener() {
-
+		   LayoutManager layoutCont = new GridLayout(4,2);  
+		   panel.setLayout(layoutCont);
+		   addPlayersTerritories(p);
+		   
+		  ButtonGroup checkBoxGroup = createCheckBoxGroup(gameMap);
+		  
+		  
+		  
+		  d_initPanel1();
+		  d_initPanel2();
+		  d_initPanel3();
+		  d_initPanel4();
+		  d_initPanel5();
+		  d_initPanel6();
+		  
+		  initiateAllContinentsforDeploymentPhase(handler);
+		  initiateAllTerritoriesforDeploymentPhase(handler);
+		  addPlayersTerritoriesDeploymentPhase(p); 
+		  
+		  panel.add(panel1);
+	      panel.add(panel2);
+	      panel.add(panel3);
+	      panel.add(panel4);
+	      panel.add(panel5);
+	      panel.add(panel6); 
+	      
+	      
+	      frame.getContentPane().add(panel, BorderLayout.CENTER);
+	      
+	      frame.setSize(500, 500);      
+	      frame.setVisible(true);
+	      
+	      
+	      
+	      
+	      JButton contBtn = new JButton("Distribute the Units");
+	      contBtn.setBounds(150,200,100,30);
+	      panel.add(contBtn);
+	      
+	      JPanel information_panel=new JPanel();
+	      
+	  	  JTextField  i_unit1= new JTextField();
+ 	  JTextField  i_unit2= new JTextField();
+ 	  JTextField  i_unit3= new JTextField();
+ 	
+ 	  i_unit1.setPreferredSize(new Dimension(250,40));
+ 	  i_unit2.setPreferredSize(new Dimension(250,40));
+ 	  i_unit3.setPreferredSize(new Dimension(250,40));
+ 	
+ 	  i_unit1.setText("number of Infantry is: "+Integer.toString(handler.unit1));
+ 	  i_unit2.setText("number of Cavalyr is: "+Integer.toString(handler.unit2));
+ 	  i_unit3.setText("number of Artillery is: "+Integer.toString(handler.unit3));
+ 	
+ 	  information_panel.add(i_unit1);
+ 	  information_panel.add(i_unit2);
+ 	  information_panel.add(i_unit3);
+ 	  
+ 	  panel.add(information_panel);
+ 	  
+ 	  
+	      
+	      contBtn.addActionListener(new ActionListener() {
+	    	  
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-
+				
 				//get the unit values for all the territories
-
-
-				frame.setVisible(false);
-				frame.dispose();
-
-				handler.distributeUnits(gameMap,p,handler);
-
+				System.out.println("tuşa basıldı*******************************************");
+				
+			
+				
+				
+				handler.distributeUnits(gameMap,p,handler,next_phase);
+				i_unit1.setText("number of Infantry is: "+Integer.toString(handler.unit1));
+		    	i_unit2.setText("number of Cavalyr is: "+Integer.toString(handler.unit2));
+		    	i_unit3.setText("number of Artillery is: "+Integer.toString(handler.unit3));
+		    	
+		    	if (handler.unit1==0 && handler.unit2==0 && handler.unit3==0 ) {
+		    		frame.setVisible(false);
+					frame.getContentPane().removeAll();
+					frame.repaint();
+					frame.dispose();
+		    		
+		    	}
+				
+				
+				
 			}
-
-		});
-	}
+	    	  
+	      });
+	   }
 
 	public static void InitiatePlayersTerritoryMap(GameMap gameMap, Player p, InitArmyTerritoryHandler IATHandler) {
 
