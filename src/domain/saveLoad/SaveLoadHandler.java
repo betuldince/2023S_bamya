@@ -19,6 +19,6 @@ public class SaveLoadHandler {
 	
 	public boolean save() {
 		Save save = new Save();
-		return save.success();
+		return save.isSuccessful();
 	}
 }

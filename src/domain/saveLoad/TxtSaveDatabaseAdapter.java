@@ -22,10 +22,9 @@ class TxtSaveDatabaseAdapter implements ISaveDatabaseAdapter {
 		String key;
 		while (gameKeys.hasNext()) {
 			key = gameKeys.next();
-			saveEntry += key + ":" + gameState.get(key) + ",";
+			saveEntry += "//{" + key + ":" + gameState.get(key) + "//}";
 		}
 		saveEntry = removeLastChar(saveEntry);
-		saveEntry += "}\n";
         
         try {
 
@@ -50,32 +49,21 @@ class TxtSaveDatabaseAdapter implements ISaveDatabaseAdapter {
 	
 	
 	// Created in case new keys are added.
-	public String getStatus(String statusKey) {
-
+	public GameState load() {
+		GameState gameState = new GameState();
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(databasePath.toFile()));			
-			String userInfo;
-			while ((userInfo = reader.readLine()) != null) {
-				String userNickname = userInfo.split("\\{")[0];
-				
-					String[] userAttributes = removeLastChar(userInfo.split("\\{")[1]).split(",");
-					if (userAttributes == null) {
-						reader.close();
-						return null;
-					}
-					for (String attribute: userAttributes) {
-						if (!((attribute.split(":")[0]).equals(statusKey))) {
-							continue;
-						}
-						else {
-							reader.close();
-							return (attribute.split(":")[1]);
-						}
-					}
-				
+			String state = reader.readLine();
+			String[] statusKeysValues =  state.split("\\{");
+			for (String statusKeyValue: statusKeysValues) {
+				statusKeyValue = removeLastChar(statusKeyValue);
+				String key = statusKeyValue.split(":")[0];
+				String value = statusKeyValue.split(":")[1];
+				gameState.put(key, value);
 			}
+
 			reader.close();
-			return null;
+			return gameState;
 		}
 		catch (IOException e) {
 			// TODO Auto-generated catch block
