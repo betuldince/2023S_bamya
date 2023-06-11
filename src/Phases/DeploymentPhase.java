@@ -3,7 +3,7 @@ package Phases;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import UI.deployment.DeploymentPhaseModeHandler;
+
 import UI.gamemap.WorldMap;
 import UI.otherScreens.InformationGiver;
 import UI.user_input_taker.ArmyCardChoiceCondtionScreen;
@@ -287,34 +287,10 @@ public class DeploymentPhase {
 		
 		GameMap map = GameMap.Map_initiation();
 		DeploymentPhaseHandler Handler = new DeploymentPhaseHandler( this.current_player, map,turnly_total_number_of_infantry,turnly_total_number_of_cavalyr,turnly_total_number_of_artiellry,  next_hase);
-		WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, this.current_player, Handler);
+		WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, this.current_player, Handler,next_hase);
 		
 		
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	 
-		
 		
 		
 	}

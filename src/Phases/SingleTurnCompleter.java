@@ -32,7 +32,7 @@ public class SingleTurnCompleter {
 				//System.out.println("hayır");
 				
 			}
-				System.out.println("evet");
+				System.out.println("evet************************************************************************************");
 				AttackPhase our_attack_phase=new AttackPhase();
 				our_attack_phase.run();
 			

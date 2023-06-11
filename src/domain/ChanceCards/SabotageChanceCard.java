@@ -22,6 +22,15 @@ public class SabotageChanceCard extends ChanceCard {
     		input_screen.run("Enter the name of the player of whom territory you want to sabotage");
     		String the_input=input_screen.get_input();
     		player_to_get_sabotaged=other_players.return_the_player_with_name(the_input);
+    		
+    		input_screen.run("the name of territories of chosen player are as follows");
+    		String uu="";
+    		for (int h=0; h<player_to_get_sabotaged.get_the_territories_in_control_of_the_player().size();h++) {
+    			uu.concat(player_to_get_sabotaged.get_the_territories_in_control_of_the_player().get(h).get_territory_name());
+    			uu.concat(" ");
+    			
+    		}
+    		input_screen.run(uu);
  
     		
     	

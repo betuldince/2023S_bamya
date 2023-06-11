@@ -535,57 +535,71 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 	    	  	
 	    	  	case "Continent1": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-		    	  		if(p.get_the_territories_in_control_of_the_player().contains(t))
+		    	  		if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+		    	  			System.out.println(t.name());
 	    	  				t.checkbox.setSelected(false);
 		    	  		    deployment_Panel_modifier(t.panel, t);
 		    	  		
 		    	  		
 		    	  			panel1.add(t.panel);
 	    	  		}
+	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent2": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+	    	  				System.out.println(t.name());
 	    	  				t.checkbox.setSelected(false);
 	    	  			    deployment_Panel_modifier(t.panel,t);
 		    	  			panel2.add(t.panel);
+	    	  		}
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent3": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+	    	  				System.out.println(t.name());
 	    	  				t.checkbox.setSelected(false);
 	    	  			    deployment_Panel_modifier(t.panel,t);
 		    	  			panel3.add(t.panel);
+	    	  		}
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent4": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+	    	  				System.out.println("yazık	**********************");
 	    	  				t.checkbox.setSelected(false);
 	    	  			    deployment_Panel_modifier(t.panel,t);
 		    	  			panel4.add(t.panel);
+	    	  		}
 	    	  		}
 	    	  		break;
 	    	  	
 	    	  	case "Continent5": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+	    	  				
+	    	  			
+	    	  				System.out.println(t.name()); 
 	    	  				t.checkbox.setSelected(false);
 	    	  			    deployment_Panel_modifier(t.panel,t);
 		    	  			panel5.add(t.panel);
 	    	  		}
+	    	  }
 	    	  		break;
 	    	  	
 	    	  	case "Continent6": 
 	    	  		for (Territory t: c.initiatedTerritories) {
-	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t))
+	    	  			if(p.get_the_territories_in_control_of_the_player().contains(t)) {
+	    	  				System.out.println(t.name());
 	    	  				t.checkbox.setSelected(false);
 	    	  			    deployment_Panel_modifier(t.panel,t);
 		    	  			panel6.add(t.panel);
+	    	  		}
 	    	  		}
 	    	  		break;
 	    	  
@@ -1045,7 +1059,7 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 	    	  
 	      });
 	   }
-	   public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler) {
+	   public static void InitiatePlayerTerritoryMapforDeploymentPhase(GameMap gameMap, Player p, DeploymentPhaseHandler handler, boolean next_phase) {
 		   refresh_panels();
 		   
 		   frame = new JFrame();
@@ -1073,13 +1087,13 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 		  initiateAllTerritoriesforDeploymentPhase(handler);
 		  addPlayersTerritoriesDeploymentPhase(p); 
 		  
-		   
-	      panel.add(panel1);
+		  panel.add(panel1);
 	      panel.add(panel2);
 	      panel.add(panel3);
 	      panel.add(panel4);
 	      panel.add(panel5);
-	      panel.add(panel6);
+	      panel.add(panel6); 
+	      
 	      
 	      frame.getContentPane().add(panel, BorderLayout.CENTER);
 	      
@@ -1123,12 +1137,25 @@ private static void addPlayersTerritoriesDeploymentPhase(Player p) { // bu metod
 				// TODO Auto-generated method stub
 				
 				//get the unit values for all the territories
+				System.out.println("tuşa basıldı*******************************************");
 				
 			
-				frame.setVisible(false);
-				frame.dispose();
 				
-				handler.distributeUnits(gameMap,p,handler);
+				
+				handler.distributeUnits(gameMap,p,handler,next_phase);
+				i_unit1.setText("number of Infantry is: "+Integer.toString(handler.unit1));
+		    	i_unit2.setText("number of Cavalyr is: "+Integer.toString(handler.unit2));
+		    	i_unit3.setText("number of Artillery is: "+Integer.toString(handler.unit3));
+		    	
+		    	if (handler.unit1==0 && handler.unit2==0 && handler.unit3==0 ) {
+		    		frame.setVisible(false);
+					frame.getContentPane().removeAll();
+					frame.repaint();
+					frame.dispose();
+		    		
+		    	}
+				
+				
 				
 			}
 	    	  

@@ -18,6 +18,8 @@ public class ReinforcementsChanceCard extends ChanceCard {
        
 		// roll the dice
 		int number_of_soldiers_to_be_added=our_dice.roll_one_dice();
+		UserInputTaker input_screen1=new UserInputTaker();
+		input_screen1.run("you will be reinforcing your chosen territory with the following number of infantry"+Integer.toString(number_of_soldiers_to_be_added) );
 		
 
 
@@ -27,6 +29,15 @@ public class ReinforcementsChanceCard extends ChanceCard {
         while (to_be_reinforced_with==null) {
         	UserInputTaker input_screen=new UserInputTaker();
     		input_screen.run("Enter the name of the territory you want to reinforce troops with");
+    		
+    		input_screen.run("the name of territories of yours are as follows");
+    		String uu="";
+    		for (int h=0; h<current_player.get_the_territories_in_control_of_the_player().size();h++) {
+    			uu.concat(current_player.get_the_territories_in_control_of_the_player().get(h).get_territory_name());
+    			uu.concat(" ");
+    			
+    		}
+    		input_screen.run(uu);
     		String the_input=input_screen.get_input();
         	to_be_reinforced_with=current_player.get_the_territory_with_the_name(the_input);
         	
