@@ -114,15 +114,15 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
 			
 			b = true;
-			
+			System.out.println(ap.getArmyNumber(t));
 			System.out.println(ap.getArmyNumber(p));
 			
 		} else if (t.getTerritoryOwner() == null) {
-			ap.addNewTerritoryArmy(t, "infantry", 1); //increases number of troops in territory
-			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
-			t.setTerritoryOwner(p);
 			p.add_territory(t);
-			
+			t.setTerritoryOwner(p);
+			ap.updateArmyNumber(t, 1,"infantry"); //increases number of troops in territory
+			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
+			System.out.println(ap.getArmyNumber(t));
 			System.out.println(ap.getArmyNumber(p));
 			
 			
@@ -141,7 +141,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		System.out.println("next phase btn clicked");
 		AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
 		attackPhaseHandler.setAttacker(AllPlayers.ordered_all_players.get(0));
-		attackPhaseHandler.selectAttackTerritory();
+		attackPhaseHandler.decideAttackAgain();
 	}
 	
 	
