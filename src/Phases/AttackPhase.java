@@ -43,10 +43,15 @@ public class AttackPhase implements GameMapListener{
 
 	
 	public void selectAttackTerritory() {
-		InitiateAttackUI initiateAnAttack = new InitiateAttackUI(attackerTerritories,attacker);
+		//get territories that are neighbouring enemy territories
+		ArrayList<Territory> attackerTerritoriesNeighbouringEnemy;
+		attackerTerritoriesNeighbouringEnemy=gameMap.getTerritoriesNeighbouringEnemy(attackerTerritories);
+		InitiateAttackUI initiateAnAttack = new InitiateAttackUI(attackerTerritoriesNeighbouringEnemy,attacker);
 		initiateAnAttack.DrawInitiateAttackMap();
 	}
 	public void selectTargetTerritory() {
+		System.out.println("Select");
+		System.out.println(armyPiece.getArmyNumber(attackTerritory));
 		ArrayList<Territory> attackableTerritories;
 		attackableTerritories=gameMap.getAttackableTerritories(attackTerritory);
 		AttackMap attackMap=new AttackMap(attackableTerritories,attacker);
@@ -59,13 +64,14 @@ public class AttackPhase implements GameMapListener{
 			this.selectAttackTerritory();
 		}
 		else {
-			//move to next player 
+			//move to fortification phase
+			FortificationPhase fortificationPhaseHandler = FortificationPhase.GetFortificationPhaseHandler();
+			fortificationPhaseHandler.setPlayer(attacker);
+			fortificationPhaseHandler.selectFortifyTerritory();
 		}
 	}
 
 
-	
-	
 	public void setAttackTerritory(Territory territory) {
 		this.attackTerritory=territory;
 	}
@@ -96,8 +102,11 @@ public class AttackPhase implements GameMapListener{
 	
 	public void attack(){
 		Player defender=targetTerritory.getTerritoryOwner();
-		attacker.playerRollsAttackDice();
-		String winner= attacker.getAttackDiceRollWinner();
+		Dice dice=Dice.Dice_initiation();
+		dice.rollDiceAttack();
+		String winner=dice.getWinner();
+		//attacker.playerRollsAttackDice();
+		//String winner= attacker.getAttackDiceRollWinner();
 		Player winnerPlayer;
 		Player loserPlayer;
 
@@ -115,6 +124,11 @@ public class AttackPhase implements GameMapListener{
 		}
 		loserPlayer.updatePlayerArmyNumberAfterAttack(unitQuantity);
 		gameMap.updateMapBattle(attackTerritory, targetTerritory, winnerPlayer);
+		System.out.println(winner);
+		System.out.println("Attacker territory army num:");
+		System.out.println(armyPiece.getArmyNumber(attackTerritory));
+		System.out.println("Defender territory army num:");
+		System.out.println(armyPiece.getArmyNumber(targetTerritory));
 	}
 	@Override
 	public void nextPhase() {

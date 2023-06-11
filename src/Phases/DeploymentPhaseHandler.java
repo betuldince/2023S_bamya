@@ -95,8 +95,8 @@ public class DeploymentPhaseHandler {
 					int number1=Integer.parseInt((t.unit1.getText()));
 					if (number1>=0) {
 						this.unit1-=number1;
-						army.updateArmyNumber(this.player, number1, "Infantry");
-						army.updateArmyNumber(t, number1, "Infantry");
+						army.updateArmyNumber(this.player, number1, "infantry");
+						army.updateArmyNumber(t, number1, "infantry");
 						
 					}
 
@@ -111,8 +111,8 @@ public class DeploymentPhaseHandler {
 					int number2=Integer.parseInt((t.unit2.getText()));
 					if (number2>=0) {
 						this.unit2-=number2;
-						army.updateArmyNumber(this.player, number2, "Cavalyr");
-						army.updateArmyNumber(t, number2, "Cavalyr");
+						army.updateArmyNumber(this.player, number2, "cavalry");
+						army.updateArmyNumber(t, number2, "cavalry");
 						
 					}
 					
@@ -126,8 +126,8 @@ public class DeploymentPhaseHandler {
 					int number3=Integer.parseInt((t.unit3.getText()));
 					if (number3>=0) {
 						this.unit3-=number3;
-						army.updateArmyNumber(this.player, number3, "Artillery");
-						army.updateArmyNumber(t, number3, "Artillery");
+						army.updateArmyNumber(this.player, number3, "artillery");
+						army.updateArmyNumber(t, number3, "artillery");
 						
 					}
 					

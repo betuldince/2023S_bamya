@@ -203,10 +203,11 @@ public class GameMap {
 			return true;
 		}
 		else {
+			System.out.println("Not a valid territory");
 			return false;
 		}
 	}
-//checks whether the player has any territory satisfying the conditions to be an attack territory
+	//checks whether the player has any territory satisfying the conditions to be an attack territory
 	public boolean checkPlayerCanAttack(Player player) {
 		ArrayList<Territory> playerTerritories=player.get_the_territories_in_control_of_the_player();
 		Iterator<Territory> territoryIterator=playerTerritories.iterator();
@@ -217,8 +218,9 @@ public class GameMap {
 				return true;
 			}
 		}
+		System.out.println("This player can't attack");
 		return false;
-		
+
 	}
 	public boolean checkIsNeighbouringEnemy(Territory territory) {
 		Iterator<Territory> territoryIterator=territory.getAdjacencySet().iterator();
@@ -229,10 +231,11 @@ public class GameMap {
 				return true;
 			}
 		}
+		System.out.println("This territory isn't neighbouring an enemy territory");
 		return false;
-		
+
 	}
-	
+
 	//implement breadth first search to connect indirectly neighbouring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if((isConnected(defortifiedTerritory, fortifiedTerritory)) && (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType)) &&
@@ -264,6 +267,22 @@ public class GameMap {
 		armyPiece.updateMapArmiesBattle(attackerTerritory, defenderTerritory, winner);
 
 	}
+	//this takes an ArrayList of territories and outputs the ones that are neighbouring enemy
+	public ArrayList<Territory> getTerritoriesNeighbouringEnemy(ArrayList<Territory> inputTerritories) {
+		ArrayList<Territory> outputTerritories = new ArrayList<Territory>();
+		Iterator<Territory> territoryIterator = inputTerritories.iterator();
+		while(territoryIterator.hasNext()) {
+			Territory currTerritory= territoryIterator.next();
+			if (this.getAttackableTerritories(currTerritory).size()>0) {
+				outputTerritories.add(currTerritory);
+			}
+		}
+		return outputTerritories;
+
+	}
+
+
+
 	public ArrayList<Territory> getAttackableTerritories(Territory territory) {
 		ArrayList<Territory> attackableTerritories= new ArrayList<Territory>();
 		Iterator<Territory> adjacentTerritoriesIterator;

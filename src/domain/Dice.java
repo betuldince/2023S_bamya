@@ -54,7 +54,7 @@ public class Dice {
 					attackerFaceValues[i]= rd.nextInt(numberOfFaces)+1;	
 				}
 				for (int j=0;j<numberOfDice;j++) {
-					attackerFaceValues[j]= rd.nextInt(numberOfFaces)+1;	
+					defenderFaceValues[j]= rd.nextInt(numberOfFaces)+1;	
 				}
 				
 			}
