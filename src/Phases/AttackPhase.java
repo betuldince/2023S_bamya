@@ -67,7 +67,7 @@ public class AttackPhase implements GameMapListener{
 			//move to fortification phase
 			FortificationPhase fortificationPhaseHandler = FortificationPhase.GetFortificationPhaseHandler();
 			fortificationPhaseHandler.setPlayer(attacker);
-			fortificationPhaseHandler.selectFortifyTerritory();
+			fortificationPhaseHandler.decideFortification();
 		}
 	}
 

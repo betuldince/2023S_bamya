@@ -236,6 +236,29 @@ public class GameMap {
 
 	}
 
+	public boolean checkPlayerCanFortify(Player player){
+		Iterator<Territory> territoryIterator=player.get_the_territories_in_control_of_the_player().iterator();
+		Territory currTerritory;
+		while(territoryIterator.hasNext()) {
+			currTerritory=territoryIterator.next();
+			//for demo >=
+			if((currTerritory.getArtilleryUnitNumbers()>=2)|| (currTerritory.getCavalryUnitNumber()>=2) ||
+					(currTerritory.getInfantryUnitNumbers()>=2)) {
+				Iterator<Territory> anotherTerritoryIterator=player.get_the_territories_in_control_of_the_player().iterator();
+				Territory isConnectedTerritories;
+				while(anotherTerritoryIterator.hasNext()) {
+					isConnectedTerritories=anotherTerritoryIterator.next();
+					if((currTerritory!=isConnectedTerritories) && (isConnected(currTerritory,isConnectedTerritories))) {
+						return true;
+					}	
+				}	
+			}
+
+		}
+		return false;		
+	}
+
+
 	//implement breadth first search to connect indirectly neighbouring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if((isConnected(defortifiedTerritory, fortifiedTerritory)) && (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType)) &&
@@ -279,6 +302,47 @@ public class GameMap {
 		}
 		return outputTerritories;
 
+	}
+	//this takes an ArrayList of Territories and outputs the ones that are valid for defortification
+	public ArrayList<Territory> getDefortifiableTerritories(ArrayList<Territory> inputTerritories){
+		ArrayList<Territory> outputTerritories = new ArrayList<Territory>();
+		Iterator<Territory> territoryIterator = inputTerritories.iterator();
+		Territory currTerritory;
+		while(territoryIterator.hasNext()) {
+			currTerritory=territoryIterator.next();
+			Iterator<Territory> anotherTerritoryIterator= inputTerritories.iterator();
+			Territory anotherTerritory;
+			while(anotherTerritoryIterator.hasNext()) {
+				anotherTerritory=anotherTerritoryIterator.next();
+				if((anotherTerritory!=currTerritory) && (isConnected(currTerritory,anotherTerritory))) {
+					if(!outputTerritories.contains(currTerritory)) {
+						if((currTerritory.getArtilleryUnitNumbers()>=2) || (currTerritory.getCavalryUnitNumber()>=2) ||
+								(currTerritory.getInfantryUnitNumbers()>=2)) {
+							outputTerritories.add(currTerritory);
+						}
+					}
+					break;
+				}
+
+			}
+
+
+		}
+		return outputTerritories;
+
+	}
+
+	public ArrayList<Territory> getConnectedTerritories(Territory territory, ArrayList<Territory> territoryList){
+		ArrayList<Territory> outputTerritoryList = new ArrayList<Territory>();
+		Iterator<Territory> territoryIterator = territoryList.iterator();
+		Territory currTerritory;
+		while(territoryIterator.hasNext()) {
+			currTerritory=territoryIterator.next();
+			if((territory!=currTerritory) && (isConnected(currTerritory,territory))){
+				outputTerritoryList.add(currTerritory);
+			}
+		}
+		return outputTerritoryList;
 	}
 
 

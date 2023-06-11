@@ -23,6 +23,7 @@ import javax.swing.border.Border;
 import Phases.AttackPhase;
 import Phases.DeploymentPhaseHandler;
 import Phases.FortificationPhase;
+import UI.user_input_taker.UserInputTaker;
 
 import javax.swing.JCheckBox;
 
@@ -1065,11 +1066,11 @@ public class WorldMap {
 					fortificationPhaseHandler.setPlayer(attackPhaseHandler.getAttacker());
 					fortificationPhaseHandler.selectFortifyTerritory();
 				}
-				
+
 			}
 		});
 	}
-	
+
 	public static void SelectTargetTerritoryAttackPhaseMap(GameMap gameMap, Player p, ArrayList<Territory> territoryList) {
 
 		frame = new JFrame();
@@ -1126,8 +1127,8 @@ public class WorldMap {
 
 		});
 	}
-	
-	public static void SelectdefortifiedTerritoryFortificationPhaseMap(GameMap gameMap, Player p, ArrayList<Territory> territoryList) {
+
+	public static void selectDefortifiedTerritoryFortificationPhaseMap(GameMap gameMap, Player p, ArrayList<Territory> territoryList) {
 
 		frame = new JFrame();
 		JPanel panel = SetUpPanel("Defortification Territory Selection Phase: " + p.Player_Name + "'s turn");
@@ -1167,34 +1168,21 @@ public class WorldMap {
 				Territory t = whichTerritorySelected();
 				//singleton
 
-				AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
-				attackPhaseHandler.setAttackTerritory(t);
-				//Also check whether the attacker has valid any valid territories 
-				if(gameMap.checkPlayerCanAttack(attackPhaseHandler.getAttacker())) {
-
-
-					//check whether the territory is valid
-					if(attackPhaseHandler.checkAttackTerritoryValidity()) {
-						frame.dispose(); //closing previous map
-						attackPhaseHandler.selectTargetTerritory();
-
-					}
-					else {
-						frame.dispose(); //closing previous map
-						attackPhaseHandler.selectAttackTerritory();
-					}
-				}
-				else {
-					//do sth related to next phase
-				}
-				
+				FortificationPhase fortificationPhaseHandler = FortificationPhase.GetFortificationPhaseHandler();
+				fortificationPhaseHandler.setDefortifiedTerritory(t);
+				//Only Defortifiable Territories are shown to the Player
+				frame.dispose();
+				fortificationPhaseHandler.selectFortificationTerritory();
 			}
+
+
+
 		});
 	}
 
-	
-	
-	public static void SelectFortifiedTerritoryFortificationPhaseMap(GameMap gameMap, Player p, ArrayList<Territory> territoryList) {
+
+
+	public static void selectFortifiedTerritoryFortificationPhaseMap(GameMap gameMap, Player p, ArrayList<Territory> territoryList) {
 
 		frame = new JFrame();
 		JPanel panel = SetUpPanel("Select Foritified Territory Phase: " + p.Player_Name + "'s turn");
@@ -1234,31 +1222,20 @@ public class WorldMap {
 				Territory t = whichTerritorySelected();
 				//singleton
 
-				AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
-				attackPhaseHandler.setAttackTerritory(t);
-				//Also check whether the attacker has valid any valid territories 
-				if(gameMap.checkPlayerCanAttack(attackPhaseHandler.getAttacker())) {
-
-
-					//check whether the territory is valid
-					if(attackPhaseHandler.checkAttackTerritoryValidity()) {
-						frame.dispose(); //closing previous map
-						attackPhaseHandler.selectTargetTerritory();
-
-					}
-					else {
-						frame.dispose(); //closing previous map
-						attackPhaseHandler.selectAttackTerritory();
-					}
-				}
-				else {
-					//do sth related to next phase
-				}
+				FortificationPhase fortificationPhaseHandler = FortificationPhase.GetFortificationPhaseHandler();
+				fortificationPhaseHandler.setFortifiedTerritory(t);
+				UserInputTaker askUnitType = new UserInputTaker(); 
+				askUnitType.run("Enter the Unit Type");
+				UserInputTaker askUnitQuantity = new UserInputTaker(); 
+				askUnitQuantity.run("Enter the Unit Quantity");
+				fortificationPhaseHandler.fortify(askUnitType.get_input(), Integer.parseInt(askUnitQuantity.get_input()));
+				frame.dispose();
 				
+				//move to the next phase
 			}
 		});
 	}
-	
+
 
 	public static void InitiateArmyTerritoryMap(GameMap gameMap, InitArmyTerritoryHandler IATHandler, Player p) {
 
