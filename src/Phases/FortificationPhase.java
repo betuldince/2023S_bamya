@@ -2,6 +2,8 @@ package Phases;
 
 import java.util.ArrayList;
 
+import UI.fortificationMap.DefortifiedTerritorySelectionUI;
+import UI.fortificationMap.FortifiedTerritorySelectionUI;
 import UI.otherScreens.FortificationDecisionScreen;
 import domain.ArmyPiece;
 import domain.Dice;
@@ -31,21 +33,33 @@ public class FortificationPhase {
 	}	
 	public void decideFortification() {
 		FortificationDecisionScreen fortificationDecisionScreen=new FortificationDecisionScreen();
-		boolean fortificationDecision=fortificationDecisionScreen.getFortificationDecision();
-		if(fortificationDecision) {
-			this.selectFortifyTerritory();
-			
+		boolean fortificationDecision=fortificationDecisionScreen.getFortificationDecision();		
+		//checks whether the player can fortify
+		if(gameMap.checkPlayerCanFortify(player)) {
+			if(fortificationDecision) {
+				this.selectDefortifyTerritory();
+
+			}
+			else {
+				//move to the next phase
+			}
 		}
 		else {
 			//move to the next phase
 		}
-		
 	}
-	
-	public void selectFortifyTerritory() {
-		
-		
+
+	public void selectDefortifyTerritory() {
+		ArrayList<Territory> defortifiableTerritories=gameMap.getDefortifiableTerritories(playerTerritories);
+		DefortifiedTerritorySelectionUI defortifySelectionUI= new DefortifiedTerritorySelectionUI(defortifiableTerritories,player);
+		defortifySelectionUI.drawSelectDefortificationMap();	
 	}
+	public void selectFortificationTerritory() {
+		ArrayList<Territory> fortifiableTerritories=gameMap.getConnectedTerritories(defortifiedTerritory, playerTerritories);
+		FortifiedTerritorySelectionUI fortifySelectionUI = new FortifiedTerritorySelectionUI(fortifiableTerritories, player);
+		fortifySelectionUI.DrawSelectFortificationMap();
+	}
+
 	public void setDefortifiedTerritory(Territory territory) {
 		this.defortifiedTerritory=territory;
 	}
@@ -55,7 +69,7 @@ public class FortificationPhase {
 	public void setFortifiedTerritory(Territory territory) {
 		this.fortifiedTerritory=territory;
 	}
-	public Territory getTargetTerritory() {
+	public Territory getFortifiedTerritory() {
 		return this.fortifiedTerritory;
 	}
 	public void setPlayer(Player player) {
@@ -72,7 +86,12 @@ public class FortificationPhase {
 		return gameMap.checkTerritoryFortificationValidity(fortifiedTerritory, fortifiedTerritory, unitType,unitQuantity );
 	}
 
-	public void fortify(Territory deforitifiedTerritory, Territory fortifiedTerritory,String unitType, int unitQuantity) {
-		gameMap.fortifyMap(fortifiedTerritory, fortifiedTerritory, unitType, unitQuantity);
+	public void fortify(String unitType, int unitQuantity) {
+		gameMap.fortifyMap(defortifiedTerritory, fortifiedTerritory, unitType, unitQuantity);
+		System.out.println("defortified Territory Army Numbers");
+		System.out.println(armyPiece.getArmyNumber(defortifiedTerritory));
+		System.out.println("fortified Territory Army Numbers");
+		System.out.println(armyPiece.getArmyNumber(fortifiedTerritory));
+		
 	}
 }
