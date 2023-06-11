@@ -28,7 +28,10 @@ public class SingleTurnCompleter {
 			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information,our_all_territories );
 			our_deployment_phase.run(next_phase);
 			
-			while (next_phase) { // wait for the deployment phase to complete
+			while (next_phase) {
+				
+			}
+				// wait for the deployment phase to complete
 				AttackPhase our_attack_phase= AttackPhase.GetAttackPhaseHandler();
 				//our_attack_phase.run();
 			
@@ -47,7 +50,7 @@ public class SingleTurnCompleter {
 				TerritoryArmyCardPhase our_territory_army_card_phase=new TerritoryArmyCardPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player);
 				our_territory_army_card_phase.run();
 				
-			}
+			
 			
 			
 			
