@@ -71,7 +71,7 @@ public enum Territory implements Comparable<Territory> {
 	
 	
 	private Player territoryOwner;
-	private Continent which_continent;
+	public Continent which_continent;
 	
 	int number_of_units_on_the_territory=0;	//this variable will deleted
 

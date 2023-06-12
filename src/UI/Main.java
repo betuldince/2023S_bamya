@@ -23,6 +23,7 @@ import domain.ArmyPiece;
 import domain.Player;
 import domain.StartingHandler;
 import domain.boolean_singleton;
+import domain.gamemap.Continent;
 import domain.gamemap.Territory;
 import domain.saveLoad.SaveLoadHandler;
 import domain.userOperations.CurrentLogins;
@@ -44,16 +45,93 @@ public class Main {
 				
 			}
 			
+
+			
 			AllPlayers allPlayers= AllPlayers.createAllPlayers();
 			AllTerritories allterr= new AllTerritories();
-			for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
-				Iterator<Territory> territoryIterator= allPlayers.get_the_nth_player(i).get_the_territories_in_control_of_the_player().iterator();
-				Territory currTerritory;
-				while (territoryIterator.hasNext()) {
-					currTerritory=territoryIterator.next();
-					allterr.add_a_new_territory(currTerritory);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY1_1);
+			allterr.add_a_new_territory(Territory.TERRITORY1_2);
+			allterr.add_a_new_territory(Territory.TERRITORY1_3);
+			allterr.add_a_new_territory(Territory.TERRITORY1_4);
+			allterr.add_a_new_territory(Territory.TERRITORY1_5);
+			allterr.add_a_new_territory(Territory.TERRITORY1_6);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY2_1);
+			allterr.add_a_new_territory(Territory.TERRITORY2_2);
+			allterr.add_a_new_territory(Territory.TERRITORY2_3);
+			allterr.add_a_new_territory(Territory.TERRITORY2_4);
+			allterr.add_a_new_territory(Territory.TERRITORY2_5);
+			allterr.add_a_new_territory(Territory.TERRITORY2_6);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY3_1);
+			allterr.add_a_new_territory(Territory.TERRITORY3_2);
+			allterr.add_a_new_territory(Territory.TERRITORY3_3);
+			allterr.add_a_new_territory(Territory.TERRITORY3_4);
+			allterr.add_a_new_territory(Territory.TERRITORY3_5);
+			allterr.add_a_new_territory(Territory.TERRITORY3_6);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY4_1);
+			allterr.add_a_new_territory(Territory.TERRITORY4_2);
+			allterr.add_a_new_territory(Territory.TERRITORY4_3);
+			allterr.add_a_new_territory(Territory.TERRITORY4_4);
+			allterr.add_a_new_territory(Territory.TERRITORY4_5);
+			allterr.add_a_new_territory(Territory.TERRITORY4_6);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY5_1);
+			allterr.add_a_new_territory(Territory.TERRITORY5_2);
+			allterr.add_a_new_territory(Territory.TERRITORY5_3);
+			allterr.add_a_new_territory(Territory.TERRITORY5_4);
+			allterr.add_a_new_territory(Territory.TERRITORY5_5);
+			allterr.add_a_new_territory(Territory.TERRITORY5_6);
+			
+			allterr.add_a_new_territory(Territory.TERRITORY6_1);
+			allterr.add_a_new_territory(Territory.TERRITORY6_2);
+			allterr.add_a_new_territory(Territory.TERRITORY6_3);
+			allterr.add_a_new_territory(Territory.TERRITORY6_4);
+			allterr.add_a_new_territory(Territory.TERRITORY6_5);
+			allterr.add_a_new_territory(Territory.TERRITORY6_6);
+			
+			for (int q=0; q<6; q++) {
+				for (int e=0; e<6; e++) {
+					if (q==0) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT1;
+						
+					}
+					if (q==1) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT2;
+						
+					}
+					if (q==2) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT3;
+						
+					}
+					if (q==3) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT4;
+						
+					}
+					if (q==4) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT5;
+						
+					}
+					if (q==5) {
+						allterr.get_the_nth_territory(q*6+e).which_continent=Continent.CONTINENT6;
+						
+					}
+					
+					
 				}
+			}
+			for (int y=0; y<allterr.return_number_of_territories(); y++) {
 				
+				for (int p=0; p<allPlayers.get_the_number_of_players(); p++) {
+					for (int f=0; f<allPlayers.get_the_nth_player(p).get_the_territories_in_control_of_the_player().size(); f++) {
+						if (allPlayers.get_the_nth_player(p).get_the_territories_in_control_of_the_player().get(f).name().equals(allterr.get_the_nth_territory(y))) {
+							allterr.get_the_nth_territory(y).setTerritoryOwner(allPlayers.get_the_nth_player(p));
+							
+						}
+					}
+				}
 			}
 			ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
 			RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
