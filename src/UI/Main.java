@@ -42,8 +42,10 @@ public class Main {
 			boolean_singleton our_bool=boolean_singleton.initiate_bool();
 			
 			while(our_bool.our_boolean) {
+				System.out.println("olmadı");
 				
 			}
+			System.out.println("oldu");
 			
 
 			

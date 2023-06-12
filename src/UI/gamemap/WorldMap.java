@@ -261,13 +261,13 @@ public class WorldMap {
 		JTextField  unit2= new JTextField();
 		JTextField  unit3= new JTextField();
 
-		unit1.setPreferredSize(new Dimension(250,40));
-		unit2.setPreferredSize(new Dimension(250,40));
-		unit3.setPreferredSize(new Dimension(250,40));
+		unit1.setPreferredSize(new Dimension(40,40));
+		unit2.setPreferredSize(new Dimension(40,40));
+		unit3.setPreferredSize(new Dimension(40,40));
 
-		unit1.setText("unit 1");
-		unit1.setText("unit 2");
-		unit1.setText("unit 3");
+		unit1.setText("I");
+		unit1.setText("C");
+		unit1.setText("A");
 
 		panel.add(unit1);
 		panel.add(unit2);
