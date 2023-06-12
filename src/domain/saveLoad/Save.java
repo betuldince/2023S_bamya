@@ -7,7 +7,6 @@ public class Save {
 	boolean successful = false;
 	
 	private GameState gameState;
-	private final static String[] stateKeys = GameState.getKeyList();
 	private final static SaveDatabaseFactory fac = SaveDatabaseFactory.getInstance(); 
 	private final static String database = "txt";
 	
