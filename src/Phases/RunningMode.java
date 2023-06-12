@@ -15,6 +15,7 @@ import domain.ChanceCards.AllianceChanceCard;
 import domain.ChanceCards.ChanceCardDeck;
 import domain.ChanceCards.ReinforcementsChanceCard;
 import domain.ChanceCards.SabotageChanceCard;
+import domain.ChanceCards.SecretWeapon;
 
 // this class should come after the build mode is done. 
 public class RunningMode {
@@ -48,6 +49,7 @@ public class RunningMode {
 		
 		
 		ChanceCardDeck our_chance_card_deck=new ChanceCardDeck();
+		our_chance_card_deck.add_new_chance_card(new SecretWeapon());
 		our_chance_card_deck.add_new_chance_card(new AllianceChanceCard());
 		our_chance_card_deck.add_new_chance_card(new ReinforcementsChanceCard());
 		our_chance_card_deck.add_new_chance_card(new SabotageChanceCard());

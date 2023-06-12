@@ -35,6 +35,7 @@ public class ChanceCardPhase {
 		Random rn = new Random();
 		
 		int random=rn.nextInt(n);
+		random=0;
 		ChanceCard our_chance_card=this.chance_card_deck.get_nth_card(random);
 		
 		InformationGiver.run("The assigned chance card is "+our_chance_card.get_the_name(),1);

@@ -12,6 +12,7 @@ import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyPiece;
 import domain.Player;
+import domain.boolean_singleton;
 import domain.gamemap.GameMap;
 import domain.gamemap.GameMapListener;
 import domain.gamemap.Territory;
@@ -145,30 +146,8 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		
 		
 		System.out.println("next phase btn clicked");
-		AllPlayers allPlayers= AllPlayers.createAllPlayers();
-		AllTerritories allterr= new AllTerritories();
-		for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
-			Iterator<Territory> territoryIterator= allPlayers.get_the_nth_player(i).get_the_territories_in_control_of_the_player().iterator();
-			Territory currTerritory;
-			while (territoryIterator.hasNext()) {
-				currTerritory=territoryIterator.next();
-				allterr.add_a_new_territory(currTerritory);
-			}
-			
-		}
-		ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
-		RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
-	
-		
-		
-
-		
-		try {
-			running_mode.run();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		boolean_singleton our_bool=boolean_singleton.initiate_bool();
+		our_bool.our_boolean=false;
 		
 		
 		

@@ -20,19 +20,56 @@ import UI.validation.*;
 import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyPiece;
+import domain.Player;
 import domain.StartingHandler;
+import domain.boolean_singleton;
+import domain.gamemap.Territory;
 import domain.saveLoad.SaveLoadHandler;
 import domain.userOperations.CurrentLogins;
 
 public class Main {
+	    
+	
 
 	
 		
-		public static void main(String[] args) {
-
-
+		public static void main(String[] args) throws InterruptedException {
+			
+		
 			decideLoadNewGame(); // Via JOptionPane
+			
+			boolean_singleton our_bool=boolean_singleton.initiate_bool();
+			
+			while(our_bool.our_boolean) {
+				System.out.println("geldik deldik **********************************************");
+			}
+			AllPlayers allPlayers= AllPlayers.createAllPlayers();
+			AllTerritories allterr= new AllTerritories();
+			for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
+				Iterator<Territory> territoryIterator= allPlayers.get_the_nth_player(i).get_the_territories_in_control_of_the_player().iterator();
+				Territory currTerritory;
+				while (territoryIterator.hasNext()) {
+					currTerritory=territoryIterator.next();
+					allterr.add_a_new_territory(currTerritory);
+				}
+				
+			}
+			ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
+			RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
+		
+			try {
+				running_mode.run();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			RunningMode runmode=new RunningMode(allPlayers,allterr,  armyPiece );
+			runmode.run();
 		}
+		
 		
 		
 		private static void decideLoadNewGame() {

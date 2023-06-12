@@ -12,6 +12,7 @@ public class AllPlayers {
 	
 public static ArrayList<Player> all_players;
 public static ArrayList<Player> ordered_all_players; //ordered by makeTurn method
+private static AllPlayers allPlayer = null;
 	
 	
 	public void add_new_player(Player newPlayer) {
@@ -45,7 +46,7 @@ public static ArrayList<Player> ordered_all_players; //ordered by makeTurn metho
 	}
 	
 	//singleton pattern
-	private static AllPlayers allPlayer = null;
+	
 	private AllPlayers() {
 		all_players=new ArrayList<Player>();	
 		ordered_all_players=new ArrayList<Player>();
