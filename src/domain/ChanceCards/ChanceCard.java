@@ -23,7 +23,7 @@ public class ChanceCard {
 			
 		
 	}
-    public void run(AllPlayers other_players, Player current_player, Dice our_dice) {
+    public void run(AllPlayers other_players, Player current_player, Dice our_dice) throws InterruptedException {
 		
 		
 	}

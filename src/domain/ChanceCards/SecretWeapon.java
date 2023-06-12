@@ -1,6 +1,7 @@
 package domain.ChanceCards;
 import java.util.Random;
 
+import UI.otherScreens.InformationGiver;
 import UI.user_input_taker.UserInputTaker;
 import domain.AllPlayers;
 import domain.Dice;
@@ -15,11 +16,9 @@ public class SecretWeapon extends ChanceCard {
 	}
 	
 	
-	public void run(AllPlayers other_players, Player current_player, Dice our_dice) {
+	public void run(AllPlayers other_players, Player current_player, Dice our_dice) throws InterruptedException {
 		
-       
-		// roll the dice
-		int number_of_soldiers_to_be_added=our_dice.roll_one_dice();
+
 		
 
 
@@ -30,17 +29,26 @@ public class SecretWeapon extends ChanceCard {
         n--;
         
         Random rn = new Random();
-        int answer = rn.nextInt(10) 
+        int answer = rn.nextInt(n);
         
-        
-       
-        	UserInputTaker input_screen=new UserInputTaker();
-    		input_screen.run("Enter the name of the territory you want to reinforce troops with");
-    		String the_input=input_screen.get_input();
-        	to_be_reinforced_with=current_player.get_the_territory_with_the_name(the_input);
+        if (other_players.get_the_nth_player(answer)!=current_player) {
+        	player_to_be_seen=other_players.get_the_nth_player(answer);
         	
+        }
+        else {
+        	player_to_be_seen=other_players.get_the_nth_player(answer+1);
+        	
+        }
+        InformationGiver.run("Opponent chosen is "+player_to_be_seen.Player_Name,1);
         
-        to_be_reinforced_with.addNumberofUnits(number_of_soldiers_to_be_added);
+        for (int u=0; u<player_to_be_seen.getArmy_deck().get_number_of_army_cards(); u++) {
+        	InformationGiver.run("the player has the army card "+player_to_be_seen.getArmy_deck().get_nth_card(u).get_card_type(),1);
+        	
+        }
+        
+        
+        
+   
         
         
 		

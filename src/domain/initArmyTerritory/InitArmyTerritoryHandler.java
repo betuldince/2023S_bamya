@@ -141,6 +141,9 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	@Override
 	public void nextPhase() {
 		// TODO Auto-generated method stub
+		
+		
+		
 		System.out.println("next phase btn clicked");
 		AllPlayers allPlayers= AllPlayers.createAllPlayers();
 		AllTerritories allterr= new AllTerritories();
@@ -155,7 +158,7 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		}
 		ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
 		RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
-		
+	
 		
 		
 

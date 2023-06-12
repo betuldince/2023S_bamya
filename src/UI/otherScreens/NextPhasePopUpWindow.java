@@ -23,6 +23,7 @@ public class NextPhasePopUpWindow {
 		
 		popUpPanel.add(lblMsg);
 		popUpPanel.add(nextPhaseBtn);
+		popUpPanel.setVisible(true);
 		
 		
 		nextPhaseBtn.addActionListener( new ActionListener() {
@@ -30,12 +31,15 @@ public class NextPhasePopUpWindow {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				popUpPanel.setVisible(false);
 				IATHandler.nextPhase();
+				
 			}
 			
 		});
 	
-		JOptionPane.showMessageDialog(null, popUpPanel, "Building Phase Over", JOptionPane.INFORMATION_MESSAGE);
+		
 	}
 	
 }
