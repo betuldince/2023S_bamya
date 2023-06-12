@@ -41,8 +41,9 @@ public class Main {
 			boolean_singleton our_bool=boolean_singleton.initiate_bool();
 			
 			while(our_bool.our_boolean) {
-				System.out.println("geldik deldik **********************************************");
+				
 			}
+			
 			AllPlayers allPlayers= AllPlayers.createAllPlayers();
 			AllTerritories allterr= new AllTerritories();
 			for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
@@ -63,8 +64,6 @@ public class Main {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
 			
 			RunningMode runmode=new RunningMode(allPlayers,allterr,  armyPiece );
 			runmode.run();
