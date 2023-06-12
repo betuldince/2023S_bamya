@@ -19,6 +19,13 @@ public class SaveLoadHandler {
 	
 	public boolean save() {
 		Save save = new Save();
+		save.save();
 		return save.isSuccessful();
+	}
+	
+	public boolean loadGame() {
+		Load load = new Load();
+		load.load();
+		return load.isSuccessful();
 	}
 }

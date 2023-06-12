@@ -5,7 +5,7 @@ import domain.exceptions.AdapterException;
 
 public class Load {
 	
-	boolean successful = false;
+	private boolean successful = false;
 	
 	private GameState gameState;
 	private final static String[] stateKeys = GameState.getKeyList();

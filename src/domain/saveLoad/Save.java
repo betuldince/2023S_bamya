@@ -4,7 +4,7 @@ import domain.AllPlayers;
 import domain.exceptions.AdapterException;
 
 public class Save {
-	boolean successful = false;
+	private boolean successful = false;
 	
 	private GameState gameState;
 	private final static SaveDatabaseFactory fac = SaveDatabaseFactory.getInstance(); 
