@@ -1131,7 +1131,7 @@ public class WorldMap {
 				if(attackPhaseHandler.checkTargetTerritoryValidity()) {
 					frame.dispose(); //closing previous map
 					attackPhaseHandler.attack();
-					attackPhaseHandler.selectAttackTerritory();
+					attackPhaseHandler.decideAttackAgain();
 				}
 				else {
 					frame.dispose(); //closing previous map
