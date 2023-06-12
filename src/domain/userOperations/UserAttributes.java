@@ -38,7 +38,7 @@ public class UserAttributes extends UserOperation {
 	
 	public Icon getUserIcon() {
 		String iconName = this.getUserAttribute("icon");
-		Path iconPath = Paths.get("src", "domain", "icons", iconName + ".png");
+		Path iconPath = Paths.get("src", "UI", "icons", iconName + ".png");
 		ImageIcon icon = new ImageIcon(iconPath.toString(), iconName);
 		return icon;
 	}
