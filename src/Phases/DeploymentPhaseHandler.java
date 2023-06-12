@@ -143,6 +143,7 @@ public class DeploymentPhaseHandler {
 				// finish the deployment phase and proceed with the next phase
 				System.out.println("tamamlandı");
 				next_phase1=false;
+				next_phase=false;
 				
 				//
 				

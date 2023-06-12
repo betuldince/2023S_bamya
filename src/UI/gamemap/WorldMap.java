@@ -31,6 +31,7 @@ import domain.gamemap.*;
 import domain.initArmyTerritory.InitArmyTerritoryHandler;
 import domain.initArmyTerritory.InitArmyTerritoryStarter;
 import domain.Player;
+import domain.singleton_boolean;
 import domain.buildingmode.*;
 
 
@@ -257,6 +258,7 @@ public class WorldMap {
 
 	// j plane text field adder method
 	private static void deployment_Panel_modifier(JPanel panel, Territory t) {
+		System.out.println(t.name()+"***************************************");
 		JTextField  unit1= new JTextField();
 		JTextField  unit2= new JTextField();
 		JTextField  unit3= new JTextField();
@@ -266,8 +268,8 @@ public class WorldMap {
 		unit3.setPreferredSize(new Dimension(40,40));
 
 		unit1.setText("I");
-		unit1.setText("C");
-		unit1.setText("A");
+		unit2.setText("C");
+		unit3.setText("A");
 
 		panel.add(unit1);
 		panel.add(unit2);
@@ -551,57 +553,63 @@ public class WorldMap {
 
 			case "Continent1": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel, t);
 
 
 					panel1.add(t.panel);
 				}
+				}
 				break;
 
 			case "Continent2": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel,t);
 					panel2.add(t.panel);
+				}
 				}
 				break;
 
 			case "Continent3": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel,t);
 					panel3.add(t.panel);
+				}
 				}
 				break;
 
 			case "Continent4": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel,t);
 					panel4.add(t.panel);
+				}
 				}
 				break;
 
 			case "Continent5": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel,t);
 					panel5.add(t.panel);
+				}
 				}
 				break;
 
 			case "Continent6": 
 				for (Territory t: c.initiatedTerritories) {
-					if(p.get_the_territories_in_control_of_the_player().contains(t))
+					if(p.get_the_territories_in_control_of_the_player().contains(t)) {
 						t.checkbox.setSelected(false);
 					deployment_Panel_modifier(t.panel,t);
 					panel6.add(t.panel);
+				}
 				}
 				break;
 
@@ -1321,8 +1329,8 @@ public class WorldMap {
 		  d_initPanel5();
 		  d_initPanel6();
 		  
-		  initiateAllContinentsforDeploymentPhase(handler);
-		  initiateAllTerritoriesforDeploymentPhase(handler);
+		  //initiateAllContinentsforDeploymentPhase(handler);
+		  //initiateAllTerritoriesforDeploymentPhase(handler);
 		  addPlayersTerritoriesDeploymentPhase(p); 
 		  
 		  panel.add(panel1);
@@ -1390,6 +1398,10 @@ public class WorldMap {
 					frame.getContentPane().removeAll();
 					frame.repaint();
 					frame.dispose();
+					//next_phase=false;
+					singleton_boolean param=singleton_boolean.initiate_bool();
+					param.our_boolean=false;
+					
 		    		
 		    	}
 				

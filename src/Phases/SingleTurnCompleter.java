@@ -7,6 +7,7 @@ import domain.ArmyCardDeck;
 import domain.ArmyPiece;
 import domain.Player;
 import domain.TerritoryCardDeck;
+import domain.singleton_boolean;
 import domain.ChanceCards.ChanceCardDeck;
 
 public class SingleTurnCompleter {
@@ -28,12 +29,17 @@ public class SingleTurnCompleter {
 			System.out.println("geldik buraya**************************2");
 			boolean next_phase=true;
 			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information,our_all_territories );
+			
+			singleton_boolean param=singleton_boolean.initiate_bool();
 			our_deployment_phase.run(next_phase);
 			System.out.println("geldik buraya**************************3");
 			
-			while (next_phase) {
+			while (param.our_boolean) {
+				System.out.println("bekliyoz");
+				
 				
 			}
+			System.out.println("attack phase e geldik **************************3");
 			    
 				AttackPhase attackPhaseHandler =AttackPhase.GetAttackPhaseHandler();
 				attackPhaseHandler.setThread(true);
