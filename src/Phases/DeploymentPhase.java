@@ -3,7 +3,7 @@ package Phases;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import UI.deployment.DeploymentPhaseModeHandler;
+
 import UI.gamemap.WorldMap;
 import UI.otherScreens.InformationGiver;
 import UI.user_input_taker.ArmyCardChoiceCondtionScreen;
@@ -183,28 +183,9 @@ public class DeploymentPhase {
 		
 		// determine how much territories any continent has
 		HashMap<Continent, Integer> continent_territory_numbers = new HashMap<Continent, Integer>();
-		for (int j=0; j<allterritories.return_number_of_territories(); j++) {
-			boolean our_condition=false;
-			Continent a_new_one=this.allterritories.get_the_nth_territory(j).get_continent();
-			for (Continent con : continent_territory_numbers.keySet()) {
-				  if (a_new_one==con) {
-					  our_condition=true;
-					  break;
-					  
-				  }
-				}
-			if (our_condition) {
-				continent_territory_numbers.put(a_new_one, continent_territory_numbers.get(a_new_one) + 1);
-				
-			}
-			else {
-				continent_territory_numbers.put(a_new_one, 1);
-				
-				
-			}
 		
-			
-		}
+		territory_counter(continent_territory_numbers);
+		
 		// determine how much territories in each continent the player has cards of
 		HashMap<Continent, Integer> cards_continent_numbers = new HashMap<Continent, Integer>();
 		for (Continent con1 : continent_territory_numbers.keySet()) {
@@ -306,36 +287,49 @@ public class DeploymentPhase {
 		
 		GameMap map = GameMap.Map_initiation();
 		DeploymentPhaseHandler Handler = new DeploymentPhaseHandler( this.current_player, map,turnly_total_number_of_infantry,turnly_total_number_of_cavalyr,turnly_total_number_of_artiellry,  next_hase);
-		WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, this.current_player, Handler);
+		WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, this.current_player, Handler,next_hase);
 		
 		
 
 		
 		
+	}
+	/**
+	 * territory_counter:
+	 * computes the number of territories each continent has
+	 * <p>
+	 * REQUIRES: DeploymentPhase should already have been initiated, HashMap<Continent, Integer>
+	 * MODIFIES: HashMap<Continent, Integer> that is given as an input
+	 * EFFECTS: for all continents the game currently has, it gives the number of territories corresponding to each specific continent
+	 * 
+	 * @param HashMap<Continent, Integer>
+	 * 
+	 */
+	public void territory_counter(HashMap<Continent, Integer> continent_territory_numbers) {
+		for (int j=0; j<allterritories.return_number_of_territories(); j++) {
+			boolean our_condition=false;
+			Continent a_new_one=this.allterritories.get_the_nth_territory(j).get_continent();
+			for (Continent con : continent_territory_numbers.keySet()) {
+				  if (a_new_one==con) {
+					  our_condition=true;
+					  break;
+					  
+				  }
+				}
+			if (our_condition) {
+				continent_territory_numbers.put(a_new_one, continent_territory_numbers.get(a_new_one) + 1);
+				
+			}
+			else {
+				continent_territory_numbers.put(a_new_one, 1);
+				
+				
+			}
 		
-		
-		
-		
-		
-		
-		
-		
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	 
-		
-		
+			
+		}
 		
 	}
 
 }
+

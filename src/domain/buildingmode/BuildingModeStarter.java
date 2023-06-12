@@ -19,9 +19,6 @@ public class BuildingModeStarter {
 		//InitArmyTerritoryStarter.startInitiatingArmyTerritory(); //probably a bug here
 		
 		
-		
-		
-		
 
 	}
 	

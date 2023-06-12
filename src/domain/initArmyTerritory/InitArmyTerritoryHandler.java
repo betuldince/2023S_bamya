@@ -2,10 +2,14 @@ package domain.initArmyTerritory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
+import Phases.AttackPhase;
+import Phases.RunningMode;
 import UI.gamemap.WorldMap;
 import UI.otherScreens.NextPhasePopUpWindow;
 import domain.AllPlayers;
+import domain.AllTerritories;
 import domain.ArmyPiece;
 import domain.Player;
 import domain.gamemap.GameMap;
@@ -113,15 +117,15 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
 			
 			b = true;
-			
+			System.out.println(ap.getArmyNumber(t));
 			System.out.println(ap.getArmyNumber(p));
 			
 		} else if (t.getTerritoryOwner() == null) {
-			ap.addNewTerritoryArmy(t, "infantry", 1); //increases number of troops in territory
-			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
-			t.setTerritoryOwner(p);
 			p.add_territory(t);
-			
+			t.setTerritoryOwner(p);
+			ap.updateArmyNumber(t, 1,"infantry"); //increases number of troops in territory
+			ap.updateArmyNumber(p, -1, "infantry"); //decreases number of troops in player
+			System.out.println(ap.getArmyNumber(t));
 			System.out.println(ap.getArmyNumber(p));
 			
 			
@@ -138,7 +142,26 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	public void nextPhase() {
 		// TODO Auto-generated method stub
 		System.out.println("next phase btn clicked");
+		AllPlayers allPlayers= AllPlayers.createAllPlayers();
+		AllTerritories allterr= new AllTerritories();
+		for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
+			Iterator<Territory> territoryIterator= allPlayers.get_the_nth_player(i).get_the_territories_in_control_of_the_player().iterator();
+			Territory currTerritory;
+			while (territoryIterator.hasNext()) {
+				currTerritory=territoryIterator.next();
+				allterr.add_a_new_territory(currTerritory);
+			}
+			
+		}
+		ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
+		RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
 		
+		try {
+			running_mode.run();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 	

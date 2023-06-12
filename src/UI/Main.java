@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,8 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Phases.AttackPhase;
+import Phases.RunningMode;
 import UI.otherScreens.pause.PauseButton;
 import UI.validation.*;
+import domain.AllPlayers;
+import domain.AllTerritories;
+import domain.ArmyPiece;
 import domain.StartingHandler;
 import domain.saveLoad.SaveLoadHandler;
 import domain.userOperations.CurrentLogins;
@@ -24,6 +29,7 @@ public class Main {
 	
 		
 		public static void main(String[] args) {
+
 
 			decideLoadNewGame(); // Via JOptionPane
 		}
@@ -46,6 +52,7 @@ public class Main {
 	            startNewGame();
 	        }
 	        
+
 			
 		}
 

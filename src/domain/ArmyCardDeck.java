@@ -45,7 +45,7 @@ public class ArmyCardDeck {
 		int number=0;
 	
 		for (int a=0; a<deck.size(); a++) {
-			if (this.deck.get(a).get_card_type().contentEquals("Infantry")) {
+			if (this.deck.get(a).get_card_type().contentEquals("infantry")) {
 				number++;
 			}
 			
@@ -56,7 +56,7 @@ public class ArmyCardDeck {
 		int number=0;
 	
 		for (int a=0; a<deck.size(); a++) {
-			if (this.deck.get(a).get_card_type().contentEquals("Cavalyr")) {
+			if (this.deck.get(a).get_card_type().contentEquals("cavalry")) {
 				number++;
 			}
 			
@@ -67,7 +67,7 @@ public class ArmyCardDeck {
 		int number=0;
 	
 		for (int a=0; a<deck.size(); a++) {
-			if (this.deck.get(a).get_card_type().contentEquals("Artillery")) {
+			if (this.deck.get(a).get_card_type().contentEquals("artillery")) {
 				number++;
 			}
 			
@@ -87,7 +87,7 @@ public class ArmyCardDeck {
 	public ArmyCard delete_an_infantry_card() {
 		ArmyCard ret=null;
 		for (int a=0; a<this.total_number_of_cards; a++) {
-			if (this.deck.get(a).card_type.contentEquals("Infantry")) {
+			if (this.deck.get(a).card_type.contentEquals("infantry")) {
 				ret=this.deck.get(a);
 				this.deck.remove(a);
 				return ret;
@@ -99,7 +99,7 @@ public class ArmyCardDeck {
 	public ArmyCard delete_an_cavalyr_card() {
 		ArmyCard ret=null;
 		for (int a=0; a<this.total_number_of_cards; a++) {
-			if (this.deck.get(a).card_type.contentEquals("Cavalyr")) {
+			if (this.deck.get(a).card_type.contentEquals("cavalry")) {
 				ret=this.deck.get(a);
 				this.deck.remove(a);
 				return ret;
@@ -111,7 +111,7 @@ public class ArmyCardDeck {
 	public ArmyCard delete_an_artiellry_card() {
 		ArmyCard ret=null;
 		for (int a=0; a<this.total_number_of_cards; a++) {
-			if (this.deck.get(a).card_type.contentEquals("Artillery")) {
+			if (this.deck.get(a).card_type.contentEquals("artillery")) {
 				ret=this.deck.get(a);
 				this.deck.remove(a);
 				return ret;

@@ -14,15 +14,15 @@ public class DeploymentPhaseHandler {
 	public int unit1=0;
 	public int unit2=0;
 	public int unit3=0;
-	boolean next_phase;
+	boolean next_phase1;
 	
-	public DeploymentPhaseHandler(Player player, GameMap map, int unit1, int unit2, int unit3, Boolean next_phase) {
+	public DeploymentPhaseHandler(Player player, GameMap map, int unit1, int unit2, int unit3, boolean next_phase) {
 		this.player=player;
 		this.map=map;
 		this.unit1=unit1;
 		this.unit2=unit2;
 		this.unit3=unit3;
-		this.next_phase=next_phase;
+		this.next_phase1=next_phase;
 	}
 	
 	public void specifyContinent(Continent c) {
@@ -32,7 +32,7 @@ public class DeploymentPhaseHandler {
 	public void specifyTerritory(Continent c, Territory t) {
 		map.specifyTerritory(c, t);
 	}
-	public void distributeUnits(GameMap gameMap, Player p, DeploymentPhaseHandler handler) {
+	public void distributeUnits(GameMap gameMap, Player p, DeploymentPhaseHandler handler, boolean next_phase) {
 		ArmyPiece army=ArmyPiece.ArmyPiece_initiation();
 		int a=this.player.get_the_territories_in_control_of_the_player().size();
 		
@@ -141,13 +141,19 @@ public class DeploymentPhaseHandler {
 			}
 			if (this.unit1==0 && this.unit2==0 && this.unit3==0) {
 				// finish the deployment phase and proceed with the next phase
-				next_phase=false;
+				System.out.println("tamamlandı");
+				next_phase1=false;
 				
 				//
 				
 			}
 			else { // deployment devam ediyor
-				WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(gameMap, p, handler);
+				System.out.println("sisteme işlendi devam ediyor**************");
+				//GameMap map = GameMap.Map_initiation();
+				//DeploymentPhaseHandler Handler = new DeploymentPhaseHandler( this.player, map,this.unit1,this.unit2,this.unit3,  this.next_phase1);
+				//WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, p, Handler, next_phase1);
+				
+				
 				
 			}
 			
@@ -155,7 +161,11 @@ public class DeploymentPhaseHandler {
 		}
 		else {
 			// wrong unit numbers tekrardan
-			WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(gameMap, p, handler);
+			System.out.println("olmadı yeniden");
+			//GameMap map = GameMap.Map_initiation();
+			//DeploymentPhaseHandler Handler = new DeploymentPhaseHandler( this.player, map,this.unit1,this.unit2,this.unit3,  this.next_phase1);
+			//WorldMap.InitiatePlayerTerritoryMapforDeploymentPhase(map, p, Handler, next_phase1);
+			
 		}
 		
 		
@@ -164,3 +174,5 @@ public class DeploymentPhaseHandler {
 	}
 
 }
+
+

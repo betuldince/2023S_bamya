@@ -17,6 +17,9 @@ public class Player {
 	
 	public Player(String name_of_player) {
 		this.Player_Name=name_of_player;
+		armyPiece.addNewPlayerArmy(this, "infantry", 0);
+		armyPiece.addNewPlayerArmy(this, "cavalry", 0);
+		armyPiece.addNewPlayerArmy(this, "artillery", 0);
 	}
 	
 	
@@ -81,7 +84,9 @@ public class Player {
 
 	public void add_territory(Territory Territory_to_be_added ) {
 		Territories_possesed.add(Territory_to_be_added);
-		
+		armyPiece.addNewTerritoryArmy(Territory_to_be_added, "infantry", 0);
+		armyPiece.addNewTerritoryArmy(Territory_to_be_added, "cavalry", 0);
+		armyPiece.addNewTerritoryArmy(Territory_to_be_added, "artillery", 0);
 	}
 	public Territory get_the_territory_with_the_name(String Territory_name) {
 		Territory thing_to_return=null;
