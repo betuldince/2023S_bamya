@@ -35,7 +35,7 @@ public class PlayerLabel extends JLabel {
 		Border grayline = BorderFactory.createLineBorder(Color.DARK_GRAY);
 		this.setBorder(grayline);
 		
-		Path iconPath = Paths.get("src", "domain", "icons", "placeholder.png");
+		Path iconPath = Paths.get("src", "UI", "icons", "placeholder.png");
 		loginIcon = new ImageIcon(iconPath.toString(), "Log in!");
 		this.setIcon(loginIcon);;
 		
