@@ -243,7 +243,7 @@ public class GameMap {
 			currTerritory=territoryIterator.next();
 			//for demo >=
 			if((currTerritory.getArtilleryUnitNumbers()>=2)|| (currTerritory.getCavalryUnitNumber()>=2) ||
-					(currTerritory.getInfantryUnitNumbers()>=2)) {
+					(currTerritory.getInfantryUnitNumbers()>=1)) {
 				Iterator<Territory> anotherTerritoryIterator=player.get_the_territories_in_control_of_the_player().iterator();
 				Territory isConnectedTerritories;
 				while(anotherTerritoryIterator.hasNext()) {
@@ -262,7 +262,8 @@ public class GameMap {
 	//implement breadth first search to connect indirectly neighbouring territories
 	public boolean checkTerritoryFortificationValidity(Territory defortifiedTerritory, Territory fortifiedTerritory,String unitType,int unitQuantity) {
 		if((isConnected(defortifiedTerritory, fortifiedTerritory)) && (unitQuantity<=defortifiedTerritory.getTerritoryArmyNumber().get(unitType)) &&
-				(((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType)))>=2)) {
+				//for demo changed to 1 
+				(((defortifiedTerritory.getTotalNumberOfArmyUnits()-unitQuantity*armyPiece.getArmyUnitWeights(unitType)))>=1)) {
 			return true;
 		}
 		else {
