@@ -21,7 +21,7 @@ import domain.AllPlayers;
 import domain.AllTerritories;
 import domain.ArmyPiece;
 import domain.StartingHandler;
-import domain.gamemap.Territory;
+import domain.saveLoad.SaveLoadHandler;
 import domain.userOperations.CurrentLogins;
 
 public class Main {
@@ -29,27 +29,42 @@ public class Main {
 	
 		
 		public static void main(String[] args) {
-			//to test attackphase related methods
 
-			//AttackPhase attack= new AttackPhase();
-			//attack.run();
+
+			decideLoadNewGame(); // Via JOptionPane
+		}
+		
+		
+		private static void decideLoadNewGame() {
+			SaveLoadHandler handler = SaveLoadHandler.getHandler();
+	        // Display the option dialog
+	        String[] options = {"Load Last Game", "Start New Game"};
+	        int choice = JOptionPane.showOptionDialog(null, "Choose an option:", "ConKUeror",
+	                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+	        
+	        boolean success = false;
+	        // Process the user's choice
+	        if (choice == 0) {
+	            // User chose to load an existing game
+	            success = handler.loadGame();
+	        } else if (!success || choice==1) {
+	            // User chose to start a new game
+	            startNewGame();
+	        }
+	        
+
 			
+		}
 
+
+		private static void startNewGame() {
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);
 			
-			
-			// egeninki
-			
-			
-			
-			
-			
-
 		}
-		
-		
+
+
 		private static void openStartScreen(int playerCount, int computerCount) {
 			JFrame startScreen = new JFrame();
 			startScreen.setLayout(new BorderLayout());
