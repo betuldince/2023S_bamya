@@ -156,12 +156,18 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 		ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
 		RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
 		
+		
+		
+
+		
 		try {
 			running_mode.run();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
 		
 	}
 	

@@ -20,7 +20,7 @@ public class SingleTurnCompleter {
 			
 			Player current_player=all_players.get_the_nth_player(a);
 
-			// dice null o hatayı düzelt
+		
 			ChanceCardPhase our_chance_card_phase=new ChanceCardPhase(our_chance_card_deck,all_players, current_player);
 			our_chance_card_phase.run();
 			
