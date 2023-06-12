@@ -14,7 +14,7 @@ public class ChanceCardPhase {
 	public ChanceCardDeck chance_card_deck;
 	public AllPlayers other_players; //current player is included in this object
 	public Player current_player;
-	public Dice our_dice;
+	public Dice our_dice=Dice.Dice_initiation();
 	
 	public ChanceCardPhase(ChanceCardDeck chance_card_deck, AllPlayers all_players, Player current_player) {
 		this.other_players=all_players;
@@ -26,6 +26,7 @@ public class ChanceCardPhase {
 	}
 	public int run() throws InterruptedException {
 		InformationGiver.run("Chance Card Phase for the player "+current_player.Player_Name+" has started",1);
+
 		
 		
 		

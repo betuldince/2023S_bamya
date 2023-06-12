@@ -22,12 +22,13 @@ public class SingleTurnCompleter {
 
 			// dice null o hatayı düzelt
 			ChanceCardPhase our_chance_card_phase=new ChanceCardPhase(our_chance_card_deck,all_players, current_player);
-			//our_chance_card_phase.run();
+			our_chance_card_phase.run();
 			
 			System.out.println("geldik buraya**************************2");
 			boolean next_phase=true;
 			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information,our_all_territories );
 			our_deployment_phase.run(next_phase);
+			System.out.println("geldik buraya**************************3");
 			
 			while (next_phase) {
 				
