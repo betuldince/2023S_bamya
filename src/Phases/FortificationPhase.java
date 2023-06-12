@@ -35,6 +35,7 @@ public class FortificationPhase {
 		FortificationDecisionScreen fortificationDecisionScreen=new FortificationDecisionScreen();
 		boolean fortificationDecision=fortificationDecisionScreen.getFortificationDecision();		
 		//checks whether the player can fortify
+		System.out.println("Can you fortify?");
 		if(gameMap.checkPlayerCanFortify(player)) {
 			if(fortificationDecision) {
 				this.selectDefortifyTerritory();
@@ -45,6 +46,7 @@ public class FortificationPhase {
 			}
 		}
 		else {
+			System.out.println("this player can't fortify");
 			//move to the next phase
 		}
 	}
