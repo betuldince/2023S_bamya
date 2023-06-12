@@ -1254,6 +1254,7 @@ public class WorldMap {
 				askUnitQuantity.run("Enter the Unit Quantity");
 				fortificationPhaseHandler.fortify(askUnitType.get_input(), Integer.parseInt(askUnitQuantity.get_input()));
 				frame.dispose();
+				fortificationPhaseHandler.decideFortification();
 				AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
 				attackPhaseHandler.setThread(false);
 				//move to the next phase
