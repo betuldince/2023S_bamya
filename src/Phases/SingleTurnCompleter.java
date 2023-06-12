@@ -38,6 +38,7 @@ public class SingleTurnCompleter {
 				attackPhaseHandler.setThread(true);
 				attackPhaseHandler.setAttacker(current_player);
 				attackPhaseHandler.decideAttackAgain();
+				
 				while (attackPhaseHandler.getThread()) {
 					
 				}
