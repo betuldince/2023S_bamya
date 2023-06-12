@@ -20,10 +20,11 @@ public class SingleTurnCompleter {
 			
 			Player current_player=all_players.get_the_nth_player(a);
 
-			
+			// dice null o hatayı düzelt
 			ChanceCardPhase our_chance_card_phase=new ChanceCardPhase(our_chance_card_deck,all_players, current_player);
-			our_chance_card_phase.run();
+			//our_chance_card_phase.run();
 			
+			System.out.println("geldik buraya**************************2");
 			boolean next_phase=true;
 			DeploymentPhase our_deployment_phase=new DeploymentPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player, army_information,our_all_territories );
 			our_deployment_phase.run(next_phase);
@@ -31,9 +32,14 @@ public class SingleTurnCompleter {
 			while (next_phase) {
 				
 			}
-				// wait for the deployment phase to complete
-				AttackPhase our_attack_phase= AttackPhase.GetAttackPhaseHandler();
-				//our_attack_phase.run();
+			    
+				AttackPhase attackPhaseHandler =AttackPhase.GetAttackPhaseHandler();
+				attackPhaseHandler.setThread(true);
+				attackPhaseHandler.setAttacker(current_player);
+				attackPhaseHandler.decideAttackAgain();
+				while (attackPhaseHandler.getThread()) {
+					
+				}
 			
 				
 				// now we will check the winning condition: i.e. if the territories this player has corresponds to all territories we game is won by this player
@@ -43,8 +49,7 @@ public class SingleTurnCompleter {
 					return current_player; // return the winner
 				}
 				
-				FortificationPhase our_fortification_phase=new FortificationPhase();
-				our_fortification_phase.run();
+				
 				
 				
 				TerritoryArmyCardPhase our_territory_army_card_phase=new TerritoryArmyCardPhase(our_army_card_deck, our_territory_card_deck, all_players, current_player);

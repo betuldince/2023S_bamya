@@ -2,11 +2,14 @@ package domain.initArmyTerritory;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import Phases.AttackPhase;
+import Phases.RunningMode;
 import UI.gamemap.WorldMap;
 import UI.otherScreens.NextPhasePopUpWindow;
 import domain.AllPlayers;
+import domain.AllTerritories;
 import domain.ArmyPiece;
 import domain.Player;
 import domain.gamemap.GameMap;
@@ -139,9 +142,27 @@ public class InitArmyTerritoryHandler implements GameMapListener{
 	public void nextPhase() {
 		// TODO Auto-generated method stub
 		System.out.println("next phase btn clicked");
-		AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
-		attackPhaseHandler.setAttacker(AllPlayers.ordered_all_players.get(0));
-		attackPhaseHandler.decideAttackAgain();
+		AllPlayers allPlayers= AllPlayers.createAllPlayers();
+		AllTerritories allterr= new AllTerritories();
+		for (int i=0; i<allPlayers.get_the_number_of_players(); i++) {
+			Iterator<Territory> territoryIterator= allPlayers.get_the_nth_player(i).get_the_territories_in_control_of_the_player().iterator();
+			Territory currTerritory;
+			while (territoryIterator.hasNext()) {
+				currTerritory=territoryIterator.next();
+				allterr.add_a_new_territory(currTerritory);
+			}
+			
+		}
+		ArmyPiece armyPiece=ArmyPiece.ArmyPiece_initiation();
+		RunningMode running_mode= new RunningMode(allPlayers,allterr,armyPiece);
+		
+		try {
+			running_mode.run();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	

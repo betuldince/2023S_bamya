@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,9 +14,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import Phases.AttackPhase;
+import Phases.RunningMode;
 import UI.otherScreens.pause.PauseButton;
 import UI.validation.*;
+import domain.AllPlayers;
+import domain.AllTerritories;
+import domain.ArmyPiece;
 import domain.StartingHandler;
+import domain.gamemap.Territory;
 import domain.userOperations.CurrentLogins;
 
 public class Main {
@@ -32,6 +38,14 @@ public class Main {
 			int playerCount = getNumberOfPlayers(); // Via JOptionPane
 			int computerCount = getNumberOfComputers(playerCount); // Via JOptionPane
 			openStartScreen(playerCount, computerCount);
+			
+			
+			// egeninki
+			
+			
+			
+			
+			
 
 		}
 		

@@ -1080,7 +1080,7 @@ public class WorldMap {
 					frame.dispose(); 
 					FortificationPhase fortificationPhaseHandler = FortificationPhase.GetFortificationPhaseHandler();
 					fortificationPhaseHandler.setPlayer(attackPhaseHandler.getAttacker());
-					fortificationPhaseHandler.selectFortifyTerritory();
+					fortificationPhaseHandler.decideFortification();
 				}
 
 			}
@@ -1246,7 +1246,8 @@ public class WorldMap {
 				askUnitQuantity.run("Enter the Unit Quantity");
 				fortificationPhaseHandler.fortify(askUnitType.get_input(), Integer.parseInt(askUnitQuantity.get_input()));
 				frame.dispose();
-				
+				AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
+				attackPhaseHandler.setThread(false);
 				//move to the next phase
 			}
 		});

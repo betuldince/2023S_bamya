@@ -27,6 +27,7 @@ public class AttackPhase implements GameMapListener{
 	Territory targetTerritory;
 	Player attacker;
 	ArrayList<Territory> attackerTerritories;
+	boolean threadCheck;
 	
 	private AttackPhase() {
 		
@@ -69,6 +70,12 @@ public class AttackPhase implements GameMapListener{
 			fortificationPhaseHandler.setPlayer(attacker);
 			fortificationPhaseHandler.decideFortification();
 		}
+	}
+	public void setThread(boolean thread){
+		threadCheck=thread;
+	}
+	public boolean getThread(){
+		return threadCheck;
 	}
 
 
