@@ -27,11 +27,7 @@ public class ReinforcementsChanceCard extends ChanceCard {
         while (to_be_reinforced_with==null) {
         	UserInputTaker input_screen=new UserInputTaker();
     		input_screen.run("Enter the name of the territory you want to reinforce troops with");
-    		for (int i=0; i<current_player.get_the_territories_in_control_of_the_player().size(); i++) {
-    			input_screen.run(current_player.get_the_territories_in_control_of_the_player().get(i).name());
-    			
-    			
-    		}
+
     		String the_input=input_screen.get_input();
         	to_be_reinforced_with=current_player.get_the_territory_with_the_name(the_input);
         	

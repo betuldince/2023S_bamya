@@ -49,7 +49,9 @@ public class SingleTurnCompleter {
 				while (attackPhaseHandler.getThread()) {
 					
 				}
-			
+				System.out.println("GELDİK");
+				
+				attackPhaseHandler.setThread(true);
 				
 				// now we will check the winning condition: i.e. if the territories this player has corresponds to all territories we game is won by this player
 				int number_of_all_territories=our_all_territories.return_number_of_territories();
@@ -57,6 +59,7 @@ public class SingleTurnCompleter {
 				if (number_of_all_territories==number_of_territories_in_control_of_the_player) {
 					return current_player; // return the winner
 				}
+				
 				
 				
 				

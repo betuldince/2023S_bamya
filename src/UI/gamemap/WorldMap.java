@@ -1375,6 +1375,8 @@ public class WorldMap {
  	  panel.add(information_panel);
  	  
  	  
+ 	  
+ 	  
 	      
 	      contBtn.addActionListener(new ActionListener() {
 	    	  

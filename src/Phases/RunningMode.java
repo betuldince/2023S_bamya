@@ -88,7 +88,7 @@ public class RunningMode {
 		
 		
 		
-		Player the_winner=null;
+		Player the_winner=this.all_players.get_the_nth_player(0);
 		
 		while (the_winner==null) {
 			// the turn ordering of players is determined by the ordering of players in the class AllPlayers

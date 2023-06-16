@@ -54,27 +54,32 @@ public class TerritoryArmyCardPhase {
 		}
 		// continue the normal procedures
         Random rn = new Random();
-		
-		int random=rn.nextInt(total_number);
-		
+        
+        for (int j=0; j<5; j++) {
+        	int random=rn.nextInt(total_number);
+    		
 
+    		
+    		if (random<=number_of_army_cards_left-1) {
+    			 ArmyCard the_card_chosen1= (ArmyCard) this.army_deck.delete_nth_card(random);
+    			 the_card_chosen1.change(this.current_player);
+    			 this.current_player.getArmy_deck().add_new_army_card(the_card_chosen1);
+    			 InformationGiver.run("Army Card assigned is "+the_card_chosen1.get_card_type(),1);
+    		
+    			 
+    			
+    		}
+    		else {
+    			TerritoryCard the_card_chosen2= this.territory_deck.delete_nth_card(random-number_of_territory_cards_left);
+    			the_card_chosen2.assign_owner(this.current_player);
+    			InformationGiver.run("Territory Card assigned is"+ the_card_chosen2.which_territory.get_territory_name() ,1);
+    			this.current_player.getTerritory_deck().add_new_territory_card(the_card_chosen2);
+    			
+    		}
+        	
+        }
 		
-		if (random<=number_of_army_cards_left-1) {
-			 ArmyCard the_card_chosen1= (ArmyCard) this.army_deck.delete_nth_card(random);
-			 the_card_chosen1.change(this.current_player);
-			 this.current_player.getArmy_deck().add_new_army_card(the_card_chosen1);
-			 InformationGiver.run("Army Card assigned is "+the_card_chosen1.get_card_type(),1);
 		
-			 
-			
-		}
-		else {
-			TerritoryCard the_card_chosen2= this.territory_deck.delete_nth_card(random-number_of_territory_cards_left);
-			the_card_chosen2.assign_owner(this.current_player);
-			InformationGiver.run("Territory Card assigned is"+ the_card_chosen2.which_territory.get_territory_name() ,1);
-			this.current_player.getTerritory_deck().add_new_territory_card(the_card_chosen2);
-			
-		}
 		// successfully added the card now do other reamaning things if there are any
 		
 

@@ -43,6 +43,8 @@ public class FortificationPhase {
 			}
 			else {
 				//move to the next phase
+				AttackPhase attackPhaseHandler = AttackPhase.GetAttackPhaseHandler();
+				attackPhaseHandler.setThread(false);
 			}
 		}
 		else {
